@@ -1,0 +1,100 @@
+---
+title: 'Discurso Autoritário e Atitudes Políticas: um estudo do caso brasileiro.'
+author:
+- name: 'Marcio de Lucas'
+  affiliation: Universidade Federal de Pernambuco
+abstract: ""
+date: "`r format(Sys.time(), '%d %B %Y')`"
+geometry: margin=1in
+mainfont: Times New Roman
+fontfamily: mathpazo
+fontsize: 12 pt
+spacing: double
+indent: true
+bibliography: bibli.bib
+link-citations: yes
+endnote: no
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{setspace}
+  - \setlength\parindent{1.3cm}
+  - \setlength\parskip{0.3cm} 
+  - \usepackage{amsmath}
+  - \usepackage{graphicx}
+  - \usepackage{natbib}
+  - \bibliographystyle{abnt}
+output: 
+  pdf_document:
+    keep_tex: true
+    fig_caption: true
+    latex_engine: pdflatex
+    template: svm-latex-ms.tex
+  html_document: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introdução
+
+Ao longo das últimas duas decadas, as discussões acerca dos efeitos do autoritarismo sobre a qualidade e estabilidade das democracias ganharam maior espaço na academia e na mídia. Contudo, diferente de outros momentos da história, as principais ameaças atuais para a liberdade são líderes políticos, eleitos democraticamente, que carregam consigo traços autoritários nas suas atitudes e comportamento. Em casos mais dramáticos, como na Venezuela, Hungria e Turquia, a presença de chefes do executivo pouco simpáticos à democracia foi elemento decisivo para a ocorrência de reversões autoritárias.
+
+Todavia, apesar da relevância do tema, a literatura ainda conta com ferramentas limitadas para identificar agentes políticos autoritários. Em decorrência da dificuldade da coleta de dados primários de membros da classe política e integrantes de grupos organizados, pesquisadores utililizam-se de grandes heurísticas como unidade de análise. Alguns dos exemplos são: partidos políticos [@mudde2009populist; @loxton2014authoritarian; @mudde2016introduction]; movimentos sociais [@caiani2017radical], comportamento do eleitorado [@booth1984political; @seligson2003democracies; @seligson2005feeding; @rydgren2007sociology] ou grandes lideranças [@levitsky2018democracies; @norris2019cultural]. Como efeito, o autoritarismo é observado apenas nas suas expressões organizadas, permanecendo inobservado enquanto atributo individual de parlamentares e candidatos.
+
+Como forma de propor um critério de classificação para políticos autoritários, extensível para um grande número de agentes políticos e em consonância com o conhecimento reunido no campo da psicologia política, essa dissertação apresenta um modelo de identificação de atitudes autoritárias baseada na análise automatizada de conteúdo aplicada ao caso da Câmara dos Deputados. Para isso, coletou-se 420 mil falas de 3700 parlamentares realizadas entre os anos 2000 e 2019. Endoçando os avanços de trabalhos da Ciência Política que têm utilizado texto como dado (\emph{text as data}) [@batista2016mensurando; @moreira2016palavra], expera-se contribuir para a literatura a partir da exploração de fontes de alterativas de dados para construção de um indicador relevante para a literatura. 
+
+A despeito das dificuldades na classificação de políticos autoritários, uma extensa bibliografia apresenta definições e indicadores extensamente validados para mensurar propensão ao autoritarismo [@titus1957california; @meloen1993f]. De maneira geral, a personalidade autoritária envolve a crença de que o mundo é um lugar hostil e periogoso, no qual a segurança coletiva, a estabilidade e a ordem são indispensáveis a qualquer custo [@altemeyer1996authoritarian]. Partindo disso, seus representantes tendem a dividir a sociedade em dois grupos homogêneos: àqueles que buscam preservar o mundo como nós conhecemos e aderem as autoridades vigentes e aqueles que as desafiam.
+
+Nas investigações empíricas sobre o tema, a literatura reúne evidências de que a personalidade autoritária está associada à discriminação [@titus1957california; @meloen1993f], preconceito religioso [@laythe2001predicting], contra homossexuais [@hunsberger1996religious; @jonathan2008influence], preconceito racial [@rowatt2004christian], à manifestações de sexismo [@sibley2007antecedents], xenofobia [@thomsen2008we] e preconceito em geral [@asbrock2010right]. O que o panorama geral das pesquisas sugere é que, de maneira geral, entidades associadas a ordem, segurança e autoridade são desproporcionalmente valorizadas por autoritários e entidades associadas a populações marginais, desproporcionalmente depreciadas.
+
+Como estratégia metodológica, buscou-se mensurar o valor atribuído, nas falas dos parlamentares, às duas classes de entidades que possuem grande saliência no discurso autoritário: os objetos de exaltação e os objetos de rejeição. Para isso, utilizou-se um dicionário de entidades textuais como chave para mensurar a valência das sentenças a associada a cada uma delas. Essa abordagem baseia-se nos trabalhos que utilizaram análise automatizada de conteúdo para classificar populistas [@rooduijn2011measuring; @oliver2016rise; @aslanidis2018measuring] e identificar incivilidade [@vargo2017socioeconomic] e depressão [@neuman2012proactive; @kang2016identifying].
+
+Os resultados apresentaram correspondência com as expectativas da literatura. As bacadas da Bala e da Bíblia apresentaram proporcionamente o maior número de parlamentares autoritários. Como consequência, é possível perceber, para o caso brasileiro, forte correlação entre discurso autoritário e o populismo penal. Por fim, outro dado preocupante, é de que os anos de 2018 e 2019 apresentaram um significativo aumento na expressão de autoritarismo por meio das falas de parlamentares.
+
+\newpage
+
+# Autoritarismo na política
+
+Num passado não tão distante, autoritarismo e democracia eram conceituados como antônimos. A publicação do livro \emph{Capitalism, Socialism and Democracy}, de Schumpeter [-@schumpeter1942capitalism], ilustra esse paradigma. Nele, era enumciada a tese de que a democracia seria suprimida por governos autocráticos, na medida em que  as classes dominantes -- sejam elas a burguesia ou a vanguarda socialista -- utilizariam-se das restrições a participação popular como forma de imunizar seu domínio contra a vontade das massas. 
+
+O que observou-se após a Terceira Onda de Democratização, todavia, foi um fenômeno contra-intuitivo: revoluções majoritaristas e anti-pluralistas trouxeram fins prematuros para algumas das novas democracias [@lipset1993reflections]. Além disso, um bom conjunto de achados aponta que: a preferência pela democracia têm se restringido e a adesão à soluções autoritárias, aumentado, mesmo em democracias antigas [@foa2016democratic; @foa2017signs; @foa2017end]; o apoio à líderes de pulso firme tem aumentado, consistentemente, ao longo do últimos 20 anos, nas democracias em desenvolvimento [@voeten2016people].
+
+O fato de políticos autoritários serem eleitos em regimes democráticos põem em cheque classificações binárias de sistemas políticos. A ascenção dessas lideranças a chefia do executivo aumenta as chances de transições de governo conflituosas, retrocessos na qualidade da democracia, aumento da percepção de corrupção e erosão de direitos civis [@mounk2018thepopulist]. Ou seja, a presença de agentes autoritários no governo, independente das instituições políticas de um país, proporciona administrações que se distanciam dos ideiais democráticos. 
+
+Partindo disso, pode-se definir o autoritarismo em três camadas: i) no nível das configurações do regime, ii) das práticas dos agentes institucionais e iii) da psicologia dos atores políticos [@glasius2018authoritarianism]. Nesse sentido, um sistema político é autoritário quando veta eleições, tutela os direitos políticos dos cidadãos e concentra amplos poderes na elite. Já no nível intermediário, práticas autoritárias são caracterizadas por decisões que afetam o *accountability* vertical, na medida em que limitam a liberdade de expressão efetiva dos cidadãos, controlam o acesso à informação ou violam a privacidade, por exemplo. Por fim, no nível individual, políticos podem ser classificados como mais ou menos autoritários de acordo com a sua adesão aos princípios de que i) a sociedade deve ser organizada em torno da autoridade e de regras rígidas e ii) que indivíduos desviantes devem ser punidos.
+
+A diferenciação analítica do fenômeno em níveis, apesar de na prática eles estarem conectados, é importante para assinalar que o autoritarismo está presente em todas as formas de organização política, inclusive em regimes democráticos estabelecidos. Seja nas atitudes do eleitorado ou comportamento dos parlamentares, sua expressão encontra-se em latência num grande número de sociedades, suscetível a fatores que estimulam ou restringem sua emergência. 
+
+Do ponto de vista da imagem que agentes políticos autoritários constroem de si mesmo, suas plataformas de campanha variam significativamente por contexto cultural. Na Europa Ocidental, partidos de extrema-direita e direita radical tendem a incorporar nativismo, xenofobia, racismo e neoliberalismo em seus discursos [@mudde2009populist]. Nos EUA, Nova Zelândia e Canadá, a política do ressentimento, manifesta pela rejeição ostensiva ao *establishment*, conjuga a tônica dos *ousiders* anti-democráticos, e, no caso da Rússia, a xenofobia e o ultranacionalismo desempenham esse papel [@norris2005radical]. 
+
+No caso Latino-americano, há um grande número de casos de partidos de extrema-direita que herdaram laços, conexões, recursos e reputação de regimes autoritários que precederam as transições democráticas que ocorreram ao longo da década de 70 e 80 [@loxton2014authoritarian]. Em comum, compartilham a defesa de políticas de segurança *mano dura* como alavanca de campanha para angariar votos do eleitorado que, a despeito de antipatizar com as plataformas liberalizantes da economia, enxergava, nas lideranças linha-dura, qualidades que permitiriam reestabelecer a ordem sobre o caos gerado pela insegurança.
+
+A Alianza Republicana Nacionalista (ARENA), no Equador, é um caso especial de sucesso. O partido explorou o vazio de propostas para resolução dos problemas de segurança e a antipatia gerada pelas políticas desarmamentistas defendidas pelo campo político progressista como oportunidade de se posicionar de forma competitiva no cenário eleitoral [@holland2013right]. Na composição do partido, estavam membros dos *esquadrões da morte* -- grupos paramilitares que cooperavam com o governo combatendo guerrilhas comunistas na guerra civil que se estendeu ao longo da década de 80 na região -- os quais angariavam credibilidade para execução de políticas *mano dura* de segurança [@loxton2014authoritarian].
+
+Apesar do populismo penal ser uma marca de campanha proeminente na região que concentra maiores estatísticas de violência do mundo, o autoritarismo é flexível para se adequar em um grande conjunto de narrativas. No caso da Nicarágua, a família Somoza governou o país ao longo dos anos de 1934 e 1979, deixando um legado de violações a direitos civis em nome do combate aos comunistas. Na Venezuela, por outro lado, sob o governo de Hugo Chavez, estatizações, reforma agrária e rivalização com neoliberalismo foram medidas implementadas durante o caminho da reversão autoritária. E em diversas das transições políticas anti-republicanas que ocorreram na América Latina, setores da sociedade civil organizada participaram das mobilizações [@valenzuela2004latin].  
+
+# A personalidade Autoritária
+
+Com tantas cores que preenchem as campanhas políticas de agentes autoritários, o que define a essência da personalidade autoritária? O que há de comum entre tantos líderes que frequentemente rivalizaram entre si?
+
+Uma das primeiras contribuições para responder essa questão foi feita por Adorno et. al. [-@adorno1950authoritarian]. Como causa do fascismo e nazismo que ascenderam como problemáticas sociais após a Primeira Guerra Mundial, os autores apontaram a propensão ao autoritarismo como uma psicopatologia desenvolvida no processo de socialização das crianças, responsável pela manifestação de adesão crônica à autoridade e rejeição àqueles que estão em posição de subalternidade. 
+
+A escala F, desenvolvida por Adorno como operacionalização da teoria, mensura a posição de um indivíduo no espectro do autoritarismo. Nas investigações empíricas sobre o tema, a literatura reúne evidências de que a escala F está associada à discriminação e adesão ao autoritarismo [@titus1957california; @meloen1993f], suspeição e baixa confiança interpessoal [@deutsch1960trust] e atitudes iliberais [@meloen1993f]. Mais recentemente, Levitsky e Ziblat [-@levitsky2018democracies] construíram um indicador de lideranças de perfil autoritário baseado na medida. Os autores proveram argumentos e evidências que apontam que chefes do executivo com elevados escores na escala F representam grande risco para qualidade e sobrevivência da democracia.
+
+Posteriormente, o indicador de dogmatismo, proposto por Rokeach et. al [-@rokeach1960open], interpreta o autoritarismo como uma forma de etnocentrismo generalizado, no qual indivíduos de grupos sociais 'desviantes' são vistos como uma ameaça. Fatores como o fundamentalismo religioso, portanto, são identificados como potenciais causadores do acirramento entre *insiders* e *outsiders* e, consequentemente, propensão a preconceito religioso [@laythe2001predicting], contra homossexuais [@hunsberger1996religious; @jonathan2008influence] e racial [@rowatt2004christian].
+
+Porém, foram com os trabalhos de Altemeyer [-@altemeyer1981right] que os efeitos cognitivos da violência sobre o autoritarismo ficaram mais claros. Em sua principal contribuição para a literatura, definiu o *Right-wing Authoritarianism* (RWA) como uma medida da percepção do mundo como um lugar hostil e perigoso, no qual a segurança coletiva, a estabilidade e a ordem são indispensáveis a qualquer custo.
+
+Nessa perspectiva, o autorarismo é subproduto de um estado mental de superestresse, ocasiodo por uma profunda sensação de medo e impotência. Como resposta ao contexto em que se encontram, indivíduos tendem a adotar uma postura de suspeição radical. Essa postura combina uma submissão dogmática às autoridades, às regras e às convenções sociais que sustentam a realidade social como conhecida com uma resposta agressiva com o desconhecido.
+
+Uma vez que a socialização primária oferece ambiente seguro para o primeiro contato com preferências e atitudes, autoritários tendem a resgatar seu comportamento associativo mais primário, emulando relações patriarcalistas. Ou seja, de forma análoga à regra de Hamilton, em contextos de elevada insegurança, indivíduos tendem a priorizar seus valores e relações com pares próximos, como forma de garantir seu investimento emocional nas interações em contexto de risco, a despeito disso implicar em manter uma teia de interações mais restrita e hierarquizada [@ohtsuki2006cooperation].
+
+Tomando o RWA como preditor, trabalhos empíricos sobre tema apontam que indivíduos que apresentam maiores valores de RWA estão mais propensos à manifestações de sexismo [@sibley2007antecedents], xenofobia [@thomsen2008we] e preconceito em geral [@asbrock2010right]. Além disso, outras evidências sugerem que RWA está associado à defesa do uso de violência de grupos dominantes sobre dominados [@henry2005social] e maior aceitação do uso de agressão em guerras, na punição de criminosos e na educação das crianças [@benjamin2006relationship].
+
+Numa anedota expressa por 
+
+\newpage
+ 
+# Referências
