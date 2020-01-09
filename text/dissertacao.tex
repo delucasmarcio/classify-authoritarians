@@ -1,0 +1,541 @@
+%% abtex2-modelo-trabalho-academico.tex, v-1.9.7 laurocesar
+%% Copyright 2012-2018 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
+% mestrado e trabalhos monograficos em geral) em conformidade com 
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
+% Apresentacao
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+% -- opções da classe memoir --
+12pt,				% tamanho da fonte
+openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+twoside,			% para impressão em recto e verso. Oposto a oneside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+french,				% idioma adicional para hifenização
+spanish,			% idioma adicional para hifenização
+brazil				% o último idioma é o principal do documento
+]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Classificando Políticos Autoritários: uma prova de conceito com a Câmara dos Deputados no Brasil}
+\autor{Marcio de Lucas Cunha Gomes}
+\local{Brasil}
+\data{2020}
+\orientador{Nara Pavão}
+\coorientador{}
+\instituicao{%
+	Universidade Federal de Pernambuco -- UFPE
+	\par
+	Departamento de Ciência Política
+	\par
+	Programa de Pós-Graduação}
+\tipotrabalho{Dissertação (Mestrado)}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Dissertação apresentada ao Departamento de Ciência Política da Universidade  Federal de Pernambuco para obtenção  do  título  de  Mestre em Ciência Política. Orientador: Prof. Dra. Nara Pavão}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={\imprimirpreambulo},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+	colorlinks=true,       		% false: boxed links; true: colored links
+	linkcolor=blue,          	% color of internal links
+	citecolor=blue,        		% color of links to bibliography
+	filecolor=magenta,      		% color of file links
+	urlcolor=blue,
+	bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
+% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+% ---
+
+% ---
+% Possibilita criação de Quadros e Lista de quadros.
+% Ver https://github.com/abntex/abntex2/issues/176
+%
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\setfloatadjustment{quadro}{\centering}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+\setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
+% ---
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+	
+	% Seleciona o idioma do documento (conforme pacotes do babel)
+	%\selectlanguage{english}
+	\selectlanguage{brazil}
+	
+	% Retira espaço extra obsoleto entre as frases.
+	\frenchspacing 
+	
+	% ----------------------------------------------------------
+	% ELEMENTOS PRÉ-TEXTUAIS
+	% ----------------------------------------------------------
+	% \pretextual
+	
+	% ---
+	% Capa
+	% ---
+	\imprimircapa
+	% ---
+	
+	% ---
+	% Folha de rosto
+	% (o * indica que haverá a ficha bibliográfica)
+	% ---
+	\imprimirfolhaderosto*
+	% ---
+	
+	% ---
+	% Inserir a ficha bibliografica
+	% ---
+	
+	% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+	% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+	% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+	% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+	% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+	% o conteúdo de implementação deste arquivo pelo comando abaixo:
+	%
+	% \begin{fichacatalografica}
+	%     \includepdf{fig_ficha_catalografica.pdf}
+	% \end{fichacatalografica}
+
+\begin{fichacatalografica}
+\sffamily
+\vspace*{\fill}					% Posição vertical
+\begin{center}					% Minipage Centralizado
+	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+			\small
+			\imprimirautor
+			%Sobrenome, Nome do autor
+			
+			\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+			\imprimirlocal, \imprimirdata-
+			
+			\hspace{0.5cm} \thelastpage p. : il. (algumas color.) ; 30 cm.\\
+			
+			\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+			
+			\hspace{0.5cm}
+			\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+				\imprimirdata.}\\
+			
+			\hspace{0.5cm}
+			1. Palavra-chave1.
+			2. Palavra-chave2.
+			2. Palavra-chave3.
+			I. Orientador.
+			II. Universidade xxx.
+			III. Faculdade de xxx.
+			IV. Título 			
+		\end{minipage}}
+	\end{center}
+\end{fichacatalografica}
+% ---
+
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+% \begin{folhadeaprovacao}
+% \includepdf{folhadeaprovacao_final.pdf}
+% \end{folhadeaprovacao}
+%
+\begin{folhadeaprovacao}
+	
+	\begin{center}
+		{\ABNTEXchapterfont\large\imprimirautor}
+		
+		\vspace*{\fill}\vspace*{\fill}
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+		\end{center}
+		\vspace*{\fill}
+		
+		\hspace{.45\textwidth}
+		\begin{minipage}{.5\textwidth}
+			\imprimirpreambulo
+		\end{minipage}%
+		\vspace*{\fill}
+	\end{center}
+	
+	Trabalho aprovado. \imprimirlocal, 01 de março de 2020:
+	
+	\assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+	\assinatura{\textbf{Professor} \\ Davi Cordeiro Moreira}
+	\assinatura{\textbf{Professor} \\ Jakson Alves de Aquino}
+	
+	\begin{center}
+		\vspace*{0.5cm}
+		{\large\imprimirlocal}
+		\par
+		{\large\imprimirdata}
+		\vspace*{1cm}
+	\end{center}
+	
+\end{folhadeaprovacao}
+% ---
+
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+	\vspace*{\fill}
+	\centering
+	\noindent
+	\textit{Este trabalho é dedicado aos meus pais \\ que sempre apoiaram meus sonhos, mesmo \\ quando isso significou me mudar para \\ longe de casa.} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+	Agradeço aos meus pais, à Jakson e à Davi.	
+\end{agradecimentos}
+% ---		
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+	Como mensurar autoritarismo nas atitudes de políticos eleitos por regimes democráticos? Apesar inúmeros trabalhos na Ciência Política tratarem das causas e consequências da ascenção de lideranças autoritárias em regimes democráticos, ainda existem ferramentas limitadas para identificá-las. Como forma de preencher uma lacuna na literatura, essa dissertação propõem-se a apresentar um modelo de classificação de agentes autoritários baseado nos seus discursos. O classificador é inspirado nas Escalas F e RWA, propostas por Adorno e Altemeyer, repectivamente, e utiliza-se de Named-Entity Recognition e Sentiment de Analysis como técnicas para medir sentido e intensidade do valor atribuído a entidades típicas do discurso autoritário. Como prova de conceito, utilizou-se 420 mil falas de 3700 parlamentares da Câmara dos Deputados, realizadas nos anos de 2000 à 2019. Entre os resultados, identificou-se que, apesar de flutuações significativas ao longo das legislaturas, 2018 é marcado por um ano de expressivo aumento de atitude autoritárias. Também é possível confirmar expectativas da literatura de que as bancadas da Bala e da Bíblia concentram, em média, maior número de parlamentares autoritários.
+
+	\textbf{Palavras-chave}: autoritarismo, discurso político, Câmara dos Deputados, análise de conteúdo, processamento de linguagem natural, reconhecimento de entidades nomeadas, análise de sentimentos.
+\end{resumo}
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+	\begin{otherlanguage*}{english}
+		How to measure authoritarianism in the attitudes of political politicians by democratic regimes? Despite the numbers of works in Political Science, these are causes and consequences of the rise of authoritarian authorities in democratic regimes, but there are still limited tools to identify them. As a way to fill a gap in the literature, this dissertation proposed to present a model of classification of authoritarian agents based on their discourses. The classifier is inspired by the F and RWA Scales, proposed by Adorno and Altemeyer, respectively, and uses Named Entity Recognition and Sentiment Analysis as techniques for measuring the meaning and importance of the value attributed to classical individuals of authoritarian law. . As a proof of concept, use 420,000 bankruptcies from 3700 House of Representatives from 2000 to 2019. Among the results, identified as though, despite isolated fluctuations throughout the legislatures, 2018 is marked by a year of increase. expressive of the authoritarian attitude. It is also possible to confirm the expectations of the literature that the Bullet and Bible benches concentrate on average the largest number of authorized parliamentarians.
+		
+		\noindent 
+		\textbf{Keywords}: authoritarianism, political speech, House of Representatives, content analysis, natural processing language, named-entity recognition, sentiment analysis.
+	\end{otherlanguage*}
+\end{resumo}
+		
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de quadros
+% ---
+\pdfbookmark[0]{\listofquadrosname}{loq}
+\listofquadros*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
+% ----------------------------------------------------------
+\chapter{Introdução}
+
+Ao longo das últimas duas decadas, as discussões acerca dos efeitos do autoritarismo sobre a qualidade e estabilidade das democracias ganharam maior espaço na academia e na mídia. Contudo, diferente de outros momentos da história, as principais ameaças atuais para a liberdade são líderes políticos, eleitos democraticamente, que carregam consigo traços autoritários nas suas atitudes e comportamento. Em casos mais dramáticos, como na Venezuela, Hungria e Turquia, a presença de chefes do executivo pouco simpáticos à democracia foi elemento decisivo para a ocorrência de reversões autoritárias.
+
+Todavia, apesar da relevância do tema, a literatura ainda conta com ferramentas limitadas para identificar agentes políticos autoritários. Em decorrência da dificuldade da coleta de dados primários de membros da classe política e integrantes de grupos organizados, pesquisadores utililizam-se de grandes heurísticas como unidade de análise. Alguns dos exemplos são: partidos políticos \cite{mudde2009populist, loxton2014authoritarian, mudde2016introduction}; movimentos sociais \cite{caiani2017radical}, comportamento do eleitorado \cite{booth1984political, seligson2003democracies, seligson2005feeding, rydgren2007sociology} ou grandes lideranças \cite{levitsky2018democracies, norris2019cultural}. Como efeito, o autoritarismo é observado apenas nas suas expressões organizadas, permanecendo inobservado enquanto atributo individual de parlamentares e candidatos.
+
+Como forma de propor um critério de classificação para políticos autoritários, extensível para um grande número de agentes políticos e em consonância com o conhecimento reunido no campo da psicologia política, essa dissertação apresenta um modelo de identificação de atitudes autoritárias baseada na análise automatizada de conteúdo aplicada ao caso da Câmara dos Deputados. Para isso, coletou-se 420 mil falas de 3700 parlamentares realizadas entre os anos 2000 e 2019. Endoçando os avanços de trabalhos da Ciência Política que têm utilizado texto como dado (\emph{text as data}) \cite{batista2016mensurando, moreira2016palavra}, expera-se contribuir para a literatura a partir da exploração de fontes de alterativas de dados para construção de um indicador relevante para a literatura. 
+
+A despeito das dificuldades na classificação de políticos autoritários, uma extensa bibliografia apresenta definições e indicadores extensamente validados para mensurar propensão ao autoritarismo \cite{titus1957california, meloen1993f}. De maneira geral, a personalidade autoritária envolve a crença de que o mundo é um lugar hostil e periogoso, no qual a segurança coletiva, a estabilidade e a ordem são indispensáveis a qualquer custo \cite{altemeyer1996authoritarian}. Partindo disso, seus representantes tendem a dividir a sociedade em dois grupos homogêneos: àqueles que buscam preservar o mundo como nós conhecemos e aderem as autoridades vigentes e aqueles que as desafiam.
+
+Nas investigações empíricas sobre o tema, a literatura reúne evidências de que a personalidade autoritária está associada à discriminação \cite{titus1957california, meloen1993f}, preconceito religioso \cite{laythe2001predicting}, contra homossexuais \cite{hunsberger1996religious, jonathan2008influence}, preconceito racial \cite{rowatt2004christian}, à manifestações de sexismo \cite{sibley2007antecedents}, xenofobia \cite{thomsen2008we} e preconceito em geral \cite{asbrock2010right}. O que o panorama geral das pesquisas sugere é que, de maneira geral, entidades associadas a ordem, segurança e autoridade são desproporcionalmente valorizadas por autoritários e entidades associadas a populações marginais, desproporcionalmente depreciadas.
+
+Como estratégia metodológica, buscou-se mensurar o valor atribuído, nas falas dos parlamentares, às duas classes de entidades que possuem grande saliência no discurso autoritário: os objetos de exaltação e os objetos de rejeição. Para isso, utilizou-se um dicionário de entidades textuais como chave para mensurar a valência das sentenças a associada a cada uma delas. Essa abordagem baseia-se nos trabalhos que utilizaram análise automatizada de conteúdo para classificar populistas \cite{rooduijn2011measuring, oliver2016rise, aslanidis2018measuring} e identificar incivilidade \cite{vargo2017socioeconomic} e depressão \cite{neuman2012proactive, kang2016identifying}.
+
+Os resultados apresentaram correspondência com as expectativas da literatura. As bacadas da Bala e da Bíblia apresentaram proporcionamente o maior número de parlamentares autoritários. Como consequência, é possível perceber, para o caso brasileiro, forte correlação entre discurso autoritário e o populismo penal. Por fim, outro dado preocupante, é de que os anos de 2018 e 2019 apresentaram um significativo aumento na expressão de autoritarismo por meio das falas de parlamentares.
+% ----------------------------------------------------------
+
+\chapter{O que é Autoritarismo?}\label{referencial_teorico}
+
+\section{Autoritarismo na política}
+
+Num passado não tão distante, autoritarismo e democracia eram conceituados como antônimos. A publicação do livro \emph{Capitalism, Socialism and Democracy}, de \citeonline{schumpeter1942capitalism}, ilustra esse paradigma. Nele, era enumciada a tese de que a democracia seria suprimida por governos autocráticos, na medida em que  as classes dominantes -- sejam elas a burguesia ou a vanguarda socialista -- utilizariam-se das restrições a participação popular como forma de imunizar seu domínio contra a vontade das massas. 
+
+O que observou-se após a Terceira Onda de Democratização, todavia, foi um fenômeno contra-intuitivo: revoluções majoritaristas e anti-pluralistas trouxeram fins prematuros para algumas das novas democracias \cite{lipset1993reflections}. Além disso, um bom conjunto de achados aponta que: a preferência pela democracia têm se restringido e a adesão à soluções autoritárias, aumentado, mesmo em democracias antigas \cite{foa2016democratic, foa2017signs, foa2017end}; o apoio à líderes de pulso firme tem aumentado, consistentemente, ao longo do últimos 20 anos, nas democracias em desenvolvimento \cite{voeten2016people}.
+
+O fato de políticos autoritários serem eleitos em regimes democráticos põem em cheque classificações binárias de sistemas políticos. A ascenção dessas lideranças a chefia do executivo aumenta as chances de transições de governo conflituosas, retrocessos na qualidade da democracia, aumento da percepção de corrupção e erosão de direitos civis \cite{mounk2018thepopulist}. Ou seja, a presença de agentes autoritários no governo, independente das instituições políticas de um país, proporciona administrações que se distanciam dos ideiais democráticos. 
+
+Partindo disso, pode-se definir o autoritarismo em três camadas: i) no nível das configurações do regime, ii) das práticas dos agentes institucionais e iii) da psicologia dos atores políticos \cite{glasius2018authoritarianism}. Nesse sentido, um sistema político é autoritário quando veta eleições, tutela os direitos políticos dos cidadãos e concentra amplos poderes na elite. Já no nível intermediário, práticas autoritárias são caracterizadas por decisões que afetam o *accountability* vertical, na medida em que limitam a liberdade de expressão efetiva dos cidadãos, controlam o acesso à informação ou violam a privacidade, por exemplo. Por fim, no nível individual, políticos podem ser classificados como mais ou menos autoritários de acordo com a sua adesão aos princípios de que i) a sociedade deve ser organizada em torno da autoridade e de regras rígidas e ii) que indivíduos desviantes devem ser punidos.
+
+A diferenciação analítica do fenômeno em níveis, apesar de na prática eles estarem conectados, é importante para assinalar que o autoritarismo está presente em todas as formas de organização política, inclusive em regimes democráticos estabelecidos. Seja nas atitudes do eleitorado ou comportamento dos parlamentares, sua expressão encontra-se em latência num grande número de sociedades, suscetível a fatores que estimulam ou restringem sua emergência. 
+
+Do ponto de vista da imagem que agentes políticos autoritários constroem de si mesmo, suas plataformas de campanha variam significativamente por contexto cultural. Na Europa Ocidental, partidos de extrema-direita e direita radical tendem a incorporar nativismo, xenofobia, racismo e neoliberalismo em seus discursos \cite{mudde2009populist}. Nos EUA, Nova Zelândia e Canadá, a política do ressentimento, manifesta pela rejeição ostensiva ao *establishment*, conjuga a tônica dos *ousiders* anti-democráticos, e, no caso da Rússia, a xenofobia e o ultranacionalismo desempenham esse papel \cite{norris2005radical}. 
+
+No caso Latino-americano, há um grande número de casos de partidos de extrema-direita que herdaram laços, conexões, recursos e reputação de regimes autoritários que precederam as transições democráticas que ocorreram ao longo da década de 70 e 80 \cite{loxton2014authoritarian}. Em comum, compartilham a defesa de políticas de segurança *mano dura* como alavanca de campanha para angariar votos do eleitorado que, a despeito de antipatizar com as plataformas liberalizantes da economia, enxergava, nas lideranças linha-dura, qualidades que permitiriam reestabelecer a ordem sobre o caos gerado pela insegurança.
+
+A Alianza Republicana Nacionalista (ARENA), no Equador, é um caso especial de sucesso. O partido explorou o vazio de propostas para resolução dos problemas de segurança e a antipatia gerada pelas políticas desarmamentistas defendidas pelo campo político progressista como oportunidade de se posicionar de forma competitiva no cenário eleitoral \cite{holland2013right}. Na composição do partido, estavam membros dos *esquadrões da morte* -- grupos paramilitares que cooperavam com o governo combatendo guerrilhas comunistas na guerra civil que se estendeu ao longo da década de 80 na região -- os quais angariavam credibilidade para execução de políticas *mano dura* de segurança \cite{loxton2014authoritarian}.
+
+Apesar do populismo penal ser uma marca de campanha proeminente na região que concentra maiores estatísticas de violência do mundo, o autoritarismo é flexível para se adequar em um grande conjunto de narrativas. No caso da Nicarágua, a família Somoza governou o país ao longo dos anos de 1934 e 1979, deixando um legado de violações a direitos civis em nome do combate aos comunistas. Na Venezuela, por outro lado, sob o governo de Hugo Chavez, estatizações, reforma agrária e rivalização com neoliberalismo foram medidas implementadas durante o caminho da reversão autoritária. E em diversas das transições políticas anti-republicanas que ocorreram na América Latina, setores da sociedade civil organizada participaram das mobilizações \cite{valenzuela2004latin}.
+
+\section{A personalidade Autoritária}
+
+Com tantas cores que preenchem as campanhas políticas de agentes autoritários, o que define a essência da personalidade autoritária? O que há de comum entre tantos líderes que frequentemente rivalizaram entre si?
+
+Uma das primeiras contribuições para responder essa questão foi feita por \citeonline{adorno1950authoritarian}. Como causa do fascismo e nazismo que ascenderam como problemáticas sociais após a Primeira Guerra Mundial, os autores apontaram a propensão ao autoritarismo como uma psicopatologia desenvolvida no processo de socialização das crianças, responsável pela manifestação de adesão crônica à autoridade e rejeição àqueles que estão em posição de subalternidade. 
+
+A escala F, desenvolvida por Adorno como operacionalização da teoria, mensura a posição de um indivíduo no espectro do autoritarismo. Nas investigações empíricas sobre o tema, a literatura reúne evidências de que a escala F está associada à discriminação e adesão ao autoritarismo \cite{titus1957california, meloen1993f}, suspeição e baixa confiança interpessoal \cite{deutsch1960trust} e atitudes iliberais \cite{meloen1993f}. Mais recentemente, \citeonline{levitsky2018democracies} construíram um indicador de lideranças de perfil autoritário baseado na medida. Os autores proveram argumentos e evidências que apontam que chefes do executivo com elevados escores na escala F representam grande risco para qualidade e sobrevivência da democracia.
+
+Posteriormente, o indicador de dogmatismo, proposto por \citeonline{rokeach1960open}, interpreta o autoritarismo como uma forma de etnocentrismo generalizado, no qual indivíduos de grupos sociais 'desviantes' são vistos como uma ameaça. Fatores como o fundamentalismo religioso, portanto, são identificados como potenciais causadores do acirramento entre *insiders* e *outsiders* e, consequentemente, propensão a preconceito religioso \cite{laythe2001predicting}, contra homossexuais \cite{hunsberger1996religious, jonathan2008influence} e racial \cite{rowatt2004christian}.
+
+Porém, foram com os trabalhos de \citeonline{altemeyer1981right} que os efeitos cognitivos da violência sobre o autoritarismo ficaram mais claros. Em sua principal contribuição para a literatura, definiu o *Right-wing Authoritarianism* (RWA) como uma medida da percepção do mundo como um lugar hostil e perigoso, no qual a segurança coletiva, a estabilidade e a ordem são indispensáveis a qualquer custo.
+
+Nessa perspectiva, o autorarismo é subproduto de um estado mental de superestresse, ocasiodo por uma profunda sensação de medo e impotência. Como resposta ao contexto em que se encontram, indivíduos tendem a adotar uma postura de suspeição radical. Essa postura combina uma submissão dogmática às autoridades, às regras e às convenções sociais que sustentam a realidade social como conhecida com uma resposta agressiva com o desconhecido.
+
+Uma vez que a socialização primária oferece ambiente seguro para o primeiro contato com preferências e atitudes, autoritários tendem a resgatar seu comportamento associativo mais primário, emulando relações patriarcalistas. Ou seja, de forma análoga à regra de Hamilton, em contextos de elevada insegurança, indivíduos tendem a priorizar seus valores e relações com pares próximos, como forma de garantir seu investimento emocional nas interações em contexto de risco, a despeito disso implicar em manter uma teia de interações mais restrita e hierarquizada \cite{ohtsuki2006cooperation}.
+
+Tomando o RWA como preditor, trabalhos empíricos sobre tema apontam que indivíduos que apresentam maiores valores de RWA estão mais propensos à manifestações de sexismo \cite{sibley2007antecedents}, xenofobia \cite{thomsen2008we} e preconceito em geral \cite{asbrock2010right}. Além disso, outras evidências sugerem que RWA está associado à defesa do uso de violência de grupos dominantes sobre dominados \cite{henry2005social} e maior aceitação do uso de agressão em guerras, na punição de criminosos e na educação das crianças \cite{benjamin2006relationship}.
+
+É preciso, contudo, estabelecer uma distinção entre aq manifestação da personalidade autoritária em líderes e em seguidores. Apesar de ambos os grupos compartilharem de uma narrativa de insegurança existencial, a ocupação de uma posição de poder produz uma diferenciação fundamental: enquanto membros autoritários da sociedade civil agem motivados por uma submissão radical a uma figura de autoridade, suas lideranças são movidos pelo reestabelecimento da ordem social \cite{altemeyer2006authoritarians}.
+
+\citeonline{coleman1994foundations}, em seu livro \emph{Foundations of Social Theory}, explora o caso de Charles Manson e o grupo "\emph{the Family}" para argumentar sobre a transferência de autonomia em relações hierarquizadas. Após o cometimento de brutais assassinatos, um dos membros relatou que:
+
+\begin{quote}
+	Sometimes I felt as though [Manson] were always with me, thinking my
+	thoughts for me—or his through me . . . It was as though Charlie kept
+	pulling me back, slowly but persistently, even though we’d had no contact
+	since I walked out the back door of that Topanga Canyon cabin. I tried to
+	fight it, but it was no use, he wouldn’t let go of me. I’d seen the world I was
+	living in and he’d warned me, and I found it just what he’d said it would be. (Watson, 1978, p. 81)
+\end{quote}
+
+Em casos de submissão dogmática, ilustrados nesse exemplo extremo, é difícil distinguir se a motivação prepoderante dos seguidores de Manson era a "\emph{Helter Skelter}" -- uma cruzada racial com o propósito de punir negros -- ou o culto ao seu líder.
+
+De fato, em termos de dinâmica eleitoral, expera-se que a relação entre eleitores e representantes autoritários seja muito mais orgânica do que a interação convencional. Regimes autoritários podem angariar grande apoio popular, se uma parcela signficiativa da população percebe as restrição às liberdades como uma medida necessária contra ameaças e valida as fontes de informação do governo \cite{geddes1989sources, stein2013unraveling}. Portanto, é intutitivo concluir que a natureza da representação política para indivíduos autoritários é marcada por fortes traços delegativos.
+
+\section{O discurso autoritário}
+
+O discurso é um exercício de poder. Isso ocorre porque é por meio da linguagem que instituimos conhecimento, leis e regras de comportamento, os quais compõem as principais categorias que humanos utilizam como referencial para interpretar o mundo ao seu redor. Contudo, apesar da validade que sustenta os enunciados que tomados como guia para o comportamento social ser baseada em crença coletiva, a capacidade de instituí-los, em geral, está concentrada em poucos indivíduos \cite{foucault1969archeologie}. 
+
+Uma evidências empíricas deve fenômeno foi apresentada por \citeonline{huang2002camera}. Em experimento conduzido pelos autores, 
+
+Uma formas de se observar esse fenômeno é levar em consideração que, em interações de grupo simuladas em experimento, 
+
+A desigualdade observada na comunicação tem origens anteriores a própria linguagem. Uma grande conjunto de evidências sugere que características individuais são responsáveis por grande parte parte da dinâmica de formação de dominãncia e submissão que fundamenta
+
+Como argumenta \citeonline{coleman1994foundations}, interações hierárquicas   
+
+
+Há um bom conjunto de evidências que aponta consequências negativas do \emph{discurso de ódio} sobre suas vítimas. Dentre elas estão traumas emocionais de curto prazo e efeitos comportamentais de longo de prazo \cite{leets2002experiencing}, e aumento da propensão a suicídio \cite{mullen2004immigrant}. Em vários sentidos
+
+Palavras, portanto, são como armas, as quais espera-se que sejam especialmente utilizadas  as de um líder autoritário, que possui como plateia cativa seguidores dogmáticos. 
+
+Portanto, se espera-se que o discurso seja uma atividade relevante na atuação parlamentar, é intuitivo inferir que seja ainda mais para um político que expressa grandes indícios de personalidade anti-democrática. 
+
+\chapter{Como classificar Agentes Autoritários?}\label{metodologia}
+
+\section{As estratégias convencionais}
+
+\subsection{Avaliação de Especialista}
+
+\subsection{Análise de Agenda Partidária}
+
+\subsection{Survey com Elites}
+
+\subsection{Survey com Apoiadores}
+
+\section{Análise Automatizada de Conteúdo}
+
+\chapter{Prova de Conceito: o caso da Câmara dos Deputados}\label{resultados}
+
+\section{Coletando dados}
+
+\section{Definindo Dicionário de Entidades}
+
+\section{Avaliando resultados}		
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{bibli}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+Apêndices
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+\phantompart
+\printindex
+%---------------------------------------------------------------------
+
+\end{document}
