@@ -552,20 +552,17 @@ Como consequência das limitações, foram identificados apenas dois trabalhos n
 
 \section{Análise Automatizada de Conteúdo}
 
-O uso de Análise Automatizada de Conteúdo tem se popularizado nas Ciências Sociais Aplicadas como um conjunto de técnicas que permitem a investigação em grandes bases de dados de \emph{corpus textuais} \cite{gentzkow2019text}. Na Ciência Política, a escrita registra boa parte da atividade de agentes políticos. Leis, documentos oficiais, discursos no plenário e manifestos registram boa parte das mobilizações instituicionais e civis nas dinâmicas de poder da sociedade e, portanto, há grande potencialidade para extração de conhecimento de fontes pouco exploradas \cite{wilkerson2017large}.
+\subsection{O Estado da Arte da Análise Automatizada de Conteúdo}
 
-No que diz respeito a aplicabilidade dos modelos utilizados, algumas meta-análises dedicaram-se abordar o estado da arte da literatura e apontar seus principais avanços e dificuldades. \emph{Wordfish}, \emph{Wordscores} e \emph{Latent Dirichlet Allocation} (LDA) estão entre os algoritmos mais populares e foram desenvolvidos, respectivamente, com os propósitos de: i) identificar posicionamento ideológico implícito; ii) mensurar a associação entre palavras e expressões e escalas númericas e iii) extrair agrupamentos temáticos de documentos \cite{slapin2008scaling, laver2003extracting, blei2003latent}. 
+Diante das limitações das abordagens anteriores, estratégias metodológicas que fazem uso de artefatos computacionais para otimizar processos de classificação têm se apresentado como uma solução para identificação em larga escala de atitudes e comportamentos de agentes políticos. Em particular, a literatura em Ciência Política que faz uso de Análise Automatizada de Conteúdo tem expandido seu escopo para ganhar aplicações em i) extração de informação sobre etnicidade a partir de nome \cite{roberts2016introduction}, ii) identificação de saliência temática em discursos de parlamentares \cite{batista2016mensurando, moreira2016palavra}, iii) construção de variáveis baseadas em componentes textuais \cite{curini2015conditional} e iv) extração de posicionamento ideológico implícito \cite{slapin2008scaling, ceron2016first}.
 
-Entre as vantagens apresentadas pelos avanços no desenvolvimento de algoritmos, a possibilidade de abordar vários componentes da linguagem como unidades de análise está entre um deles. Classificação e extração de \emph{features} de documentos, tópicos, entidades textuais, sentenças e agentes de discurso permite seu uso na solução de problemas de pesquisa diversos. Além disso, o préprocessamento de bases oriundas de qualquer fonte -- de Redes Sociais a biblitoecas de livros escaneados -- tem sido cada vez mais eficiente \cite{grimmer2013text, wilkerson2017large, gentzkow2019text}.   
+Os principais trabalhos de referência para classificação de parlamentares baseado em discursos concentram-se no campo de estudos sobre populismo. A partir de técnicas de codificiação baseadas em dicionário de termos, algoritmos de foram capazes de replicar, com relativa precisão e elevada escalabilidade, a classificação realizada por codificadores individuais de discursos populistas \cite{pauwels2011measuring, rooduijn2011measuring, oliver2016rise}. De forma similar, outras investigações utilizaram processamento de linguagem natural para automatização de partes do processo de identificação, como o reconhecimento de entidades associadas a adjetivos populistas \cite{kyle2018populists} e detecção de \emph{triplets} -- tríades compostas por sujeito, verbo e predicado \cite{aslanidis2018measuring}.
 
-Em edição dedicada às ``\emph{Recent Innovations in Text Analysis for Social Science}'', no periódico da \emph{Political Analysis}, os artigos reunidos constituem bons exemplos de  aplicações de análise automatizada de conteúdo para identificação de i) informação sobre etnicidade a partir de nome, ii) de posicionamento ideológico latente, iii) \emph{expressed agenda} e iv) classes de documentos \cite{roberts2016introduction}. Publicações na nacionais dedicadas a \emph{clusterização} de discursos e de proposições de parlamentares \cite{batista2016mensurando, moreira2016palavra} contribuem como evidências de crescente usabilidade das técnicas.
+Para além da classificação de atributos atitudinais, algoritmos de aprendizado de máquina também têm sido capazes de modelar fenômenos psicológicos complexos como discurso de ódio \cite{davidson2017automated, zampieri2019predicting}, hostilidade \cite{hopp2017does, vargo2017socioeconomic, liu2018forecasting}, agressividade \cite{orasan2018aggressive, sahay2018detecting, nikhil2018lstms} e depressão \cite{mowery2016identifying, chekroud2016cross, orabi2018deep}. Esses resultados sugerem que há grande extensibilidade das aplicações, inclusive no que diz respeito a \emph{features} psicossocionais complexas, dentre elas, a personalidade autoritária.
 
-Análise automatizada de conteúdo também tem sido utilizada na identificação de atitudes e comportamento de agentes políticos. 
-A partir de técnicas de codificiação baseadas em dicionário de termos, trabalhos foram capazes de replicar, com relativa precisão, a classificação de realizada por codificadores individuais de discursos populistas \cite{pauwels2011measuring, rooduijn2011measuring, oliver2016rise}. De forma similar, outras investigações utilizaram processamento de linguagem natural para automatização de partes do processo de identificação, como o reconhecimento de entidades associadas a adjetivos populistas \cite{kyle2018populists} e detecção de \emph{triplets} -- tríades compostas por sujeito, verbo e predicado \cite{aslanidis2018measuring}.
+Outra vantagem das ténicas de análise automatizada de conteúdo são sua grande versatilidade em termos de fontes e unidades de análise. A literatura angaria grande número de aplicações em \emph{big data} provenientes de Redes Sociais, \emph{blogs}, documentos oficiais e, no que diz respeito a Ciência Política, discursos, pronunciamentos e manifestos partidários \cite{grimmer2013text, wilkerson2017large, gentzkow2019text}. A escrita registra boa parte da atividade de agentes políticos, tanto dentro como fora do plenário. Uma vez que a comunicação é uma das principais formas de exercício de uma mandato e meio orgânico de \emph{accountability}, espera-se grande potencialidade dessa abordagem.
 
-Para além da classificação de atributos atitudinais, alogirmtos de \emph{machine learning} também têm sido capazes de modelar fenômenos psicológicos complexos como discurso de ódio \cite{davidson2017automated, zampieri2019predicting}, hostilidade \cite{hopp2017does, vargo2017socioeconomic, liu2018forecasting}, agressividade \cite{orasan2018aggressive, sahay2018detecting, nikhil2018lstms} e depressão \cite{mowery2016identifying, chekroud2016cross, orabi2018deep}. Portanto, é intuitivo crer que as vantagens das quais uma grande literatura têm se beneficiado no uso de técnicas de análise automatizada de conteúdo também podem ser extendidas aos estudos sobre autoritarismo entre agentes políticos em sistemas democráticos.
-
-Todavia, algumas ressalvas importantes quanto a natureza dos modelos estatísticos de texto precisam ser salientadas. \citeonline{grimmer2013text} apresentou os \emph{4 Princípios da Análise Quantiva de Texto}, são eles:
+Todavia, algumas ressalvas importantes quanto a natureza dos modelos estatísticos de texto precisam ser salientadas. \citeonline{grimmer2013text} apresentou os \emph{4 Princípios da Análise Quantitativa de Texto}, são eles:
 
 \begin{itemize}
 	\item All quantitative models of language are wrong–but some are useful.
@@ -574,11 +571,19 @@ Todavia, algumas ressalvas importantes quanto a natureza dos modelos estatístic
 	\item Validate, Validate, Validate.
 \end{itemize}
 
-Os tópicos sintetizam as maiores dificuldades da literatura que consome as novas ténicas de processamento de texto. Há grande perda de informação do valor semântico das palavras e frases quando elas são transformadas em vetores de números. Além disso, modificações no corpus textual analisado pode impactar em significativas mudanças nas estimativas realizadas. Por fim, a validação e, principalmente, a consistência dos resultados apresentados nos trabalhos ainda permanece numa zona relativamente obscura. 
+Os tópicos sintetizam as maiores dificuldades da literatura que consome as novas técnicas de processamento de texto. Primeiramente, há grande perda de informação do valor semântico das palavras e frases quando elas são transformadas em dados de entrada em modelo estatístico. O sarcamo, por exemplo, é um recursos liguístico frequentemente utilizado para acentuar negativas, porém é elemento relativamente subidentificado por algoritmos de análise de conteúdo \cite{maynard2014cares}. Além disso, modelos de análise automatizada de conteúdo são significativamente sensíveis aos dados que recebem como \emph{input}. Amostras diferentes são capazes de produzir resultados significativamente distintos, mesmo que compartilhem mesma fonte.  
 
-\subsection{Modelo de Classificação de Agentes Políticos Autoritários}
+No que diz respeito ao desempenho e validação dos métodos, em artigo de \citeonline{dacrema2019we}, os autores abordaram o estado da arte dos algoritmos de recomendação. De 18 algoritmos considerados como representativos da literatura, apenas 7 foram capazes de ser replicadas de maneira apropriada e, desses, 6 apresentaram performance na revisão inferior a alternativas clássicas. Além de questionar os avanços gerados por implementações mais sofisticadas, o trabalho foi capaz de revelar graves limitações na reprodutibilidade e consistência no desempenho de técnicas de apredizado de máquina como um todo.  
 
-aa
+Retomando o problema de pesquisa o qual esta dissertação busca resolver, de forma geral, avalia-se que o universo de \emph{Text as Data} apresenta uma saída consistente para a classificação de políticos autoritários. O potencial para processamento de grandes bancos de dados, com a possibilidade de modelar características individuais complexas, permite uma abordagem abrangente das atitudes de atores políticos cujo ofício implica no exercício da oratória.
+
+Conforme argumentou-se no Capítulo 2, para lideranças autoritárias, discursos são ferramentas de mobilização do seu eleitorado cativo. Nas democracias contemporâneas, é por meio da fala, carregada de traços marcantes, que estes agentes políticos sedimentam e usufruem da dominância que estabelecem. Apesar de não existir correlação clara entre personalidade autoritária e frequência ou tempo de fala [CITAR], espera-se que um parlamentar autoritário utilize, em algum nível, seu espaço no plenário e, com isso, forneça dados suficientes para sua identificação. Autoritários silenciosos são tão raros quanto democratas no comando de ditaduras. 
+
+\subsection{Propondo um novo Critério de Classificação}
+
+Como forma de identificação de políticos autoritários em larga escala, propõe-se um critério de classificação baseado na análise automatizada de discursos e falas de parlamentares. Para isso, adota-se, como estratégia empírica, a estimação de meta-parâmetros discursivos que pertencem a estrutura semântica das falas autoritárias.
+
+Discursos políticos se estruturam em torno de elementos e dimensões fundamentais. Ao longo de uma fala, parlamentares percorrem o Tempo -- que diz respeito tanto a um recurso limitado como a uma sequência linear em que frase se encadeiam -- e Temas -- que constituem agrupamentos amplos de setenças que as conectam em torno de um sentido. Dispostos em Tempo e Tema, estão 2 elementos fundamentais da comunicação: Entidades e Atributos. Enquanto Entidades são objetos linguísticos que podem ser nomeados -- como o sujeito de uma frase -- Atributos funcionam como descritores das Entidades -- como adjetivos e advérbios, uma vez que comportam valor de característica.
 
 \begin{figure}[h]
 	\caption{Diagrama do Discurso Político}
@@ -586,6 +591,48 @@ aa
 	\centering
 	\includegraphics[width=1\linewidth]{figures/diagrama_discurso_autoritario}
 \end{figure}
+
+Figura 1 representa um diagrama simplicado do discurso político. A partir dele, pode-se compreender a dinâmica entre os elementos fundamentais e suas dimensões. Temas e Tempo ganham significado a medida em que um orador dispõem em sua fala setenças que conectam Atributos à Entidades. Uma vez que discursos políticos envolvem expressão de valor, espera-se que Atributos possuem uma polaridade -- positiva e negativa -- e que, por isso, funcionam como dispositivos para demarcar um posicionamento favorável ou desfavorável. Quanto mais Atributos negativos são utilizados para caracterizar as Entidades mencionadas sobre um tema, mais negativo será a compreensão geral da sentenças sobre o Tema.
+
+Na Figura 1, as Entidades mencionadas no início do discurso tanto recebem atributos positivos como compartilham de uma atmosférica temática de maior valência. No outro extremo, as Entidades mencionadas ao final do discurso possuem o inverso dessas características -- Atributos e Tema e negativos. Portanto, pode-se inferir que, no escopo de Entidades do orador, seu posicionamento variou da simpatia manifesta no início da fala até a rejeição, ao final.
+
+Um exemplo prático dessa dinâmica está presente nas contribuições de \citeonline{smith1990symptomology}. Nas falas de parlamentares analisadas pela autora, a expressão de rejeição à minorias apresentou dois modos típicos: i) a atribuição direta de características negativas e ii) o estabelecimento de uma correlação ilusória a partir da menção de Entidades em Temas carregados de polaridade negativa -- como crime, entorpecentes e problemas de incivilidade. Do ponto de vista dos ouvintes, um grupo social que compartilha um mesmo espaço semântico que elementos popularmente reprovados também é passível de estigma. De forma simétrica, a exaltação de Entidades associadas às autoridades se dá pelos mesmos mecanismos.
+
+De forma, genérica, pode-se definir o nível de apoio de um parlamentar a uma Entidade em função da Valência dos Atributos (VA) e do Tema na qual ela é contextualizada. Na Equação 3.1, que especifica essa relação, é possível notar que o apoio a Entidade possui três componentes: dois que dizem respeito a atribuição direta de valor -- a Média da Valência dos Atributos (MVA) ponderada pela Saliência da Entidade (SE) -- e outro que refere-se a atribuição indireta -- Valência do Tema (VT).     
+
+\begin{equation}
+	SupEnt_i = \frac{\sum_{k = 1}^{K} VA_k}{K} * SA_i + VT_i
+\end{equation}
+
+\begin{equation}
+SA_i = \frac{\sum_{q = 1}^{Q} Ent_q}{Q}
+\end{equation}
+
+\begin{equation}
+VT_i = \frac{\sum_{p = 1}^{P} \sum_{j = 1}^{J} VA_{jp}}{P * J}
+\end{equation}
+
+Onde \emph{SupEnt} é o Apoio à Entidade que é função da \emph{VA} -- a Valência do Atributo \emph{k} associado a Entidade, da \emph{SA} -- que é a Saliência da Entidade, medida pela Frequência de menções a Entidade \emph{i} -- e da \emph{VT} -- que é a Valência do Tema, mensurada pela valência média dos \emph{J} atributos atribuídos por \emph{P} parlamentares a Entidades que integram o tema \emph{i}.
+
+Alguns pontos relevantes de inferência são que, enquanto Média da Valência dos Atributos e a Saliência da Entidade dizem respeito a elementos controlados diretamente pelos oradores, a Valência do Tema é resultado da polaridade de todas as sentenças de todos os oradores sobre o Tema. Além disso, a Média da Valência dos Atributos de Entidades apresentam correlação proporcionalmente a distância temporal em que são mencionadas no discurso.  
+
+A partir dos \emph{insights} levantados, pode-se tomar Apoio à Entidade como um instrumento para detecção da personalidade autoritária. Propõem-se, nessa investigação, que o Apoio à Entidades Subalternas e Apoio à Entidades Dominantes são medidas correlacionadas com as 3 dimensões do RWA: Agressividade Autoritária, Submissão Autoritária e Convencionalismo. Essas duas medidas são construídas a partir da estimativa do Apoio à Entidade -- segundo a Equação 3.1 -- de entidades textuais tipicamente associadas a i) populações subjugadas e ii) grupos e instituições dominantes.
+
+Nas Equações 3.4 e 3.5, define-se, respectivamente, o Apoio à Entidades Subalternas como função do nível de Agressividade Autoritária do agente político, e, o Apoio à Entidades Dominantes, dos níveis de Submissão Autoritária e Convencionalismo. Ambas funções contém um termo estocástico cuja magnitude define o nível de ruído entre autoritarismo intrínseco e expresso.
+
+\begin{equation}
+SupEntMin = f(\theta_0 + \theta_1 * AuthAgress + u)
+\end{equation}
+
+\begin{equation}
+SupEntDom = f(\tau_0 + \tau_1 * AuthSubmiss + \tau_2 * Convent + v)
+\end{equation}
+
+\subsection{Operacionalizando a Estimação dos Metaparâmetros}
+
+Do ponto de vista da operacionabilidade do critério de classificação proposto, é necessário resolver o desafio de mensurar os parâmetros das funções que definem o Apoio à Entidades Dominantes e Subalternas. Para isso, algoritmos de inteligência artificial oferecem soluções para o problema. Em especial, serão utilizadas três técnicas que, respectivamente, i) identificam os tópicos principais de uma coleção de discursos, ii) reconhecem entidades textuais em uma sentença e iii) mensuram as valência de uma sentenção. São elas o LDA, NER (\emph{Named-Entity Recognition}) e Análise de Sentimentos.   
+
+
 
 \chapter{Prova de Conceito: o caso da Câmara dos Deputados}\label{resultados}
 
