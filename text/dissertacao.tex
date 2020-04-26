@@ -316,7 +316,7 @@ brazil				% o último idioma é o principal do documento
 	\vspace*{\fill}
 	\centering
 	\noindent
-	\textit{Este trabalho é dedicado aos meus pais \\ que sempre apoiaram meus sonhos, mesmo \\ quando isso significou me mudar para \\ longe de casa.} \vspace*{\fill}
+	\textit{Dedicatória.} \vspace*{\fill}
 \end{dedicatoria}
 % ---
 
@@ -324,7 +324,7 @@ brazil				% o último idioma é o principal do documento
 % Agradecimentos
 % ---
 \begin{agradecimentos}
-	Agradeço aos meus pais, à Jakson e à Davi.	
+	Agradecimentos...	
 \end{agradecimentos}
 % ---		
 
@@ -472,7 +472,32 @@ Tomando o RWA como preditor, trabalhos empíricos sobre tema apontam que indiví
 
 Em casos de submissão dogmática, ilustrados nesse exemplo extremo, é difícil distinguir se a motivação prepoderante dos seguidores de Manson era a "\emph{Helter Skelter}" -- uma cruzada racial com o propósito de punir negros -- ou o culto ao seu líder.
 
-De fato, em termos de dinâmica eleitoral, expera-se que a relação entre eleitores e representantes autoritários seja muito mais orgânica do que a interação convencional. Regimes autoritários podem angariar grande apoio popular, se uma parcela signficiativa da população percebe as restrição às liberdades como uma medida necessária contra ameaças e valida as fontes de informação do governo \cite{geddes1989sources, stein2013unraveling}. Portanto, é intutitivo concluir que a natureza da representação política para indivíduos autoritários é marcada por fortes traços delegativos.
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}[b]{0.4\textwidth}
+		\caption{Distribuição da Escala RWA}
+		\label{fig:rwa}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/distribuicao_rwa}
+		
+		Fonte: \citeonline{open2016rwa}
+	\end{minipage}
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.4\textwidth}
+		\caption{Distribuição do Índice de Pós-Materialismo}
+		\label{fig:pos_mat}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/pos_materialism_index}
+		
+		Fonte: \citeonline{wvs2014wave}
+	\end{minipage}
+\end{figure}
+
+Como efeito da sobreposição de elementos associados a confiança, tolerência e percepção de insegurança, o radicalismo ideológico associado ao RWA possui uma ocorrência esparça na população. Nas Figuras 1 e 2 é possível comparar a distribuição da escala com o Índice de Pós-Materialismo, proposto por \citeonline{inglehart2005modernization} e reconhecido como um indicador preciso de comportamentos liberais e pró-democráticos. Os dados sugerem que indivíduos com valores elevados para RWA estão longes do ponto mediano e, por isso, formam uma bolha atitudinal diferente do que observamos com indivíduos com baixos valores para Pós-Materialismo.
+
+A existência de bolhas autoritárias na população tem efeitos significativos sobre a manutenção e replicação de movimentos radicais, os quais foram explorados em artigos sobre o tema. Além da maior imunidade em relação a formas distintas de pensamento -- lembre-se que o eleitor mediano e as propostas que visam-no estão distantes das faixas mais autoritárias -- essa parcela do eleitorado é facilmente mobilizável por \emph{outsiders} ou segmentos de representação dispostos a capturar suas intenções \cite{norris2017western, alexander2017myth}.  
+
+De fato, em termos de dinâmica eleitoral, expera-se que a relação entre eleitores e representantes autoritários seja muito mais orgânica do que a interação convencional. Regimes autoritários podem angariar grande apoio popular, se uma parcela consistente da população percebe as restrição às liberdades como uma medida necessária contra ameaças e valida as fontes de informação do governo \cite{geddes1989sources, stein2013unraveling}. Portanto, é intutitivo concluir que a natureza da representação política para indivíduos autoritários é marcada por fortes traços delegativos.
 
 \section{O discurso autoritário}
 
@@ -591,7 +616,7 @@ Autoritários silenciosos são tão raros quanto democratas no comando de ditadu
 
 \subsection{Propondo um novo Critério de Classificação}
 
-Como forma de identificação de políticos autoritários em larga escala, propõe-se um critério de classificação baseado na análise automatizada de discursos e falas de parlamentares. Para isso, adota-se, como estratégia empírica, a estimação de meta-parâmetros discursivos que pertencem a estrutura semântica das falas autoritárias.
+Como forma de identificação de políticos autoritários em larga escala, propõe-se um critério de classificação baseado na análise automatizada de discursos e falas de agentes políticos. Para isso, adota-se, como estratégia empírica, a estimação de meta-parâmetros discursivos que pertencem a estrutura semântica das falas autoritárias.
 
 Discursos políticos se estruturam em torno de elementos e dimensões fundamentais. Ao longo de uma fala, parlamentares percorrem o Tempo -- que diz respeito tanto a um recurso limitado como a uma sequência linear em que frase se encadeiam -- e Temas -- que constituem agrupamentos amplos de setenças que as conectam em torno de um sentido. Dispostos em Tempo e Tema, estão 2 elementos fundamentais da comunicação: Entidades e Atributos. Enquanto Entidades são objetos linguísticos que podem ser nomeados -- como o sujeito de uma frase -- Atributos funcionam como descritores das Entidades -- como adjetivos e advérbios, uma vez que comportam valor de característica.
 
@@ -603,11 +628,13 @@ Discursos políticos se estruturam em torno de elementos e dimensões fundamenta
 	Fonte: elaboração do autor
 \end{figure}
 
-Figura 1 representa um diagrama simplicado do discurso político. A partir dele, pode-se compreender a dinâmica entre os elementos fundamentais e suas dimensões. Temas e Tempo ganham significado a medida em que um orador dispõem em sua fala setenças que conectam Atributos à Entidades. Uma vez que discursos políticos envolvem expressão de valor, espera-se que Atributos possuem uma polaridade -- positiva e negativa -- e que, por isso, funcionam como dispositivos para demarcar um posicionamento favorável ou desfavorável. Quanto mais Atributos negativos são utilizados para caracterizar as Entidades mencionadas sobre um tema, mais negativo será a compreensão geral da sentenças sobre o Tema.
+Figura 1 representa um diagrama simplicado do discurso político. A partir dele, pode-se compreender a dinâmica entre os elementos fundamentais e suas dimensões. Temas e Tempo ganham significado a medida em que um orador dispõem em sua fala setenças que conectam Atributos à Entidades. Uma vez que discursos políticos envolvem expressão de valor, espera-se que Atributos possuam uma polaridade -- positiva e negativa -- e que, por isso, funcionam como dispositivos para demarcar um posicionamento favorável ou desfavorável. Quanto mais Atributos negativos são utilizados para caracterizar as Entidades mencionadas sobre um tema, mais negativo será a compreensão geral da sentenças sobre o Tema.
 
 Na Figura 1, as Entidades mencionadas no início do discurso tanto recebem atributos positivos como compartilham de uma atmosférica temática de maior valência. No outro extremo, as Entidades mencionadas ao final do discurso possuem o inverso dessas características -- Atributos e Tema e negativos. Portanto, pode-se inferir que, no escopo de Entidades do orador, seu posicionamento variou da simpatia manifesta no início da fala até a rejeição, ao final.
 
 Um exemplo prático dessa dinâmica está presente nas contribuições de \citeonline{smith1990symptomology}. Nas falas de parlamentares analisadas pela autora, a expressão de rejeição à minorias apresentou dois modos típicos: i) a atribuição direta de características negativas e ii) o estabelecimento de uma correlação ilusória a partir da menção de Entidades em Temas carregados de polaridade negativa -- como crime, entorpecentes e problemas de incivilidade. Do ponto de vista dos ouvintes, um grupo social que compartilha um mesmo espaço semântico que elementos popularmente reprovados também é passível de estigma. De forma simétrica, a exaltação de Entidades associadas às autoridades se dá pelos mesmos mecanismos.
+
+Além do uso de Atributos, a posição em relação a uma Entidade é fortemente marcada pela frequência em que é mencionada nas falas de um agente. A saliência temática demarca tanto clivagens políticas como espaços de embate, uma vez que, no contexto de recursos limitados, é o principal indicativo de quais são as questões prioritárias. A recorrência na menção de uma pauta ou maior investimento de tempo de fala em discursos nos quais é mencionada eleva a magnitude das opiniões mobilizadas em torno dela e é determinante da ideologia do orador.
 
 De forma, genérica, pode-se definir o nível de apoio de um parlamentar a uma Entidade em função da Valência dos Atributos (VA) e do Tema na qual ela é contextualizada. Na Equação 3.1, que especifica essa relação, é possível notar que o apoio a Entidade possui três componentes: dois que dizem respeito a atribuição direta de valor -- a Média da Valência dos Atributos (MVA) ponderada pela Saliência da Entidade (SE) -- e outro que refere-se a atribuição indireta -- Valência do Tema (VT).     
 
@@ -632,11 +659,11 @@ A partir dos \emph{insights} levantados, pode-se tomar Apoio à Entidade como um
 Nas Equações 3.4 e 3.5, define-se, respectivamente, o Apoio à Entidades Subalternas como função do nível de Agressividade Autoritária do agente político, e, o Apoio à Entidades Dominantes, dos níveis de Submissão Autoritária e Convencionalismo. Ambas funções contém um termo estocástico cuja magnitude define o nível de ruído entre autoritarismo intrínseco e expresso.
 
 \begin{equation}
-SupEntMin = f(\theta_0 + \theta_1 * AuthAgress + u)
+SupEntMin \approx \theta(AuthAgress)
 \end{equation}
 
 \begin{equation}
-SupEntDom = f(\tau_0 + \tau_1 * AuthSubmiss + \tau_2 * Convent + v)
+SupEntDom \approx \tau(AuthSubmiss, Convent)
 \end{equation}
 
 \subsection{Operacionalizando a Estimação dos Metaparâmetros}
@@ -680,6 +707,19 @@ Uma das formas de calibrar o algoritmo consiste no uso de dicionários codificad
 
 Anos antes, \citeonline{bollen2010determining} apresentaram um modelo baseado na escala POMS \cite{mcnair2003profile} que, partindo da mesma estratégia, identificava a valência de uma sentença a partir da frequencia relativa de suas palavras e suas correspondências como a tipologia estabelecida. Contudo, o estado da arte das estratégias baseadas em dicionários é ocupado por combinações de tipologias, uso de fontes mistas -- como \emph{emoticons} --  e processos generativos automatizados, como a interpolação da valência de uma palavra para seus sinônimos e tipificação baseada em coocorrência \cite{hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}.
 
+Uma alternativa às técnicas baseadas em dicionários são o modelos de \emph{Machine Learning} que tomam texto como \emph{features} na previsão de uma \emph{target} rotulado, semelhante a estratégia utilizada em NER. O primeiro trabalho a adotar essa abordagem foi apresentado por \citeonline{pang2002thumbs} que, se utilizando de uma base de \emph{reviews} de produtos, tomou das \emph{n-grams} -- sequências contínuas de palavras -- das sentenças como \emph{inputs}. Atualmente, a literatura conta com modelos de elevadíssimo desempenho, dos quais também se utilizam de procedimentos como o \emph{Word2Vec}, que atingem grande precisão de classificação mesmo como bases de treinamento rotuladas por não-especialistas \cite{howard2018universal, sun2019fine, yang2019xlnet}. 
+
+\begin{figure}[h]
+	\caption{Diagrama da Operacionalização das Estimatições}
+	\label{fig:diagrama}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/diagrama_operacionalizacao}
+	Fonte: elaboração do autor
+\end{figure}
+
+Na Figura 3 é possível visualizar o diagrama dos processos de estimação dos componentes que compõem os indicadores de Apoio à Entidades Dominantes e Apoio è Entidades Minoritárias. De maneira sintética, utiliza-se LDA para mapear as principais palavras que compõem cada um dos tópicos que segmentam os discursos políticos, para isso utiliza-se todo o escopo de textos da base da de dados. Assume-se que cada tópico implica em um tema, que temas ocorrêm no nível de parágrafo e que a valência das sentenças de ocorrência desses termos, mensurada por SA, correspondem a valência do tema. 
+
+Para identificar a afeição ou rejeição direta de um orador em relação à grupos específicos, utiliza-se NER para identificar as entidades mencionadas em seus discursos e mensura-se a valência das sentenças de ocorrência dessas entidades, por meio de SA, como \emph{proxy} da atitude em relação a elas. Com as medidas da Valência Média do Temas e a Valência Média das Entidades, compõem-se os indicadores de Apoio à Entidades Subalternas e Apoio à Entidades Dominantes. Um aspecto importante de ser ressaltado na arquitetura do algoritmo, é sua capacidade de mapear opiniões no nível de sentença e do contexto no qual estão inseridas.
 
 \chapter{Prova de Conceito: o caso da Câmara dos Deputados}\label{resultados}
 
