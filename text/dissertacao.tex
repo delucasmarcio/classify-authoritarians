@@ -65,6 +65,15 @@ brazil				% o último idioma é o principal do documento
 % ---
 
 % ---
+% Meu pacotes individuais
+% ---
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{multirow}
+
+% ---
 % Pacotes de citações
 % ---
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
@@ -616,9 +625,9 @@ Autoritários silenciosos são tão raros quanto democratas no comando de ditadu
 
 \subsection{Propondo um novo Critério de Classificação}
 
-Como forma de identificação de políticos autoritários em larga escala, propõe-se um critério de classificação baseado na análise automatizada de discursos e falas de agentes políticos. Para isso, adota-se, como estratégia empírica, a estimação de meta-parâmetros discursivos que pertencem a estrutura semântica das falas autoritárias.
+Como forma de identificação alternativa de políticos autoritários, que possibilite a categorização em larga escala, de fomra ágil e generalizável, propõe-se um modelo baseado na análise automatizada de discursos e falas de agentes políticos. Atualmente, a comunicação política tem sido cada vez mais registrada em bancos de dados ou se proliferado em canais que possibilitam a coleta e armazenagem. Esse dado disponibiliza a operacionalização de técnicas que estimem atitudes políticas a partir de texto. Nos parágrafos a seguir, serão detalhados os passos e pressupostos dessa empreitada. 
 
-Discursos políticos se estruturam em torno de elementos e dimensões fundamentais. Ao longo de uma fala, parlamentares percorrem o Tempo -- que diz respeito tanto a um recurso limitado como a uma sequência linear em que frase se encadeiam -- e Temas -- que constituem agrupamentos amplos de setenças que as conectam em torno de um sentido. Dispostos em Tempo e Tema, estão 2 elementos fundamentais da comunicação: Entidades e Atributos. Enquanto Entidades são objetos linguísticos que podem ser nomeados -- como o sujeito de uma frase -- Atributos funcionam como descritores das Entidades -- como adjetivos e advérbios, uma vez que comportam valor de característica.
+Como ponto de partida, asume-se que discursos políticos se estruturam em torno de elementos e dimensões fundamentais, que retém uma parcela fundamental sobre seu sentido e significado. Ao longo de uma fala, parlamentares percorrem o Tempo -- que diz respeito tanto a um recurso limitado como a uma sequência linear em que frase se encadeiam -- e Temas -- que constituem agrupamentos amplos de setenças que as conectam em torno de um sentido. Dispostos em Tempo e Tema, estão 2 elementos fundamentais da comunicação: Entidades e Atributos. Enquanto Entidades são objetos linguísticos que podem ser nomeados -- como o sujeito de uma frase -- Atributos funcionam como descritores das Entidades -- como adjetivos e advérbios, uma vez que comportam valor de característica.
 
 \begin{figure}[h]
 	\caption{Diagrama do Discurso Político}
@@ -628,43 +637,194 @@ Discursos políticos se estruturam em torno de elementos e dimensões fundamenta
 	Fonte: elaboração do autor
 \end{figure}
 
-Figura 1 representa um diagrama simplicado do discurso político. A partir dele, pode-se compreender a dinâmica entre os elementos fundamentais e suas dimensões. Temas e Tempo ganham significado a medida em que um orador dispõem em sua fala setenças que conectam Atributos à Entidades. Uma vez que discursos políticos envolvem expressão de valor, espera-se que Atributos possuam uma polaridade -- positiva e negativa -- e que, por isso, funcionam como dispositivos para demarcar um posicionamento favorável ou desfavorável. Quanto mais Atributos negativos são utilizados para caracterizar as Entidades mencionadas sobre um tema, mais negativo será a compreensão geral da sentenças sobre o Tema.
+Figura 3 representa um diagrama simplicado do discurso político. A partir dele, pode-se compreender a dinâmica entre os elementos fundamentais e suas dimensões. Temas e Tempo ganham significado a medida em que um orador dispõem em sua fala setenças que conectam Atributos à Entidades. Uma vez que discursos políticos envolvem expressão de valor, espera-se que Atributos possuam uma polaridade -- positiva e negativa -- e que, por isso, funcionam como dispositivos para demarcar um posicionamento favorável ou desfavorável. Quanto mais Atributos negativos são utilizados para caracterizar as Entidades mencionadas sobre um tema, mais negativo será a compreensão geral da sentenças sobre o Tema.
 
-Na Figura 1, as Entidades mencionadas no início do discurso tanto recebem atributos positivos como compartilham de uma atmosférica temática de maior valência. No outro extremo, as Entidades mencionadas ao final do discurso possuem o inverso dessas características -- Atributos e Tema e negativos. Portanto, pode-se inferir que, no escopo de Entidades do orador, seu posicionamento variou da simpatia manifesta no início da fala até a rejeição, ao final.
+Na Figura 3, as Entidades mencionadas no início do discurso tanto recebem atributos positivos como compartilham de uma atmosférica temática de maior valência. No outro extremo, as Entidades mencionadas ao final do discurso possuem o inverso dessas características -- Atributos e Tema e negativos. Portanto, pode-se inferir que, no escopo de Entidades do orador, seu posicionamento variou da simpatia manifesta no início da fala até a rejeição, ao final. Essa dinâmica discursiva remete ao caráter hierárquico da estrutura textual, na qual termos são unidades básicas da linguagem, sentenças concatenam sentido no nível local, e temas consolidam grandes conjuntos de expressão.    
 
 Um exemplo prático dessa dinâmica está presente nas contribuições de \citeonline{smith1990symptomology}. Nas falas de parlamentares analisadas pela autora, a expressão de rejeição à minorias apresentou dois modos típicos: i) a atribuição direta de características negativas e ii) o estabelecimento de uma correlação ilusória a partir da menção de Entidades em Temas carregados de polaridade negativa -- como crime, entorpecentes e problemas de incivilidade. Do ponto de vista dos ouvintes, um grupo social que compartilha um mesmo espaço semântico que elementos popularmente reprovados também é passível de estigma. De forma simétrica, a exaltação de Entidades associadas às autoridades se dá pelos mesmos mecanismos.
 
 Além do uso de Atributos, a posição em relação a uma Entidade é fortemente marcada pela frequência em que é mencionada nas falas de um agente. A saliência temática demarca tanto clivagens políticas como espaços de embate, uma vez que, no contexto de recursos limitados, é o principal indicativo de quais são as questões prioritárias. A recorrência na menção de uma pauta ou maior investimento de tempo de fala em discursos nos quais é mencionada eleva a magnitude das opiniões mobilizadas em torno dela e é determinante da ideologia do orador.
 
-De forma, genérica, pode-se definir o nível de apoio de um parlamentar a uma Entidade em função da Valência dos Atributos (VA) e do Tema na qual ela é contextualizada. Na Equação 3.1, que especifica essa relação, é possível notar que o apoio a Entidade possui três componentes: dois que dizem respeito a atribuição direta de valor -- a Média da Valência dos Atributos (MVA) ponderada pela Saliência da Entidade (SE) -- e outro que refere-se a atribuição indireta -- Valência do Tema (VT).     
+É intuitivo assumir, ainda, que Entidades, Atributos e Temas são elementos que se combinam de forma complexa em discursos politizados com o propósito de expressar conteúdo ideológico. Ou seja, é possível utilizar informação da fala dos oradores para inferir posicionamentos latentes e, no caso deste trabalho, estimar seus níveis de RWA. Para isso, assume-se que a Valência expressa em relação a certas classes de Entidade pode ser traduzida em adesão à grupos dominantes -- polaridade positiva -- e rejeição à grupos dominados -- polaridade negativa.
+
+No Quadro 1 é possível observar uma tipologia de Entidades baseda na escala original proposta por \citeonline{altemeyer2006authoritarians} e nas versões brasileiras das escalas de RWA e F, adaptadas respectivamente por \citeonline{vilanova2018adaptaccao} e \citeonline{de2018analises}. As divisões do quadro correspondem aos Componentes que Integram a Escala RWA, aos Valores que representam dimensões específicas nas quais cada componentes se manifesta. As Raízes são porções genéricas de palavras, sem prefixo, sufixos e conjugações, e no quadro elas identificam as principais Entidades que representativas de cada Valor. Para definí-las, tomou-se como base o trabalho realizado por \citeonline{moreira2016palavra}, que mapeou os tópicos constitutivos do debate político brasileiro a partir do resultado de \textit{expressed agenda model} e dados textuais de pronunciamento parlamentares.  
+
+\begin{center}
+	Quadro 1 - Tipologia de Entidades
+	
+	\vspace{0.4cm}
+	
+	\begin{tabular}{llc}
+		\toprule
+{Componente}								& {Valor} 					& {Raízes} \\ \midrule
+\multirow{2}{*}{Submissão à Autoridade} 	& Ufanismo				& \textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz} \\
+& Radicalismo Religioso		& \textit{raiz},\textit{raiz},\textit{raiz} \\ \midrule
+\multirow{3}{*}{Agressividade Autoritária} 	& Punitivismo 				& \textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz} \\
+& Patriarcalismo	 		& \textit{raiz},\textit{raiz} \\
+& Rejeição à Diversidade	& \textit{raiz},\textit{raiz},\textit{raiz} \\ \midrule
+\multirow{3}{*}{Convencionalismo} 			& Majoritarismo 			& \textit{raiz} \\
+& Hierarquia				& \textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz} \\
+& Anti-cientificismo		& \textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz} \\ \bottomrule
+	\end{tabular}
+	
+	\vspace{0.6cm}
+	
+	Fonte: elaboração do autor com dados de \citeonline{moreira2016palavra} 
+\end{center}
+
+No contexto brasileiro, Ufanismo, Majoritarismo e Punitivismo são elementos centrais da narrativa que saúda o passado e propõem uma saída centralizadora e monotônica, que se utiliza do militarismo, para restauração. Entre os questionários originais e adaptados, estão presentes fortes referências a salvação do país por meio de punição mais rígidas e laços mais entreitos entre Estado e Sociedade Civil. Alguns dos exemplos são:
+
+\begin{quote}
+	1. Do jeito que as coisas estão indo nesse país, serão necessárias medidas severas para endireitar os meliantes, os criminosos e os pervertidos.
+	
+	2. A situação do nosso país está ficando tão séria que ações firmes seriam justificadas se eliminassem os desordeiros e nos levassem de volta ao nosso verdadeiro caminho.
+	
+	6. O que o nosso país realmente precisa é uma dose forte e dura de lei e ordem.
+	
+	29. Nosso país será melhor se obedecermos nossos líderes.
+	
+	34. Nosso país será melhor se mostrarmos respeito à autoridade.
+	
+	3. Não há nada pior do que uma pessoa que não sente profundo amor, gratidão e respeito por seus pais
+	
+	\cite{vilanova2018adaptaccao, de2018analises}
+	
+\end{quote}  
+
+Além de aspectos políticos, também é possível observar uma dimensão associada a atitudes e comportamentos captada pelos valores de Radicalismo Religioso, Patriarcalismo e Rejeição à Diversidade. Cada um dispõe de um conjunto próprio de julgamentos que segmentam a população entre ``bons'' e ``maus'', oferecendo as bases para discriminação e intolerância contra grupos vulneráveis, minorias e indivíduos que questionam a autoridade e a tradição. É possível visualizar alguns desses elementos normativos a partir das afirmativas:
+ 
+\begin{quote}
+	
+	15. As pessoas devem estar prontas para desafiar leis com as quais elas não concordam.
+	
+	
+	18. As pessoas deveriam ter as suas próprias preferências sexuais, mesmo se isso torná-las diferentes do resto da sociedade.
+	
+	19. Não há nada de errado com sexo antes do casamento.
+	
+	21. As pessoas deveriam ter os seus próprios estilos de vida mesmo se isso torná-las diferentes do resto da sociedade.
+	
+	24. As leis de Deus sobre aborto, pornografia e casamento devem ser seguidas à risca antes que seja tarde demais.
+	
+	6. Todos devemos ter fé absoluta em um poder sobrenatural, cujas decisões devemos acatar.
+	
+	10. Os homossexuais são quase criminosos e deveriam receber um castigo severo.
+	
+	\cite{vilanova2018adaptaccao, de2018analises}
+	
+\end{quote}
+
+Por fim, a Hierarquia e Anti-cientificismo celam um bloqueio triplo contra as principais fontes de contestação na sociedade: aqueles que não ocupam a posição de poder e aqueles que produzem novos conhecimentos. Autoritários tendem rejeitar contestações a suas crenças e apregam-se veementemente aos papeis sociais tradicionais, naturalizando a desigualdade. Buscando identificar esse tipo de disposição, os questionários incluem as afirmativas:
+ 
+\begin{quote}
+	
+	16. Estudantes de colégios e universidades devem ser encorajados a desafiar, criticar e confrontar autoridades.
+	
+	13. A ciência tem o seu lugar, mas há muitas coisas importantes que a mente humana jamais poderá compreender.
+	
+	14. Os homens podem ser divididos  em duas classes definidas:  os fracos e os fortes.
+	
+	16. Pobreza é consequência da falta de vontade de querer trabalhar.
+	
+	\cite{vilanova2018adaptaccao, de2018analises}
+	
+\end{quote}
+
+Como forma de mensurar o RWA a partir das falas de agentes políticos, tomou-se a expressão direta -- a nível de sentença -- e indireta -- a nível de contexto -- de adesão a cada um desses valores como indicativo de maior afinidade ao autoritarismo. A essa medida de propensão, deu-se o nome de escala de Valores Autoritários.
+
+A Equação 3.1 especifica a estimação de expressão direta. Dado um Valor $v$, que compõem uma das dimensões do RWA, a adesão de um agente político se expressa pela razão da diferença entre o número de sentenças positivas -- $Pos_v$ --  e o número de sentenças negativas -- $Neg_v$ -- que mencionam alguma das Raízes que compõem a tipologia de Entidades no Quadro 1 e o número de sentenças de sentimento mais frequente -- $Pos_v$ ou $Neg_v$.
 
 \begin{equation}
-	SupEnt_i = \frac{\sum_{k = 1}^{K} VA_k}{K} * SA_i + VT_i
+\beta_v = 
+\begin{cases}
+\frac{Pos_v - Neg_v}{Pos_v}, & \text{se}\ Pos > Neg \\
+\frac{Pos_v - Neg_v}{Neg_v}, & \text{caso contrário.}
+\end{cases}
+\end{equation}
+
+A Equação 3.2 especifica a estimação de expressão indireta. Dado o contexto do Discurso $k$, em que Entidades que compõem uma das dimensões do RWA são mencionadas, a adesão indireta de um agente político se expressa pela razão da diferença entre o número de sentenças positivas -- $Pos_k$ --  e o número de sentenças negativas -- $Neg_k$ -- contidas no contexto e o número de sentenças de sentimento mais frequente -- $Pos_k$ ou $Neg_k$.
+
+\begin{equation}
+\gamma_k = 
+\begin{cases}
+\frac{Pos_k - Neg_k}{Pos_k}, & \text{se}\ Pos > Neg \\
+\frac{Pos_k - Neg_k}{Neg_k}, & \text{caso contrário.}
+\end{cases}
+\end{equation}
+
+As estimativas geradas pelas Equações 3.1 e 3.2 resultam em valores que pertencem ao intervalo $[-1, 1]$, em que quanto mais próximo de 1, maior a probabilidade de adesão a um dos Valores que compõem a escala de Valores Autoritários e, mais próximo de -1. menor a probabilidade de adesão. 
+
+Por fim, o indicador final é composto pela soma ponderada das duas estimativas, especificada na Equação 3.3. A escala de adesão, representada por $\theta$, também varia no intervalo$[-1, 1]$. A Equação 3.4 representa a normalização do valor de $\theta$. Se um indivíduo possui resultante positiva, então apresenta algum nível de adesão ao valor autoritário e soma 1 ponto na Escala de Valores Autoritários. Como tratam-se de 8 Valores, a escala varia entre 0 -- rejeição de todos os Valores autoritários -- e 8 -- adesão à todos os valores autoritários.
+
+\begin{equation}
+\theta_{vk} = 0.75 * \beta_v +  0.25 * \gamma_k
 \end{equation}
 
 \begin{equation}
-SA_i = \frac{\sum_{q = 1}^{Q} Ent_q}{Q}
+AuthVal_v = 
+\begin{cases}
+1, & \text{se}\ \theta_{vk} > 0 \\
+0, & \text{caso contrário.}
+\end{cases}
+\end{equation}
+
+Tomando um exemplo anedótico, para o valor de Punitivismo, um indivíduo que manifestou $\beta = 0.5$ -- portanto se inclinou diretamente ao Valor -- e $\gamma = -0.8$ -- inserindo a menção ao Valor em um contexto muito negativo -- apresenta $\theta = 0.175$ e, assim, recebe 1 ponto na escala de Valores Autoritários -- $AuthVal$. Para definir os pesos dos componentes de $\theta$, tomou-se como referência a literatura que trata de \emph{Social Desirability Bias}. Trabalhos que estimaram a subnotificação de compra de votos, xenofobia e racismo apresentaram resultados entre 20{\%} e 30{\%} \cite{rudmin1999norwegian,heerwig2009education,gonzalez2012vote}.
+
+É necessário, contudo, lidar com um fator adicional. Como agentes políticos possuem agendas diferentes, é esperado que apenas uma parte dos oradores façam menção à todos os Valores da escala de Valores Autoritários, seja para manifestar adesão ou rejeição. Um parlamentar que possui pautas sanitárias como centro da sua representação, por exemplo, tende a se manifestar sobre questões punitivas com menor frequência. Como efeito, a escala apresenta viés de seleção e incorpora efeitos endógenos da saliência temática dos agentes políticos.
+
+Como forma de aproximar a escala de Valores Autoritários de um indicador consistente de RWA, utilizou-se inferência bayesiana. Nesse sentido, a estimativa de RWA de um agente político é composta por uma porção de informação a priori, que envolve o que sabe-se sobre a distribuição de RWA na população, e uma porção de informação definida pela verossimilhança, que obtem-se a partir dos dados, decomposta pela escala de Valores Autoritários. 
+
+Como informação a priori, assume-se que o RWA entre agentes políticos segue uma distribuição Poisson, tal como sugerem os dados coletados a partir de respostas para questionário original, como na Figura 1. Uma vez que foram delimitados 8 conjuntos de Valores, a distribuição pertence ao intervalo $[0, 8]$, de parâmetro $\lambda = 1.62$\footnote{O parâmetro $\lambda$ foi estimado a patir dos microdados de \citeonline{open2016rwa}. Para isso, tomou-se a média da escala de RWA dos respondentes que levaram até o quantil 95 de tempo para responder o questionário e que cometaram no máximo até 2 erros, de 16, nas questões de validação.}. Para inferir uma média de RWA para a população, basta calcular a esperança da distribuição ao longo de todo o intervalo, representada pela área A na Figura 4.
+
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}[b]{0.4\textwidth}
+		\caption{Priori RWA}
+		\label{fig:rwa}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/area_total_rwa}
+			\end{minipage}
+\\
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.4\textwidth}
+		\label{fig:pos_mat}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/area_parcial_min_rwa}
+		
+	\end{minipage}
+	\hspace{.05\linewidth}
+\begin{minipage}[b]{0.4\textwidth}
+	\label{fig:pos_mat}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/area_parcial_max_rwa}
+	
+\end{minipage}
+
+Fonte: elaboração do autor
+\end{figure}
+
+Como ponto de partida, é intuitivo atribuir o valor médio a um agente político qualquer. Porém, na medida em que adquirimos mais informação, mensurando a escala de Valores Autoritários, é possível introduzir condicionais no cálculo da esperança, restringindo o espaço de eventos e conseguindo alcançar um valor médio que converge para um ponto mais preciso. 
+
+Na Figura 4, na área B, também é possível visualizar o polígono resultante de um indivíduo que se manifestou sobre 5 dos 8 Valores e rejeitou todos. Como efeito, dois cenários extremos são possíveis, caso se manifestasse sobre os outros 3 Valores: rejeitar todos ou aderir a todos. Com isso, a aŕea que corresponde o espaço de eventos restringe ao polígono formado pela distribuição no intervalo $[0, 3]$. Já na área C, é possível visualizar a representação de um indivíduo que se manifestou sobre 4 Valores, aderiu a 2 deles e rejeitou outros 2. Nesse caso, os cenários extremos são: rejeitar os outros 4 e aderir a todos eles. Assim, o RWA estimado se retringe a esperança da distribuição no intervalo $[2, 6]$. Comparativamente, o valor de RWA estimado para os casos A, B e C são, respectivamente, 1.62, 1.37 e 2.68.
+
+Alguns detaques importantes nos procedimentos de estimação são que a distribuição a priori, especificada na Equação 3.5 e visível na distribuição da área A, na Figura 4 resguarda os pressupostos de uma distribuição de probabilidade. Para que os polígonos gerados a partir da restrição de intervalos, como no caso das áreas B e C da Figura 4, contudo, é necessário atualizar os valores da variável aletória para que a integral da função de probabilidade resulte em 1, conforme especifica a função composta na Equação 3.6. 
+
+A inclusão de num novo componente no denominador, que consiste na soma das probabilidades do valores que compõem o intervalo $[L, U]$, tem como efeito normalizar as probabilidades no polígono. Ou seja, a escala de Valores Autoritários entrega os parâmetros de \emph{upper bound} e \emph{lower bound}, utilizados para definir o espaço de eventos. Por fim, a Equação 3.7 especifica o cálculo da esperança da dsitribuição que tem como resultante o valor estimado de RWA. 
+     
+
+\begin{equation}
+f(x) = \frac{\mathsf{e^{-\lambda}} \,\lambda^{x}}{x\,!}
 \end{equation}
 
 \begin{equation}
-VT_i = \frac{\sum_{p = 1}^{P} \sum_{j = 1}^{J} VA_{jp}}{P * J}
-\end{equation}
-
-Onde \emph{SupEnt} é o Apoio à Entidade que é função da \emph{VA} -- a Valência do Atributo \emph{k} associado a Entidade, da \emph{SA} -- que é a Saliência da Entidade, medida pela Frequência de menções a Entidade \emph{i} -- e da \emph{VT} -- que é a Valência do Tema, mensurada pela valência média dos \emph{J} atributos atribuídos por \emph{P} parlamentares a Entidades que integram o tema \emph{i}.
-
-Alguns pontos relevantes de inferência são que, enquanto Média da Valência dos Atributos e a Saliência da Entidade dizem respeito a elementos controlados diretamente pelos oradores, a Valência do Tema é resultado da polaridade de todas as sentenças de todos os oradores sobre o Tema. Além disso, a Média da Valência dos Atributos de Entidades apresentam correlação proporcionalmente a distância temporal em que são mencionadas no discurso.  
-
-A partir dos \emph{insights} levantados, pode-se tomar Apoio à Entidade como um instrumento para detecção da personalidade autoritária. Propõem-se, nessa investigação, que o Apoio à Entidades Subalternas e Apoio à Entidades Dominantes são medidas correlacionadas com as 3 dimensões do RWA: Agressividade Autoritária, Submissão Autoritária e Convencionalismo. Essas duas medidas são construídas a partir da estimativa do Apoio à Entidade -- segundo a Equação 3.1 -- de entidades textuais tipicamente associadas a i) populações subjugadas e ii) grupos e instituições dominantes.
-
-Nas Equações 3.4 e 3.5, define-se, respectivamente, o Apoio à Entidades Subalternas como função do nível de Agressividade Autoritária do agente político, e, o Apoio à Entidades Dominantes, dos níveis de Submissão Autoritária e Convencionalismo. Ambas funções contém um termo estocástico cuja magnitude define o nível de ruído entre autoritarismo intrínseco e expresso.
-
-\begin{equation}
-SupEntMin \approx \theta(AuthAgress)
+g \circ f(x,\, L, \,U) =\frac{\mathsf{e^{-\lambda}} \,\lambda^{x}}{x\,! \, \displaystyle\sum_{k = L}^{U} f(k)}
 \end{equation}
 
 \begin{equation}
-SupEntDom \approx \tau(AuthSubmiss, Convent)
+E(x|L, U) = \int_{L}^{U} g \circ f(x, L, U) \,x \,dx
 \end{equation}
+
+É possível observar a proporcionalidade entre a quantidade de Valores Autoritários e o RWA estimado, porém os resultados obtidos por meio de atualização bayesiana apresentam correções contra subestimação e viés de seleção.
 
 \subsection{Operacionalizando a Estimação dos Metaparâmetros}
 
@@ -689,7 +849,7 @@ Como consequência do terceiro item, o LDA não se trata de um classificador de 
 	Fonte: \citeonline{rain2015lda}
 \end{figure}
 
-Na Figura 2 é possível visualizar um diagrama do processo generativo de palavras, sua correspondência com os tópicos e proporção nos documentos proposto por \citeonline{rain2015lda}. No exemplo do autor, LDA está utilizado para classificar tópicos em um artigo sobre ``evolução e o uso de análise de dados para determinar o número de genes que um organismo necessita para sobreviver''. Apesar de cada tópico não possuir valência como uma dimensão adjacente, uma analogia como a aplicação que propõem-se é utilizá-los como um indicador de temas. Basedo na proporção de termos, ao primeiro parágrafo, imputa-se o tema vermelho, ao segundo, amarelo e ao terceiro, azul.   
+Na Figura 4 é possível visualizar um diagrama do processo generativo de palavras, sua correspondência com os tópicos e proporção nos documentos proposto por \citeonline{rain2015lda}. No exemplo do autor, LDA está utilizado para classificar tópicos em um artigo sobre ``evolução e o uso de análise de dados para determinar o número de genes que um organismo necessita para sobreviver''. Apesar de cada tópico não possuir valência como uma dimensão adjacente, uma analogia como a aplicação que propõem-se é utilizá-los como um indicador de temas. Basedo na proporção de termos, ao primeiro parágrafo, imputa-se o tema vermelho, ao segundo, amarelo e ao terceiro, azul.   
 
 No que diz respeito a NER, trata-se de um conjunto de técnicas classificação automatizada de entidades linguísticas bastante utilizadas no \emph{Natural Language Processing} (NLP). Conforme foi exposto na seção anterior, entidades são componentes de sentenças que dizem respeito a nomes de pessoas, organizações e, no caso de aplicação desta pesquisa, grupos margilizados e populações sensíveis, por exemplo. Para identificá-las e assinalar a classe ao qual pertencem, grandes enforços coletivos têm sido realizados para elaboração de extensas bases textuais codificadas manualmente. A partir delas, modelos de \emph{Machine Learning} são treinados para replicar a codificação de forma automatizada. 
 
@@ -699,7 +859,7 @@ Um dos bancos de dados públicos para treinamento de modelos de NER é o \emph{U
 
 Outro exemplo de desse tipo de \emph{dataset}, é o \emph{WikiNER}, organizado por \citeonline{nothman2013learning}. A equipe liderou o projeto que classificou manualmente 7.200 artigos do Wikipédia, utilizandos de técnicas de \emph{Semi-Supervised Learning} para aceletar a coleta de informação relevante, reunindo mais de 2 milhões de termos tipificados em 4 categorias. Em comparação ao UDP, o WikiNER possui menor granularidade -- menos categorias -- e uma classificação manual menos ortodoxa, porém o número substancialmente maior de informação. No procedimento de classificação, as \emph{tags} do site servem de atalhos para reconhecer entidades. 
 
-Tomando as duas fontes para o treinamento de algoritmos de classificação automatizada, ferramentas abertas para a comunidade, como o \emph{spaCy} atingem 89{\%} de precisão para língua portuguesa. Apesar de avanços significativos, todavia, os modelos de decodificação desse tipo de dado ainda não são capazes de detectar relações sofisticadas de dependência entre Atributos e Entidades -- segundo o esquema da Figura 1. Portanto, só é possível mensurar valência a nível e sentença e, imputar com algum nível de ruído, o valor da medida para as Entidades mencionadas na sentença.
+Tomando as duas fontes para o treinamento de algoritmos de classificação automatizada, ferramentas abertas para a comunidade, como o \emph{spaCy} atingem 89{\%} de precisão para língua portuguesa. Apesar de avanços significativos, todavia, os modelos de decodificação desse tipo de dado ainda não são capazes de detectar relações sofisticadas de dependência entre Atributos e Entidades -- segundo o esquema da Figura 3. Portanto, só é possível mensurar valência a nível e sentença e, imputar com algum nível de ruído, o valor da medida para as Entidades mencionadas na sentença.
 
 Com relação a Análise de Sentimentos, assim como outras técnicas, trata-se de uma solução algorítmica para análise de textos, mais especificamente para extração e identificação de emoções, sentimentos e atitudes. Ao longo das três últimas décadas, tem sido cada vez mais utilizada para a automatização no processamento de \emph{reviews} no mercado digital e extração de \emph{features} da dados textuais de opinião pública. Quanto as premissas do modelo e o tipo de resposta que oferece, algoritmos dessa natureza partem do postulado de que toda sentença possui uma valência, ou seja, um posicionamento latente que pode ser tipificado em pró, contra ou neutro -- frequentemente convertidos em valores como -1,0 e 1 -- que representam as classes do \emph{target} na otimização do modelo \cite{serrano2015sentiment, mantyla2018evolution}.  
 
@@ -717,11 +877,13 @@ Uma alternativa às técnicas baseadas em dicionários são o modelos de \emph{M
 	Fonte: elaboração do autor
 \end{figure}
 
-Na Figura 3 é possível visualizar o diagrama dos processos de estimação dos componentes que compõem os indicadores de Apoio à Entidades Dominantes e Apoio è Entidades Minoritárias. De maneira sintética, utiliza-se LDA para mapear as principais palavras que compõem cada um dos tópicos que segmentam os discursos políticos, para isso utiliza-se todo o escopo de textos da base da de dados. Assume-se que cada tópico implica em um tema, que temas ocorrêm no nível de parágrafo e que a valência das sentenças de ocorrência desses termos, mensurada por SA, correspondem a valência do tema. 
+Na Figura 5 é possível visualizar o diagrama dos processos de estimação dos componentes que compõem os indicadores de Apoio à Entidades Dominantes e Apoio è Entidades Minoritárias. De maneira sintética, utiliza-se LDA para mapear as principais palavras que compõem cada um dos tópicos que segmentam os discursos políticos, para isso utiliza-se todo o escopo de textos da base da de dados. Assume-se que cada tópico implica em um tema, que temas ocorrêm no nível de parágrafo e que a valência das sentenças de ocorrência desses termos, mensurada por SA, correspondem a valência do tema. 
 
 Para identificar a afeição ou rejeição direta de um orador em relação à grupos específicos, utiliza-se NER para identificar as entidades mencionadas em seus discursos e mensura-se a valência das sentenças de ocorrência dessas entidades, por meio de SA, como \emph{proxy} da atitude em relação a elas. Com as medidas da Valência Média do Temas e a Valência Média das Entidades, compõem-se os indicadores de Apoio à Entidades Subalternas e Apoio à Entidades Dominantes. Um aspecto importante de ser ressaltado na arquitetura do algoritmo, é sua capacidade de mapear opiniões no nível de sentença e do contexto no qual estão inseridas.
 
 \chapter{Prova de Conceito: o caso da Câmara dos Deputados}\label{resultados}
+
+O 
 
 \section{Coletando dados}
 

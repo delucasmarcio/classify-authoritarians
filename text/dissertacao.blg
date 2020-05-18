@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (MiKTeX 2.9.7350)
-Capacity: max_strings=4000, hash_size=5000, hash_prime=4253
+This is BibTeX, Version 0.99d (MiKTeX 2.9.7400)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: dissertacao.aux
 The style file: abntex2-alf.bst
 Reallocating 'singl_function' (item size: 4) to 100 items.
@@ -11,138 +11,138 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
-Reallocating 'field_info' (item size: 4) to 14867 items.
+Reallocating 'field_info' (item size: 4) to 15212 items.
 Database file #1: abntex2-options.bib
 Database file #2: bibli.bib
-Repeated entry---line 1175 of file bibli.bib
+Repeated entry---line 1185 of file bibli.bib
  : @article{norris2017western
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1381 of file bibli.bib
+Repeated entry---line 1391 of file bibli.bib
  : @article {kyle2018populists
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1410 of file bibli.bib
+Repeated entry---line 1420 of file bibli.bib
  : @article{holland2013right
  :                          ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1850 of file bibli.bib
+Repeated entry---line 1860 of file bibli.bib
  : @book{muller2017populism
  :                         ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1865 of file bibli.bib
+Repeated entry---line 1875 of file bibli.bib
  : @article{hunter2019bolsonaro
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1956 of file bibli.bib
+Repeated entry---line 1966 of file bibli.bib
  : @article{booth1984political
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2010 of file bibli.bib
+Repeated entry---line 2020 of file bibli.bib
  : @book{achen2017democracy
  :                         ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2047 of file bibli.bib
+Repeated entry---line 2057 of file bibli.bib
  : @article{stevens2006authoritarian
  :                                  ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2154 of file bibli.bib
+Repeated entry---line 2164 of file bibli.bib
  : @article{rooduijn2011measuring
  :                               ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2165 of file bibli.bib
+Repeated entry---line 2175 of file bibli.bib
  : @article{oliver2016rise
  :                        ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2176 of file bibli.bib
+Repeated entry---line 2186 of file bibli.bib
  : @article{aslanidis2018measuring
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2229 of file bibli.bib
+Repeated entry---line 2239 of file bibli.bib
  : @article{vargo2017socioeconomic
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2336 of file bibli.bib
+Repeated entry---line 2346 of file bibli.bib
  : @book{norris2019cultural
  :                         ,
 I'm skipping whatever remains of this entry
 Warning--entry type for "rain2015lda" isn't style-file defined
---line 2411 of file bibli.bib
+--line 2421 of file bibli.bib
 Warning--entry type for "thelwall2014sentistrength" isn't style-file defined
---line 2475 of file bibli.bib
-Repeated entry---line 2550 of file bibli.bib
+--line 2485 of file bibli.bib
+Repeated entry---line 2560 of file bibli.bib
  : @book{inglehart2005modernization
  :                                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2557 of file bibli.bib
+Repeated entry---line 2567 of file bibli.bib
  : @article{foa2017signs
  :                      ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2568 of file bibli.bib
+Repeated entry---line 2578 of file bibli.bib
  : @article{norris2017western
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2575 of file bibli.bib
+Repeated entry---line 2585 of file bibli.bib
  : @article{voeten2016people
  :                          ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2582 of file bibli.bib
+Repeated entry---line 2592 of file bibli.bib
  : @article{alexander2017myth
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2589 of file bibli.bib
+Repeated entry---line 2599 of file bibli.bib
  : @article{foa2017end
  :                    ,
 I'm skipping whatever remains of this entry
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'glb_str_end' (item size: 4) to 20 items.
 Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
-Reallocating 'global_strs' (item size: 1) to 20000 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
 Warning--faltando school em loxton2014authoritarian
 +---------------------------------------------------------+
 | Estilo bibliográfico abntex2-alf.bst versão v-1.9.7           |
 | Em caso de dúvidas ou problemas com este estilo procure |
 | http://www.abntex.net.br/                               |
 +---------------------------------------------------------+
-You've used 143 entries,
+You've used 148 entries,
             6714 wiz_defined-function locations,
-            1934 strings with 33428 characters,
-and the built_in function-call counts, 120132 in all, are:
-= -- 9083
-> -- 4347
-< -- 454
-+ -- 1813
-- -- 1314
-* -- 8908
-:= -- 15822
-add.period$ -- 478
-call.type$ -- 143
-change.case$ -- 1494
-chr.to.int$ -- 362
-cite$ -- 143
-duplicate$ -- 6377
-empty$ -- 8694
-format.name$ -- 6241
-if$ -- 28125
+            1963 strings with 34698 characters,
+and the built_in function-call counts, 124813 in all, are:
+= -- 9427
+> -- 4522
+< -- 473
++ -- 1878
+- -- 1365
+* -- 9276
+:= -- 16427
+add.period$ -- 493
+call.type$ -- 148
+change.case$ -- 1554
+chr.to.int$ -- 382
+cite$ -- 148
+duplicate$ -- 6615
+empty$ -- 9006
+format.name$ -- 6494
+if$ -- 29226
 int.to.chr$ -- 0
 int.to.str$ -- 0
-missing$ -- 2535
-newline$ -- 680
-num.names$ -- 710
-pop$ -- 3186
+missing$ -- 2624
+newline$ -- 705
+num.names$ -- 735
+pop$ -- 3284
 preamble$ -- 1
-purify$ -- 563
+purify$ -- 585
 quote$ -- 0
-skip$ -- 6636
+skip$ -- 6878
 stack$ -- 1
-substring$ -- 5206
-swap$ -- 3132
-text.length$ -- 227
+substring$ -- 5464
+swap$ -- 3270
+text.length$ -- 241
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 23
 warning$ -- 1
-while$ -- 1112
+while$ -- 1157
 width$ -- 0
-write$ -- 2321
+write$ -- 2410
 (There were 19 error messages)

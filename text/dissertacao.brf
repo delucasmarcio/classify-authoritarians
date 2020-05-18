@@ -167,25 +167,40 @@
 \backcite {grimmer2013text}{{37}{3.2.1}{subsection.3.2.1}}
 \backcite {maynard2014cares}{{37}{3.2.1}{subsection.3.2.1}}
 \backcite {dacrema2019we}{{37}{3.2.1}{subsection.3.2.1}}
-\backcite {smith1990symptomology}{{38}{3.2.2}{figure.3.3}}
-\backcite {blei2003latent}{{41}{3.2.3}{subsection.3.2.3}}
-\backcite {rain2015lda}{{41}{3.2.3}{figure.3.4}}
-\backcite {rain2015lda}{{42}{4}{figure.3.4}}
-\backcite {depling2017}{{43}{3.2.3}{figure.3.4}}
-\backcite {sekine2004named}{{43}{3.2.3}{figure.3.4}}
-\backcite {nothman2013learning}{{43}{3.2.3}{figure.3.4}}
-\backcite {serrano2015sentiment, mantyla2018evolution}{{43}{3.2.3}{figure.3.4}}
-\backcite {serrano2015sentiment, mantyla2018evolution}{{43}{3.2.3}{figure.3.4}}
-\backcite {gonccalves2013panas}{{44}{3.2.3}{figure.3.4}}
-\backcite {watson1988development}{{44}{3.2.3}{figure.3.4}}
-\backcite {clark1994manual}{{44}{3.2.3}{figure.3.4}}
-\backcite {bollen2010determining}{{44}{3.2.3}{figure.3.4}}
-\backcite {mcnair2003profile}{{44}{3.2.3}{figure.3.4}}
-\backcite {hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}{{44}{3.2.3}{figure.3.4}}
-\backcite {hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}{{44}{3.2.3}{figure.3.4}}
-\backcite {hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}{{44}{3.2.3}{figure.3.4}}
-\backcite {hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}{{44}{3.2.3}{figure.3.4}}
-\backcite {pang2002thumbs}{{44}{3.2.3}{figure.3.4}}
-\backcite {howard2018universal, sun2019fine, yang2019xlnet}{{44}{3.2.3}{figure.3.4}}
-\backcite {howard2018universal, sun2019fine, yang2019xlnet}{{44}{3.2.3}{figure.3.4}}
-\backcite {howard2018universal, sun2019fine, yang2019xlnet}{{44}{3.2.3}{figure.3.4}}
+\backcite {smith1990symptomology}{{39}{3.2.2}{figure.3.3}}
+\backcite {altemeyer2006authoritarians}{{40}{3.2.2}{figure.3.3}}
+\backcite {vilanova2018adaptaccao}{{40}{3.2.2}{figure.3.3}}
+\backcite {de2018analises}{{40}{3.2.2}{figure.3.3}}
+\backcite {moreira2016palavra}{{40}{3.2.2}{figure.3.3}}
+\backcite {moreira2016palavra}{{40}{3.2.2}{figure.3.3}}
+\backcite {vilanova2018adaptaccao, de2018analises}{{41}{3.2.2}{figure.3.3}}
+\backcite {vilanova2018adaptaccao, de2018analises}{{41}{3.2.2}{figure.3.3}}
+\backcite {vilanova2018adaptaccao, de2018analises}{{41}{3.2.2}{figure.3.3}}
+\backcite {vilanova2018adaptaccao, de2018analises}{{41}{3.2.2}{figure.3.3}}
+\backcite {vilanova2018adaptaccao, de2018analises}{{42}{3.2.2}{figure.3.3}}
+\backcite {vilanova2018adaptaccao, de2018analises}{{42}{3.2.2}{figure.3.3}}
+\backcite {rudmin1999norwegian,heerwig2009education,gonzalez2012vote}{{43}{3.2.2}{equation.3.2.4}}
+\backcite {rudmin1999norwegian,heerwig2009education,gonzalez2012vote}{{43}{3.2.2}{equation.3.2.4}}
+\backcite {rudmin1999norwegian,heerwig2009education,gonzalez2012vote}{{43}{3.2.2}{equation.3.2.4}}
+\backcite {open2016rwa}{{44}{1}{Hfootnote.1}}
+\backcite {blei2003latent}{{45}{3.2.3}{subsection.3.2.3}}
+\backcite {rain2015lda}{{46}{3.2.3}{figure.3.5}}
+\backcite {rain2015lda}{{47}{5}{figure.3.5}}
+\backcite {depling2017}{{47}{3.2.3}{figure.3.5}}
+\backcite {sekine2004named}{{47}{3.2.3}{figure.3.5}}
+\backcite {nothman2013learning}{{48}{3.2.3}{figure.3.5}}
+\backcite {serrano2015sentiment, mantyla2018evolution}{{48}{3.2.3}{figure.3.5}}
+\backcite {serrano2015sentiment, mantyla2018evolution}{{48}{3.2.3}{figure.3.5}}
+\backcite {gonccalves2013panas}{{48}{3.2.3}{figure.3.5}}
+\backcite {watson1988development}{{48}{3.2.3}{figure.3.5}}
+\backcite {clark1994manual}{{48}{3.2.3}{figure.3.5}}
+\backcite {bollen2010determining}{{48}{3.2.3}{figure.3.5}}
+\backcite {mcnair2003profile}{{48}{3.2.3}{figure.3.5}}
+\backcite {hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}{{49}{3.2.3}{figure.3.5}}
+\backcite {hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}{{49}{3.2.3}{figure.3.5}}
+\backcite {hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}{{49}{3.2.3}{figure.3.5}}
+\backcite {hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}{{49}{3.2.3}{figure.3.5}}
+\backcite {pang2002thumbs}{{49}{3.2.3}{figure.3.5}}
+\backcite {howard2018universal, sun2019fine, yang2019xlnet}{{49}{3.2.3}{figure.3.5}}
+\backcite {howard2018universal, sun2019fine, yang2019xlnet}{{49}{3.2.3}{figure.3.5}}
+\backcite {howard2018universal, sun2019fine, yang2019xlnet}{{49}{3.2.3}{figure.3.5}}

@@ -22,13 +22,13 @@
 \contentsline {section}{\numberline {3.2}Análise Automatizada de Conteúdo}{36}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}O Estado da Arte da Análise Automatizada de Conteúdo}{36}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Propondo um novo Critério de Classificação}{38}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Operacionalizando a Estimação dos Metaparâmetros}{41}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.3}Operacionalizando a Estimação dos Metaparâmetros}{45}{subsection.3.2.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase {Prova de Conceito: o caso da Câmara dos Deputados}}{47}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Coletando dados}{47}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Estimando meta-parâmetros textuais}{47}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Avaliando resultados}{47}{section.4.3}%
+\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase {Prova de Conceito: o caso da Câmara dos Deputados}}{51}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Coletando dados}{51}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Estimando meta-parâmetros textuais}{51}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Avaliando resultados}{51}{section.4.3}%
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase {Refer\^encias}}{49}{section*.14}%
+\contentsline {chapter}{\MakeTextUppercase {Refer\^encias}}{53}{section*.14}%
 \vspace {\cftbeforechapterskip }
