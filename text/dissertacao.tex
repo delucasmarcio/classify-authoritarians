@@ -72,7 +72,8 @@ brazil				% o último idioma é o principal do documento
 \usepackage{booktabs}
 \usepackage{siunitx}
 \usepackage{multirow}
-
+\usepackage{color,soul}
+ 
 % ---
 % Pacotes de citações
 % ---
@@ -631,7 +632,7 @@ Como ponto de partida, asume-se que discursos políticos se estruturam em torno 
 
 \begin{figure}[h]
 	\caption{Diagrama do Discurso Político}
-	\label{fig:diagrama}
+	\label{fig:discourse_representation}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/diagrama_discurso_autoritario}
 	Fonte: elaboração do autor
@@ -777,24 +778,27 @@ Como forma de aproximar a escala de Valores Autoritários de um indicador consis
 Como informação a priori, assume-se que o RWA entre agentes políticos segue uma distribuição Poisson, tal como sugerem os dados coletados a partir de respostas para questionário original, como na Figura 1. Uma vez que foram delimitados 8 conjuntos de Valores, a distribuição pertence ao intervalo $[0, 8]$, de parâmetro $\lambda = 1.62$\footnote{O parâmetro $\lambda$ foi estimado a patir dos microdados de \citeonline{open2016rwa}. Para isso, tomou-se a média da escala de RWA dos respondentes que levaram até o quantil 95 de tempo para responder o questionário e que cometaram no máximo até 2 erros, de 16, nas questões de validação.}. Para inferir uma média de RWA para a população, basta calcular a esperança da distribuição ao longo de todo o intervalo, representada pela área A na Figura 4.
 
 \begin{figure}[!htb]
+	\caption{Distribuição Priori e Posteriori RWA}
 	\centering
 	\begin{minipage}[b]{0.4\textwidth}
-		\caption{Priori RWA}
-		\label{fig:rwa}
+		\textbf{Priori}
+		\label{fig:rwa_area_total}
 		\centering
 		\includegraphics[width=1\linewidth]{figures/area_total_rwa}
 			\end{minipage}
 \\
 	\hspace{.05\linewidth}
 	\begin{minipage}[b]{0.4\textwidth}
-		\label{fig:pos_mat}
+		\textbf{Posteriori}
+		\label{fig:rwa_area_min}
 		\centering
 		\includegraphics[width=1\linewidth]{figures/area_parcial_min_rwa}
 		
 	\end{minipage}
 	\hspace{.05\linewidth}
 \begin{minipage}[b]{0.4\textwidth}
-	\label{fig:pos_mat}
+	\textbf{Posteriori}
+	\label{fig:rwa_area_max}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/area_parcial_max_rwa}
 	
@@ -809,7 +813,7 @@ Na Figura 4, na área B, também é possível visualizar o polígono resultante 
 
 Alguns detaques importantes nos procedimentos de estimação são que a distribuição a priori, especificada na Equação 3.5 e visível na distribuição da área A, na Figura 4 resguarda os pressupostos de uma distribuição de probabilidade. Para que os polígonos gerados a partir da restrição de intervalos, como no caso das áreas B e C da Figura 4, contudo, é necessário atualizar os valores da variável aletória para que a integral da função de probabilidade resulte em 1, conforme especifica a função composta na Equação 3.6. 
 
-A inclusão de num novo componente no denominador, que consiste na soma das probabilidades do valores que compõem o intervalo $[L, U]$, tem como efeito normalizar as probabilidades no polígono. Ou seja, a escala de Valores Autoritários entrega os parâmetros de \emph{upper bound} e \emph{lower bound}, utilizados para definir o espaço de eventos. Por fim, a Equação 3.7 especifica o cálculo da esperança da dsitribuição que tem como resultante o valor estimado de RWA. 
+A inclusão de num novo componente no denominador, que consiste na soma das probabilidades do valores que compõem o intervalo $[L, U]$, tem como efeito normalizar as probabilidades no polígono. Ou seja, a escala de Valores Autoritários entrega os parâmetros de \emph{upper bound} e \emph{lower bound}, utilizados para definir o espaço de eventos. Por fim, a Equação 3.7 especifica o cálculo da esperança da distribuição que tem como resultante o valor estimado de RWA e a Equação 3.8, a variância da estimativa. 
      
 
 \begin{equation}
@@ -820,17 +824,64 @@ f(x) = \frac{\mathsf{e^{-\lambda}} \,\lambda^{x}}{x\,!}
 g \circ f(x,\, L, \,U) =\frac{\mathsf{e^{-\lambda}} \,\lambda^{x}}{x\,! \, \displaystyle\sum_{k = L}^{U} f(k)}
 \end{equation}
 
+\begin{equation} \label{eq1}
+\begin{split}
+\widehat{rwa} & = E(x) \\
+E(x|L, U) & = \int_{L}^{U} g \circ f(x, L, U) \,x \,dx
+\end{split}
+\end{equation}
+
 \begin{equation}
-E(x|L, U) = \int_{L}^{U} g \circ f(x, L, U) \,x \,dx
+\begin{split}
+\sigma^{2} & = E(x^{2}) \\
+E(x^{2}|L, U) & = \int_{L}^{U} g \circ f(x, L, U) \,x^{2} \,dx
+\end{split}
 \end{equation}
 
 É possível observar a proporcionalidade entre a quantidade de Valores Autoritários e o RWA estimado, porém os resultados obtidos por meio de atualização bayesiana apresentam correções contra subestimação e viés de seleção.
 
-\subsection{Operacionalizando a Estimação dos Metaparâmetros}
+\subsection{Operacionalizando a Estimação dos Parâmetros}
 
-Do ponto de vista da operacionabilidade do critério de classificação proposto, é necessário resolver o desafio de mensurar os parâmetros das funções que definem o Apoio à Entidades Dominantes e Subalternas. Para isso, algoritmos de inteligência artificial oferecem soluções para o problema. Em especial, serão utilizadas três técnicas que, respectivamente, i) identificam os tópicos principais de uma coleção de discursos, ii) reconhecem entidades textuais em uma sentença e iii) mensuram as valência de uma sentenção. São elas o LDA (Latent Dirichlet Allocation), NER (\emph{Named-Entity Recognition}) e Análise de Sentimentos.   
+Para estimarmos o valor de RWA de um agente político é necessário definir um método de mensuração da Valência das Sentenças associadas às Entidades. Conforme argumentou-se, a Valência é um componente que se expressa a nível de sentença e de contexto, manifestando a adesão e rejeição nas suas formas direta e indireta. É a partir do indicador de que uma sentença é positiva que pode-se calcular os parâmetros $\beta$ e $\gamma$ das Equações 3.1 e 3.2. E para definição do escopo do contexto, é necessário identificar a qual tópico ou tema a Entidade de interesse está inserida. Com as duas informações, é possível compor imagens como a Figura 3, que detalham a dinâmica discursiva de um discurso político.
+
+Antes de detalhar a estratégia operacional é necessário caracterizar o uso da Valência como indicador de apoio e desaprovação. Para isso, é importante ressaltar que a validade de modelos baseados em dados textuais envolve a expectativa de que é possível estabelecer equivalência entre valores numéricos e emoções humanas. Além disso, todo modelo carrega um caráter de representação da realidade, que ganha precisão quanto mais for validada. Apesar de críticas que apontam que essas duas premissas são fortes demais para serem aceitas em pesquisas sobre comunicação política \cite{miguel2015vale}, a análise de valências têm se popularizado e conta com enorme respaudo acadêmico \cite{feres2016analise}.      
+
+Como opção metodológica, adotou-se a Análise de Sentimentos, uma solução algorítmica para análise de textos, desenvolvida para extração e identificação de emoções, sentimentos e atitudes, altamente escalável. Ao longo das três últimas décadas, tem sido cada vez mais utilizada para a automatização no processamento de \emph{reviews} no mercado digital e extração de \emph{features} textuais de opinião pública. Quanto as premissas do modelo e o tipo de resposta que oferece, algoritmos dessa natureza partem do postulado de que toda sentença possui uma valência, ou seja, um posicionamento latente que pode ser tipificado em pró, contra ou neutro -- frequentemente assinalados com os valores -1,0 e 1 -- que representam as classes do \emph{target} na otimização do modelo \cite{serrano2015sentiment, mantyla2018evolution}.  
+
+Uma das formas de calibrar o algoritmo consiste no uso de dicionários codificados, construídos a partir da classificação de termos e expressões que carregam carga semântica negativa ou positiva. Nesse sentido, alguns dos modelos propostos na literatura ancoram-se em artefatos produzidos no campo da linguística e psicologia para conectar palavras a sentimentos, inclusive com grande complexidade. Um desses exemplos é o PANAS-t, desenvolvido por  \citeonline{gonccalves2013panas}, que baseia-se na escala psicométrica PNAS, proposta por \citeonline{watson1988development} e posteriormente estendida por \citeonline{clark1994manual}. A escala, elaborada a partir de entrevistas nas quais respondentes descreviam como se sentiam em relação a certos eventos, identifica expressões associadas a afeição e rejeição. 
+
+Anos antes, \citeonline{bollen2010determining} apresentaram um modelo baseado na escala POMS \cite{mcnair2003profile} que, partindo da mesma estratégia, identificava a valência de uma sentença a partir da frequencia relativa de suas palavras e suas correspondências como a tipologia estabelecida. Contudo, o estado da arte das estratégias baseadas em dicionários é ocupado por combinações de tipologias, uso de fontes mistas -- como \emph{emoticons} --  e processos generativos automatizados, como a interpolação da valência de uma palavra para seus sinônimos e tipificação baseada em coocorrência \cite{hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}.
+
+Uma alternativa às técnicas baseadas em dicionários são o modelos de \emph{Machine Learning} que tomam texto como \emph{features} na previsão de um \emph{target} que, nesse caso, é composto por classes de sentimentos\footnote{Do ponto de vista da implementação, as soluções mais simples prodecem da seguinte forma: 1) o texto é preprocessado, \emph{stopwords} e símbolos são removidos, 2) as palavras que compõem cada sentenção são divididas e as com menor frequência são retiradas 3) a partir de todas as palavras que compõem o banco de dados, sentenças são representadas por uma série de variáveis binárias que identificam a presença ou não de cada uma das palavras e 4) um modelo de regressão logística é treinado utilizando as variáveis binárias como variáveis independentes e o \emph{target}, como variável dependente. Soluções mais complexas envolvem métodos mais sofisticados de transformam das sentenças em variáveis numéricas e modelos mais adequados para lidar com multicolinearidade e otimização.}. O primeiro trabalho a adotar essa abordagem foi apresentado por \citeonline{pang2002thumbs} que, se utilizando de uma base de \emph{reviews} de produtos, tomou das \emph{n-grams} -- sequências contínuas de palavras -- das sentenças como \emph{inputs}. Atualmente, a literatura documenta modelos de elevado desempenho, que atingem grande precisão de classificação, mesmo como bases de treinamento rotuladas por não-especialistas \cite{howard2018universal, sun2019fine, yang2019xlnet}. Essa abordagem, contudo, implica em custos de elaboração e implementação significativamente caros, uma vez que imprescindem de codificação em larga escala e grande poder computacional para atingirem precisão satisfatória.
+
+Para definição do modelo de classificação, relizou-se experimentos tomando os 4 principais dicionários léxicos de sentimentos para língua portuguesa: ReLi, LIWC, OpLexicon e SentiLex-PT. O ReLi concatena anotações de 1600 resenhas de 14 livros diferentes \cite{freitas2012vampiro, freitas2014sparkling} e foi transformado em léxico a partir do trabalho de \citeonline{freitas2013construccao} por meio da codificação de vocabulário afetivo. O LIWC é produto de uma investigação psicológica sobre a expressão de sentimentos de estados mentais por meio da linguagem que contou com aplicação extensa de questionários não-estruturados \cite{pennebaker1996cognitive, pennebaker1997linguistic}. Já o OpLexicon e SentiLex-PT se diferenciam das alternativas anteriores por utilizarem codificação automatizada na composição dos léxicos \cite{souza2011construction, carvalho2015sentilex}.
+
+Como base de avaliação dos experimentos, utilizou-se um banco de dados, de elaboração própria, composto pelas setenças das 511 declarações de voto na sessão que discutiu a admissibilidade do \emph{impeachment} de Dilma Roussef. As sentenças foram codificadas manualmente em 3 categorias de valência: negativas, neutras e positivas. Uma vez que a sessão contou com grande audiência, num momento de intensas manifestações civis no país, as falas dos parlamentares manifestaram-se em um microcosmos de afetos políticos. Com isso, constitui-se um cenário ideal para mensurar a precisão de métodos de classificação de sentimentos.   
+
+Para construção dos modelos, utilizou-se como referência o trabalho de \citeonline{machado2018creating}, os quais propõem estratégias de otimização no uso de dicionário léxicos em problemas de classificação\footnote{\citeonline{machado2018creating} definem estratégias que implicam em ganhos significativos de desempenho na classificação. A primeira delas consiste no uso de advérbios de negação como identificadores de pontos de inversão da valência de um atributo. Nos exemplos ``\textit{Não! Ele é honesto}'' e ``\textit{Ele \textbf{não} é honesto!}'', a referência a honestidade possui pesos opostos que são demarcados pela posição do termo 'não' na frase. Outra contribuição importante envolve os métodos de combinação de dicionários léxicos. Tanto nos experimentos realizados pelos autores como nos realizados neste trabalho, a opção por ordem de uso das predições implicou em resultados significativos diferentes.}. O desempenho de cada experimento pode ser visualizado na Tabela 1. As métricas de Precisão Ponderada e Recall Ponderado indicam que o ReLi possuiu melhor desempenho individual, porém a combinação das classificações geradas por ReLi, LIWC e OpLexicon apresentou os melhores resultados\footnote{A combinação toma a predição do LIWC para a classe negativa, a predição do ReLi para a classe neutra e do OpLexicon, para a positiva.}. O modelo adotado, com isso, apresenta métricas satisfatórias -- para uma classficação de 3 classes -- e assegura uma estimativa válida para a valência de falas proferidas por agentes políticos.   
+
+\begin{center}
+	Tabela 1 - Desempenho de Modelos de Classificação de Sentimentos
 	
-O LDA é uma técnica de identificação de tópicos em um \emph{corpus} textual, ou seja, um conjunto de documentos, proposto por \citeonline{blei2003latent}. Trata-se de um algorimto não-supervisionado -- que portanto não necessita ser especificado -- que toma documentos como o produto da geração de palavras por $k$ tópicos e possui como \emph{output} listas de termos representativos para cada conjunto. O LDA é bastante popular na literatura e conta com implementações para as ferramentas mais utilizadas pelas comunidade. Entre as premissas do modelo estão:
+	\vspace{0.4cm}
+	
+	\begin{tabular}{lcc}
+		\toprule
+		{Léxicos}					& {Precisão Ponderada} 	& {Recall Ponderado} \\ \midrule
+		{ReLi} 						& 0.54					& 0.58 \\ 
+		{LIWC} 						& 0.58					& 0.47 \\ 
+		{OpLexicon} 				& 0.53					& 0.50 \\ 
+		{SentiLex} 					& 0.54					& 0.54 \\ 
+		{ReLi + LIWC + OpLexicon} 	& 0.59					& 0.59 \\ 
+		\bottomrule
+	\end{tabular}
+	
+	\vspace{0.6cm}
+	
+	Fonte: elaboração do autor
+\end{center}     
+
+Mantendo a opção por técnicas de análise de conteúdo escaláveis e extensamente validadas, o LDA foi escolhido como método para definição do escopo dos contextos. Proposto por \citeonline{blei2003latent}, para identificação de tópicos, trata-se de um algorimto não-supervisionado -- que portanto não necessita ser especificado -- que toma documentos como o produto da geração de palavras por $k$ tópicos e possui como \emph{output} listas de termos representativos para cada conjunto. O LDA é bastante popular na literatura e conta com implementações para as ferramentas mais utilizadas pelas comunidade. Entre as premissas do modelo estão:
 
 \begin{itemize}
 	\item A distribuição da ocorrência de termos constitui uma variável latente para temas e tópicos em um texto.
@@ -843,43 +894,25 @@ Como consequência do terceiro item, o LDA não se trata de um classificador de 
 
 \begin{figure}[h]
 	\caption{Diagrama do Modelo Generativo no LDA}
-	\label{fig:diagrama}
+	\label{fig:lda}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/diagrama_lda}
 	Fonte: \citeonline{rain2015lda}
 \end{figure}
 
-Na Figura 4 é possível visualizar um diagrama do processo generativo de palavras, sua correspondência com os tópicos e proporção nos documentos proposto por \citeonline{rain2015lda}. No exemplo do autor, LDA está utilizado para classificar tópicos em um artigo sobre ``evolução e o uso de análise de dados para determinar o número de genes que um organismo necessita para sobreviver''. Apesar de cada tópico não possuir valência como uma dimensão adjacente, uma analogia como a aplicação que propõem-se é utilizá-los como um indicador de temas. Basedo na proporção de termos, ao primeiro parágrafo, imputa-se o tema vermelho, ao segundo, amarelo e ao terceiro, azul.   
+Na Figura 4 é possível visualizar um diagrama do processo generativo de palavras, sua correspondência com os tópicos e proporção nos documentos proposto por \citeonline{rain2015lda}. No exemplo do autor, LDA está utilizado para classificar tópicos em um artigo sobre ``evolução e o uso de análise de dados para determinar o número de genes que um organismo necessita para sobreviver''. Apesar de cada tópico não possuir valência como uma dimensão adjacente, uma analogia como a aplicação que propõem-se é utilizá-los como um indicador de temas. Basedo na proporção de termos, ao primeiro parágrafo, imputa-se o tema vermelho, ao segundo, amarelo e ao terceiro, azul. 
 
-No que diz respeito a NER, trata-se de um conjunto de técnicas classificação automatizada de entidades linguísticas bastante utilizadas no \emph{Natural Language Processing} (NLP). Conforme foi exposto na seção anterior, entidades são componentes de sentenças que dizem respeito a nomes de pessoas, organizações e, no caso de aplicação desta pesquisa, grupos margilizados e populações sensíveis, por exemplo. Para identificá-las e assinalar a classe ao qual pertencem, grandes enforços coletivos têm sido realizados para elaboração de extensas bases textuais codificadas manualmente. A partir delas, modelos de \emph{Machine Learning} são treinados para replicar a codificação de forma automatizada. 
-
-O processo de treinamento de um modelo de NLP consiste num fluxo de etapas nos informação é i) extraída, ii) processada, iii) modelada e iv) encapsulada em um artefato capaz de devolver \emph{outputs} textuais ou numéricos, dado \emph{inputs} textuais. Na primeira etapa são selecionadas as porções de texto que carregam a principal parcela informacional para modelos, que podem ser toda palavra que não é uma \emph{stop word} -- como preposições e conjunções -- ou apenas suas raízes -- por exemplo, a raíz das palavras ``trabalho'' e ``trabalhador'' é ``trabalh'' -- para reduzir o número de componentes. Depois, cada termo é codificado em valores numéricos a partir de um modelo de representação chamado \emph{Word2Vec}\footnote{Explicar Word2Vec}. A partir daí, os vetores de valores são utilizados como variáveis independentes, ou \emph{features}, em um algoritmo cujo objetivo é otimizar os parâmetros da função que os associa a uma variável dependente, ou \emph{target}. Em NER, o \emph{target} trata-se de uma variável com diversas classes de entidades. 
-
-Um dos bancos de dados públicos para treinamento de modelos de NER é o \emph{Universal Dependencies for Portuguese} (UDP), organizado por \citeonline{depling2017}. Trata-se de um banco de dados com 9.365 sentenças e 210.960 termos estruturados a partir de 530 regras gramaticais e tipificados em 17 categorias de entidades. Em comparação com outros bancos de dados, o UDP possui tamanho reduzido e grande qualidade, especialmente quando levamos em consideração que possui maior número de categorias identificadas \cite{sekine2004named}. Isso se deve ao fato de que trata-se de uma recategorização de sentenças analisadas gramaticalmente, as quais integram a coleção \emph{Bosque}, abastecida há mais de 15 anos por linguistas e gramáticos.  
-
-Outro exemplo de desse tipo de \emph{dataset}, é o \emph{WikiNER}, organizado por \citeonline{nothman2013learning}. A equipe liderou o projeto que classificou manualmente 7.200 artigos do Wikipédia, utilizandos de técnicas de \emph{Semi-Supervised Learning} para aceletar a coleta de informação relevante, reunindo mais de 2 milhões de termos tipificados em 4 categorias. Em comparação ao UDP, o WikiNER possui menor granularidade -- menos categorias -- e uma classificação manual menos ortodoxa, porém o número substancialmente maior de informação. No procedimento de classificação, as \emph{tags} do site servem de atalhos para reconhecer entidades. 
-
-Tomando as duas fontes para o treinamento de algoritmos de classificação automatizada, ferramentas abertas para a comunidade, como o \emph{spaCy} atingem 89{\%} de precisão para língua portuguesa. Apesar de avanços significativos, todavia, os modelos de decodificação desse tipo de dado ainda não são capazes de detectar relações sofisticadas de dependência entre Atributos e Entidades -- segundo o esquema da Figura 3. Portanto, só é possível mensurar valência a nível e sentença e, imputar com algum nível de ruído, o valor da medida para as Entidades mencionadas na sentença.
-
-Com relação a Análise de Sentimentos, assim como outras técnicas, trata-se de uma solução algorítmica para análise de textos, mais especificamente para extração e identificação de emoções, sentimentos e atitudes. Ao longo das três últimas décadas, tem sido cada vez mais utilizada para a automatização no processamento de \emph{reviews} no mercado digital e extração de \emph{features} da dados textuais de opinião pública. Quanto as premissas do modelo e o tipo de resposta que oferece, algoritmos dessa natureza partem do postulado de que toda sentença possui uma valência, ou seja, um posicionamento latente que pode ser tipificado em pró, contra ou neutro -- frequentemente convertidos em valores como -1,0 e 1 -- que representam as classes do \emph{target} na otimização do modelo \cite{serrano2015sentiment, mantyla2018evolution}.  
-
-Uma das formas de calibrar o algoritmo consiste no uso de dicionários codificados, construídos a partir da classificação de termos e expressões que carregam carga semântica negativa ou positiva. Nesse sentido, alguns dos modelos propostos na literatura ancoram-se em artefatos produzidos no campo da linguística e psicologia para conectar palavras a sentimentos, inclusive com grande complexidade. Um desses exemplos é o PANAS-t, desenvolvido por  \citeonline{gonccalves2013panas}, que baseia-se na escala psicométrica PNAS, proposta por \citeonline{watson1988development} e posteriormente estendida por \citeonline{clark1994manual}. A escala, elaborada a partir de entrevistas nas quais respondentes descreviam como se sentiam em relação a certos eventos, identifica expressões associadas a afeição e rejeição. 
-
-Anos antes, \citeonline{bollen2010determining} apresentaram um modelo baseado na escala POMS \cite{mcnair2003profile} que, partindo da mesma estratégia, identificava a valência de uma sentença a partir da frequencia relativa de suas palavras e suas correspondências como a tipologia estabelecida. Contudo, o estado da arte das estratégias baseadas em dicionários é ocupado por combinações de tipologias, uso de fontes mistas -- como \emph{emoticons} --  e processos generativos automatizados, como a interpolação da valência de uma palavra para seus sinônimos e tipificação baseada em coocorrência \cite{hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}.
-
-Uma alternativa às técnicas baseadas em dicionários são o modelos de \emph{Machine Learning} que tomam texto como \emph{features} na previsão de uma \emph{target} rotulado, semelhante a estratégia utilizada em NER. O primeiro trabalho a adotar essa abordagem foi apresentado por \citeonline{pang2002thumbs} que, se utilizando de uma base de \emph{reviews} de produtos, tomou das \emph{n-grams} -- sequências contínuas de palavras -- das sentenças como \emph{inputs}. Atualmente, a literatura conta com modelos de elevadíssimo desempenho, dos quais também se utilizam de procedimentos como o \emph{Word2Vec}, que atingem grande precisão de classificação mesmo como bases de treinamento rotuladas por não-especialistas \cite{howard2018universal, sun2019fine, yang2019xlnet}. 
-
+Com relação a quantidade de temas estimados, a literatura que lida com análise de tópicos com textos de discursos políticos varia na adoção de 8 até 500 componentes \cite{chen2010opinion, fang2012mining, balasubramanyan2012modeling, balasubramanyan2012modeling, cohen2013classifying, song2014analyzing, levy2014driving, van2014lda,zirn2014multidimensional}. Porém, as investigações que optaram por menor número de parâmetros obtiveram, em média, resultados mais verossíveis, ou passo que a identificação de muitos tópicos implicou em perda de similitude com codificações manuais. Assim, optou-se pela estimativa de 12 tópicos e do uso dos top 20 termos de cada um deles para codificação dos parágrafos. Conforme especificado na Equação 3.1, a polaridade de cada tópico é mensurada a partir da valência das sentenças dos parâgrafos que o compõem.  
+ 
 \begin{figure}[h]
-	\caption{Diagrama da Operacionalização das Estimatições}
-	\label{fig:diagrama}
+	\caption{Diagrama da Operacionalização das Estimações}
+	\label{fig:diagram_op}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/diagrama_operacionalizacao}
 	Fonte: elaboração do autor
 \end{figure}
-
-Na Figura 5 é possível visualizar o diagrama dos processos de estimação dos componentes que compõem os indicadores de Apoio à Entidades Dominantes e Apoio è Entidades Minoritárias. De maneira sintética, utiliza-se LDA para mapear as principais palavras que compõem cada um dos tópicos que segmentam os discursos políticos, para isso utiliza-se todo o escopo de textos da base da de dados. Assume-se que cada tópico implica em um tema, que temas ocorrêm no nível de parágrafo e que a valência das sentenças de ocorrência desses termos, mensurada por SA, correspondem a valência do tema. 
-
-Para identificar a afeição ou rejeição direta de um orador em relação à grupos específicos, utiliza-se NER para identificar as entidades mencionadas em seus discursos e mensura-se a valência das sentenças de ocorrência dessas entidades, por meio de SA, como \emph{proxy} da atitude em relação a elas. Com as medidas da Valência Média do Temas e a Valência Média das Entidades, compõem-se os indicadores de Apoio à Entidades Subalternas e Apoio à Entidades Dominantes. Um aspecto importante de ser ressaltado na arquitetura do algoritmo, é sua capacidade de mapear opiniões no nível de sentença e do contexto no qual estão inseridas.
+ 
+Na Figura 6 é possível visualizar o diagrama do processo de estimação dos parâmetros do estimador de RWA proposto. De maneira sintética, utiliza-se LDA  -- tomando todo o escopo de textos da base da de dados -- para mapear as principais palavras que compõem cada um dos tópicos que segmentam os discursos políticos. Assume-se que cada tópico implica em um tema, que temas ocorrêm no nível de parágrafo. Para identificar afeição ou rejeição aos Valores Autoritários, primeiro, observa-se cada conjunto de discursos de um orador que contém alguma das Raízes do Quadro 1. A partir da seleção, a Valência da sentença em que a Raíz da Entidade ocorre é mensurada, o Tema no qual está inserida é detectado, tal como sua Valência, e assim é possível realizar a soma ponderada ilustrada pela Equação 3.3.
 
 \chapter{Prova de Conceito: o caso da Câmara dos Deputados}\label{resultados}
 
