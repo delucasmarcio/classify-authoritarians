@@ -658,14 +658,14 @@ No Quadro 1 é possível observar uma tipologia de Entidades baseda na escala or
 	\begin{tabular}{llc}
 		\toprule
 {Componente}								& {Valor} 					& {Raízes} \\ \midrule
-\multirow{2}{*}{Submissão à Autoridade} 	& Ufanismo				& \textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz} \\
-& Radicalismo Religioso		& \textit{raiz},\textit{raiz},\textit{raiz} \\ \midrule
-\multirow{3}{*}{Agressividade Autoritária} 	& Punitivismo 				& \textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz} \\
-& Patriarcalismo	 		& \textit{raiz},\textit{raiz} \\
-& Rejeição à Diversidade	& \textit{raiz},\textit{raiz},\textit{raiz} \\ \midrule
-\multirow{3}{*}{Convencionalismo} 			& Majoritarismo 			& \textit{raiz} \\
-& Hierarquia				& \textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz} \\
-& Anti-cientificismo		& \textit{raiz},\textit{raiz},\textit{raiz},\textit{raiz} \\ \bottomrule
+\multirow{2}{*}{Submissão à Autoridade} 	& Ufanismo				& \textit{brasil}, \textit{patri}, \textit{nação}, \textit{herói} \\
+& Radicalismo Religioso		& \textit{deus},\textit{igreja},\textit{evangelic},\textit{catolic},\textit{crist},\textit{crent} \\ \midrule
+\multirow{3}{*}{Agressividade Autoritária} 	& Punitivismo 				& \textit{polic}, \textit{seguranc}, \textit{milit}, \textit{exercit}, \textit{forcas} \\
+& Patriarcalismo	 		& \textit{famil}, \textit{tradic}, \textit{home} \\
+& Rejeição à Diversidade	& \textit{negr},\textit{racial},\textit{homossex},\textit{lesb},\textit{human},\textit{indigen},\textit{mulh} \\ \midrule
+\multirow{3}{*}{Convencionalismo} 			& Majoritarismo 			& \textit{povo}, \textit{nós}, \textit{cidad}\\
+& Hierarquia				& \textit{autorid}, \textit{trabalh}, \textit{empreg}, \textit{banc}, \textit{financeir} \\
+& Anti-cientificismo		& \textit{estud}, \textit{univers}, \textit{pesquis}, \textit{cienc}, \textit{cient}, \textit{tecno} \\ \bottomrule
 	\end{tabular}
 	
 	\vspace{0.6cm}
@@ -846,15 +846,27 @@ Para estimarmos o valor de RWA de um agente político é necessário definir um 
 
 Antes de detalhar a estratégia operacional é necessário caracterizar o uso da Valência como indicador de apoio e desaprovação. Para isso, é importante ressaltar que a validade de modelos baseados em dados textuais envolve a expectativa de que é possível estabelecer equivalência entre valores numéricos e emoções humanas. Além disso, todo modelo carrega um caráter de representação da realidade, que ganha precisão quanto mais for validada. Apesar de críticas que apontam que essas duas premissas são fortes demais para serem aceitas em pesquisas sobre comunicação política \cite{miguel2015vale}, a análise de valências têm se popularizado e conta com enorme respaudo acadêmico \cite{feres2016analise}.      
 
-Como opção metodológica, adotou-se a Análise de Sentimentos, uma solução algorítmica para análise de textos, desenvolvida para extração e identificação de emoções, sentimentos e atitudes, altamente escalável. Ao longo das três últimas décadas, tem sido cada vez mais utilizada para a automatização no processamento de \emph{reviews} no mercado digital e extração de \emph{features} textuais de opinião pública. Quanto as premissas do modelo e o tipo de resposta que oferece, algoritmos dessa natureza partem do postulado de que toda sentença possui uma valência, ou seja, um posicionamento latente que pode ser tipificado em pró, contra ou neutro -- frequentemente assinalados com os valores -1,0 e 1 -- que representam as classes do \emph{target} na otimização do modelo \cite{serrano2015sentiment, mantyla2018evolution}.  
+Como opção metodológica, adotou-se a Análise de Sentimentos, uma solução algorítmica para análise de textos, desenvolvida para extração e identificação de emoções, sentimentos e atitudes, altamente escalável. Ao longo das três últimas décadas, tem sido cada vez mais utilizada para a automatização no processamento de \emph{reviews} no mercado digital e extração de \emph{features} textuais de opinião pública. Quanto às premissas do modelo e o tipo de resposta que oferece, algoritmos dessa natureza partem do postulado de que toda sentença possui uma valência, ou seja, um posicionamento latente que pode ser tipificado em pró, contra ou neutro -- frequentemente assinalados com os valores -1,0 e 1 -- que representam as classes do \emph{target} na otimização do modelo \cite{serrano2015sentiment, mantyla2018evolution}.  
 
 Uma das formas de calibrar o algoritmo consiste no uso de dicionários codificados, construídos a partir da classificação de termos e expressões que carregam carga semântica negativa ou positiva. Nesse sentido, alguns dos modelos propostos na literatura ancoram-se em artefatos produzidos no campo da linguística e psicologia para conectar palavras a sentimentos, inclusive com grande complexidade. Um desses exemplos é o PANAS-t, desenvolvido por  \citeonline{gonccalves2013panas}, que baseia-se na escala psicométrica PNAS, proposta por \citeonline{watson1988development} e posteriormente estendida por \citeonline{clark1994manual}. A escala, elaborada a partir de entrevistas nas quais respondentes descreviam como se sentiam em relação a certos eventos, identifica expressões associadas a afeição e rejeição. 
 
 Anos antes, \citeonline{bollen2010determining} apresentaram um modelo baseado na escala POMS \cite{mcnair2003profile} que, partindo da mesma estratégia, identificava a valência de uma sentença a partir da frequencia relativa de suas palavras e suas correspondências como a tipologia estabelecida. Contudo, o estado da arte das estratégias baseadas em dicionários é ocupado por combinações de tipologias, uso de fontes mistas -- como \emph{emoticons} --  e processos generativos automatizados, como a interpolação da valência de uma palavra para seus sinônimos e tipificação baseada em coocorrência \cite{hogenboom2013exploiting, hutto2014vader, thelwall2014sentistrength, canuto2016exploiting}.
 
-Uma alternativa às técnicas baseadas em dicionários são o modelos de \emph{Machine Learning} que tomam texto como \emph{features} na previsão de um \emph{target} que, nesse caso, é composto por classes de sentimentos\footnote{Do ponto de vista da implementação, as soluções mais simples prodecem da seguinte forma: 1) o texto é preprocessado, \emph{stopwords} e símbolos são removidos, 2) as palavras que compõem cada sentenção são divididas e as com menor frequência são retiradas 3) a partir de todas as palavras que compõem o banco de dados, sentenças são representadas por uma série de variáveis binárias que identificam a presença ou não de cada uma das palavras e 4) um modelo de regressão logística é treinado utilizando as variáveis binárias como variáveis independentes e o \emph{target}, como variável dependente. Soluções mais complexas envolvem métodos mais sofisticados de transformam das sentenças em variáveis numéricas e modelos mais adequados para lidar com multicolinearidade e otimização.}. O primeiro trabalho a adotar essa abordagem foi apresentado por \citeonline{pang2002thumbs} que, se utilizando de uma base de \emph{reviews} de produtos, tomou das \emph{n-grams} -- sequências contínuas de palavras -- das sentenças como \emph{inputs}. Atualmente, a literatura documenta modelos de elevado desempenho, que atingem grande precisão de classificação, mesmo como bases de treinamento rotuladas por não-especialistas \cite{howard2018universal, sun2019fine, yang2019xlnet}. Essa abordagem, contudo, implica em custos de elaboração e implementação significativamente caros, uma vez que imprescindem de codificação em larga escala e grande poder computacional para atingirem precisão satisfatória.
+Uma alternativa às técnicas baseadas em dicionários são o modelos de \emph{Machine Learning} que tomam texto como \emph{features} na previsão de um \emph{target} que, nesse caso, é composto por classes de sentimentos\footnote{Do ponto de vista da implementação, as soluções mais simples prodecem da seguinte forma: 1) o texto é preprocessado, \emph{stopwords} e símbolos são removidos, 2) as palavras que compõem cada sentenção são divididas e as com menor frequência são retiradas 3) a partir de todas as palavras que compõem o banco de dados, sentenças são representadas por uma série de variáveis binárias que identificam a presença ou não de cada uma das palavras e 4) um modelo de regressão logística é treinado utilizando as variáveis binárias como variáveis independentes e o \emph{target}, como variável dependente. Soluções mais complexas envolvem métodos mais sofisticados de transformam das sentenças em variáveis numéricas -- como \emph{Word2Vec} -- e modelos mais adequados para lidar com multicolinearidade e otimização -- como \emph{Ensemble Learning}.}. O primeiro trabalho a adotar essa abordagem foi apresentado por \citeonline{pang2002thumbs} que, se utilizando de uma base de \emph{reviews} de produtos, tomou das \emph{n-grams} -- sequências contínuas de palavras -- das sentenças como \emph{inputs}. Atualmente, a literatura documenta modelos de elevado desempenho, que atingem grande precisão de classificação, mesmo como bases de treinamento rotuladas por não-especialistas \cite{howard2018universal, sun2019fine, yang2019xlnet}. Essa abordagem, contudo, implica em custos de elaboração e implementação significativamente caros, uma vez que imprescindem de codificação em larga escala e grande poder computacional para atingirem precisão satisfatória.
 
 Para definição do modelo de classificação, relizou-se experimentos tomando os 4 principais dicionários léxicos de sentimentos para língua portuguesa: ReLi, LIWC, OpLexicon e SentiLex-PT. O ReLi concatena anotações de 1600 resenhas de 14 livros diferentes \cite{freitas2012vampiro, freitas2014sparkling} e foi transformado em léxico a partir do trabalho de \citeonline{freitas2013construccao} por meio da codificação de vocabulário afetivo. O LIWC é produto de uma investigação psicológica sobre a expressão de sentimentos de estados mentais por meio da linguagem que contou com aplicação extensa de questionários não-estruturados \cite{pennebaker1996cognitive, pennebaker1997linguistic}. Já o OpLexicon e SentiLex-PT se diferenciam das alternativas anteriores por utilizarem codificação automatizada na composição dos léxicos \cite{souza2011construction, carvalho2015sentilex}.
+
+Quanto aos procedimentos realizados na etapa de preprocessamento do texto, as seguintes transformações são realizadas nas sentenças: i) eliminação de pontuação, símbolos e números; ii) remoção de \emph{stopwords} (artigos, preposições, conjunções ...); iii) conversão de todas as palavras da sentença para minúsculo. Vale ressaltar que as raízes das palavras não foram extraídas, uma vez que a flexão é relevante em classificações por dicionário léxico. Partindo da sentença preprocessada, para extração do sentimento, utilizou-se a regra de bolso adotada por \citeonline{gonccalves2013panas}, na qual as quantidades de termos positivos e negativos são relacionadas por meio da fórmula da Equação 3.9.
+
+\begin{equation}
+P(s) = 
+\begin{cases}
+\frac{\alpha_s - \beta_s}{\alpha_s}, & \text{se}\ \beta_s \leq \alpha_s \\
+\frac{-1(\beta_s - \alpha_s)}{\beta_s}, & \text{se}\ \beta_s > \alpha_s
+\end{cases}
+\end{equation}
+
+Sendo $P(s)$ a polaridade da sentença \emph{s}; $\alpha_s$ a quantidade de termos positivos na sentença e  $\beta_s$ a quantidade de termos negativos.
 
 Como base de avaliação dos experimentos, utilizou-se um banco de dados, de elaboração própria, composto pelas setenças das 511 declarações de voto na sessão que discutiu a admissibilidade do \emph{impeachment} de Dilma Roussef. As sentenças foram codificadas manualmente em 3 categorias de valência: negativas, neutras e positivas. Uma vez que a sessão contou com grande audiência, num momento de intensas manifestações civis no país, as falas dos parlamentares manifestaram-se em um microcosmos de afetos políticos. Com isso, constitui-se um cenário ideal para mensurar a precisão de métodos de classificação de sentimentos.   
 
@@ -916,13 +928,140 @@ Na Figura 6 é possível visualizar o diagrama do processo de estimação dos pa
 
 \chapter{Prova de Conceito: o caso da Câmara dos Deputados}\label{resultados}
 
-O 
+\section{Introdução}
 
-\section{Coletando dados}
+A combinação de um passado autoritário recente, um resultado eleitoral que levou a presidência um candidato com plataforma de campanha fortemente marcada por traços iliberais \cite{hunter2019bolsonaro} e um sistema político de grandes dimensões tornam o Brasil um candidato para a investigação da expressão de autoritarismo em grandes grupos.
 
-\section{Estimando meta-parâmetros textuais}
+Ao longo dos últimos anos, representantes políticos que estabelecem identidade de campanha baseada na memória do regime militar ou no passado profissional como membros das forças de repressão do Estado têm angariado cada vez mais espaço nos pleitos eleitorais \cite{berlatto2015candidatos, berlatto2016policia}. A trajetória de crescimento do seu desempenho é precipitada ainda por eventos que aumentam a saliência da questão de segurança, como os ataques do PCC em 2006. Consistente oposição aos direitos humanos, filiação a partidos pequenos, defesa combativa do crime e enrijecimento das formas de controle social são elementos característicos do conteúdo da sua atuação \cite{berlatto2015candidatos, berlatto2016policia, faganellobancada, faganello2017voto}
 
-\section{Avaliando resultados}		
+Do ponto de vista das tentativas de identificação do fenômeno, a literatura angaria uma variedade de critérios de classificação que captam, em maior ou menor medida, traços autoritários típicos de alguns grupos de representantes. Candidatos das Forças de Repressão do Estado e Políticos das Forças de Segurança são duas tipologias utilizadas para identificar, entre candidatos e parlamentares, aqueles indivíduos que estão comprometidos com a narrativa de corporações militares e policiais \cite{berlatto2015candidatos,berlatto2016policia}. Já a Bancada da Bala refere-se a uma agremiação informal de parlamentares que fazem \textit{lobby} para indústria armamentista e tendem a compor um conjunto de forças conservadoras nas câmaras estaduais e federal \cite{faganellobancada,faganello2017voto}.
+
+Em um espectro próximo, há trabalhos que utilizam discursos de candidatos e parlamentares como fonte para fazer inferências sobre posicionamentos relativos à direitos reprodutivos \cite{miguel2017direito, santos2017debate}, sexualidade \cite{machado2013discursos, lacerda2016ideologia} e religiosidade \cite{gonccalves2016discurso}. Nessas investigações, conclusões acerca dos valores de tolerência e republicanismo adjacentes as falas compõem um mapa em formação das atitudes democráticas entre os representantes políticos. Contudo, nem todos os Políticos das Forças de Segurança, Candidatos das Forças de Repressão do Estado ou da Bancada da Bala se opõem aos princípios democráticos, por vezes se limitam ao comportamento corporativista. Além disso, uma observação segmentada das falas impede a construção de índices de preconceito generalizado. 
+
+Nas seções a seguir, serão detalhados os passos da construção de indicadores de RWA para os parlamentares brasileiros, a partir de suas falas, conforme os pressupostos e especificações definidas nas seções anteriores.
+
+\section{Coletando e Organizando Dados}
+
+Como forma de ampliar a transparência entre as atividades do plenário e os cidadãos, a Câmara dos Deputados possui o serviço de Dados Abertos, que conta com uma API de consulta pública, possibilitando a extração de dados de Blocos, Deputados, Eventos, Frentes, Legislaturas, Partidos, Proposições, Referências, Votações e Órgãos. A iniciativa, lançada em 2017 em consonância com a Lei de Acesso à Informação de 2011, permite o acesso fácil e o consumo em larga escala dos produtos do trabalho de transcrição e catalogação do Regimento Interno da Câmara dos Deputados.
+
+No que diz respeito a velocidade de coleta, a documentação da API consta que, no período de 6:00 às 23:59, o Portal aceita 90 requisições por minuto e, das 00:00 às 5:59, 300. Foi por meio da API que os grandes volumes de dados de discursos de parlamentares foram extraídos de forma otimizada, utilizando \emph{framework} de raspagem de dados assíncrona. No período de elaboração dessa dissertação, as transcrições dos discursos realizados no plenário estavam disponíveis a partir dos anos 2000. Com isso, foi possível processar as falas proferidas entre a segunda metade da 51ª legislatura e meados da 56ª, permitindo a observação longitudinal de mais de 20 anos de atividade da Câmara dos Deputados, identificando de traços atitudinais em oradores que se manifestaram em pelo menos uma das seções.
+
+\begin{center}
+	Tabela 2 - Estatísticas de Oradores por Legislatura
+	
+	\vspace{0.4cm}
+	
+	\begin{tabular}{lccccccc}
+		\toprule
+		{}				& {51*}		& {52} 	& {53}	& {54}	& {55}	& {56**}	& {Total}	\\ \midrule
+		{Deputados} 	& 642		& 629	& 646	& 671	& 633	& 545		& 3766		\\ 
+		{Oradores} 		& 614		& 604	& 595	& 631	& 604	& 508		& 3556		\\ \midrule
+		{Discursos} 	& 31377		& 77458	& 83629	& 83468	& 88265	& 24974		& 389171	\\ 
+		\bottomrule
+	\end{tabular}
+	
+	\vspace{0.6cm}
+	
+	* : dados coletados a partir de Janeiro de 2000; ** : dados coletados até Maio de 2020.
+\end{center}
+
+Na Tabela 2 é possível observar, em cada uma das legislaturas, o número de Deputados ativos -- contanto com eleitos e suplentes que assumiram o mandato em algum momento -- o número de Oradores -- Deputados ativos que realizaram ao menos algum discurso em alguma das seções -- e o volume de Discursos realizados. Descartando as legislaturas 51 e 56, por apresentarem dados restritos, é possível observar um movimento de crescimento da quantidade de discursos que não é acompanhado pelas flutuações no número de oradores. No total, ao longo do perído de coleta, 389.171 discursos foram realizados por 3556 parlamentares\footnote{É importante ressaltar que, seguindo a estratégia metodológica de \citeonline{moreira2016palavra}, são considerados registros multíplos em caso de indivíduos que foram eleitos para legislaturas distintas. Ou seja, um parlamentar é contado uma vez por legislatura para qual elegeu-se.}.
+
+\begin{figure}[h]
+	\caption{Quantis da Frequência de Realização de Discursos por Legislatura}
+	\label{fig:quantis_discursos}
+	\centering
+	\includegraphics[width=.7\linewidth]{figures/quantis_discursos}
+	
+	Fonte: elaboração do autor
+\end{figure}
+
+Ainda no que diz respeito a tendência de ampliação do uso do espaço de fala, a Tabela 2 oferece indícios para inferir que esse processo decorre da concentração de pronunciamentos em uma porção restrita de parlamentares. A despeito das flutuações nos valores da mediana, os quantis mais elevados de frequência têm seus valores ampliados ao longo da série histórica. Essa dinâmica acentua um fato documentado pela literatura, e reforçado pela Figura 8, de que uma minoria de Deputados concentra grande espaço nos pronunciamentos do plenário \cite{moreira2016palavra}. Em todas as legislatura, é possível identificar uma distribuição de hiper-concentrada nos valores mais baixos e uma longa calda onde estão incluídos os palamentares mais comunicativos.    
+
+\begin{figure}[!htb]
+	\caption{Distribuição da Realização de Discursos por Legislatura}
+	\centering
+	
+	\begin{minipage}[b]{0.3\textwidth}
+	\textbf{Legislatura 51}
+	\label{fig:dens_legis_51}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/dens_oradores_51}
+	
+	\end{minipage}
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Legislatura 52}
+		\label{fig:dens_legis_52}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dens_oradores_52}
+		
+	\end{minipage}
+	\\
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Legislautra 53}
+		\label{fig:dens_legis_53}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dens_oradores_53}
+		
+	\end{minipage}
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Lgislatura 54}
+		\label{fig:dens_legis_54}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dens_oradores_54}
+		
+	\end{minipage}
+	\\
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Legislautra 55}
+		\label{fig:dens_legis_55}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dens_oradores_55}
+		
+	\end{minipage}
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Legislatura 56}
+		\label{fig:dens_legis_56}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dens_oradores_56}
+		
+	\end{minipage}	
+
+	Fonte: elaboração do autor
+	\begin{flushleft}
+		Nota: O limite das abcissas dos gráficos foi fixado com o propósito de facilitar a visualização. Os pontos de máximo para as legislaturas são: 1186, 51; 2383, 52; 5965, 53; 2268, 54; 1829, 55 e 501, 56. 
+	\end{flushleft} 
+\end{figure}
+
+Além de observar a frequência de pronunciamentos parlamentares, para a estimação do indicador de RWA proposto, é necessário observar a ocorrência de raízes de palavras que mapeiam cada uma das dimensões do autoritarismo, conforme foi especificado no Quadro 1. Na Figura 9 é possível observar que a ocorrência de termos pertencentes a cada dimensão segue o padrão de distribuição concentrada nos valores mais baixos e esparsa nos mais altos. É importante ressaltar que o gráfico não representa os valores de Submissão à Autoridade, Agressividade Autoritária e Convencionalismo em si, mas a ocorrência de termos que tornam possível estimar o posicionamento latente do parlamentar em relação aos Valores Autoritários.
+
+\begin{figure}[h]
+	\caption{Distribuição da Ocorrência de Raízes das Dimensões de RWA}
+	\label{fig:dens_ocorrencia_termos}
+	\centering
+	\includegraphics[width=.7\linewidth]{figures/dens_dimensoes_rwa}
+	
+	Fonte: elaboração do autor
+	\begin{flushleft}
+	Nota: O limite da abcissa do gráfico foi fixado com o propósito de facilitar a visualização. Os pontos de máximo para as dimensões do RWA são: 2597, Submissão à Autoridade; 2001, Agressividade Autoritáriae e 4437, Convencionalismo. 
+	\end{flushleft} 	
+\end{figure}
+
+Ainda sobre a Figura 9, pode-se inferir que ocorrência de termos pertencentes a uma dimensão do autoritarismo é maior quando a cauda da sua distribuição é mais pesada. Nesse sentido, é possível identificar mais discursos em que parlamentares manifestaram adesão ou rejeição a valores Convencionalistas do que de à Submissão à Autoridade e à Agressividade Autoritária. Ao todo, ao longo de todas as legislaturas, 3475 parlamentares mencionaram alguma Entidade referente a Convencionalismo, 3386, referente à Submissão à Autoridade e 3335, referente à Agressividade Autoritária. Esses números indicam que a Tipologia de Entidades definina possui grande cobertura e, consequentemente, permite uma estimativa parcial da Escala de Valores Autoritários para uma parte substancial dos Deputados.
+
+Na seção seguinte, serão apresentados os procedimentos para estimativa de RWA entre parlamentares brasileiros a partir dos seus pronunciamentos no plenário da Câmara dos Deputados.
+
+\section{Estimando RWA entre Deputados}
+
+
+\section{Avaliando resultados}
+
+aa
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
