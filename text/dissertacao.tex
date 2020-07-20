@@ -104,7 +104,7 @@ brazil				% o último idioma é o principal do documento
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{Classificando Políticos Autoritários: uma prova de conceito com a Câmara dos Deputados no Brasil}
+\titulo{Mensurando Autoritarismo nas Palavras: o caso da Câmara dos Deputados no Brasil}
 \autor{Marcio de Lucas Cunha Gomes}
 \local{Brasil}
 \data{2020}
@@ -119,7 +119,7 @@ brazil				% o último idioma é o principal do documento
 \tipotrabalho{Dissertação (Mestrado)}
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
 % o nome da instituição e a área de concentração 
-\preambulo{Dissertação apresentada ao Departamento de Ciência Política da Universidade  Federal de Pernambuco para obtenção  do  título  de  Mestre em Ciência Política. Orientador: Prof. Dra. Nara Pavão}
+\preambulo{Dissertação apresentada ao Departamento de Ciência Política da Universidade  Federal de Pernambuco para obtenção  do  título  de  Mestre em Ciência Política. Orientadora: Prof. Dra. Nara Pavão}
 % ---
 
 
@@ -345,7 +345,7 @@ brazil				% o último idioma é o principal do documento
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
-	Como mensurar autoritarismo nas atitudes de políticos eleitos por regimes democráticos? Apesar inúmeros trabalhos na Ciência Política tratarem das causas e consequências da ascenção de lideranças autoritárias em regimes democráticos, ainda existem ferramentas limitadas para identificá-las. Como forma de preencher uma lacuna na literatura, essa dissertação propõem-se a apresentar um modelo de classificação de agentes autoritários baseado nos seus discursos. O classificador é inspirado nas Escalas F e RWA, propostas por Adorno e Altemeyer, repectivamente, e utiliza-se de Named-Entity Recognition e Sentiment de Analysis como técnicas para medir sentido e intensidade do valor atribuído a entidades típicas do discurso autoritário. Como prova de conceito, utilizou-se 420 mil falas de 3700 parlamentares da Câmara dos Deputados, realizadas nos anos de 2000 à 2019. Entre os resultados, identificou-se que, apesar de flutuações significativas ao longo das legislaturas, 2018 é marcado por um ano de expressivo aumento de atitude autoritárias. Também é possível confirmar expectativas da literatura de que as bancadas da Bala e da Bíblia concentram, em média, maior número de parlamentares autoritários.
+	Como mensurar autoritarismo nas atitudes de políticos eleitos democraticamente? Apesar de inúmeros trabalhos na Ciência Política tratarem das causas e consequências da ascensão de lideranças autoritárias em regimes democráticos, ainda existem ferramentas limitadas para identificá-las em larga escala. Como forma de oferecer uma solução metodológica para a literatura, propõem-se um indicador alternativo de autoritarismo baseado na análise automatizada de conteúdo dos discursos de agentes autoritários. A medida é inspirada nas Escalas F e RWA, propostas por Adorno e Altemeyer, repectivamente, e utiliza-se de Processamento de Linguagem Natural e Análise de Sentimentos como técnicas para mensurar adesão ou rejeição à entidades típicas do discurso autoritário. Como prova de conceito, compilou-se dados de falas realizadas por 3505 parlamentares da Câmara dos Deputados durante nos anos de 2000 à 2020. Entre os resultados, identificou-se que i) a média de autoritarismo não variou significativamente ao longos das legislaturas; ii) apesar disso, é possível identificar mudanças na dispersão da escala, indicando polarização em torno de pautas democráticas; iii) em consonância com as expectativas da literatura, parlamentares associados à congregações religiosas apresentam maiores valores médios de RWA; iv) tal como bancadas ligadas a produção de commodities e v) descendentes de dinastias políticas.
 
 	\textbf{Palavras-chave}: autoritarismo, discurso político, Câmara dos Deputados, análise de conteúdo, processamento de linguagem natural, reconhecimento de entidades nomeadas, análise de sentimentos.
 \end{resumo}
@@ -404,19 +404,26 @@ brazil				% o último idioma é o principal do documento
 % ----------------------------------------------------------
 \chapter{Introdução}
 
-Ao longo das últimas duas decadas, as discussões acerca dos efeitos do autoritarismo sobre a qualidade e estabilidade das democracias ganharam maior espaço na academia e na mídia. Contudo, diferente de outros momentos da história, as principais ameaças atuais para a liberdade são líderes políticos, eleitos democraticamente, que carregam consigo traços autoritários nas suas atitudes e comportamento. Em casos mais dramáticos, como na Venezuela, Hungria e Turquia, a presença de chefes do executivo pouco simpáticos à democracia foi elemento decisivo para a ocorrência de reversões autoritárias.
+Ao longo das últimas duas décadas, discussões sobre os efeitos do autoritarismo na qualidade e estabilidade da democracia ganharam maior espaço na academia e na mídia. Esse fenômeno se deve, em grande medida, ao aumento da presença de líderes políticos, eleitos democraticamente, que carregam consigo traços autoritários nas suas atitudes e comportamento. Em casos mais dramáticos, como na Venezuela, Hungria e Turquia, a presença de chefes do executivo pouco simpáticos à democracia foi elemento decisivo para a ocorrência de reversões autoritárias.
 
-Todavia, apesar da relevância do tema, a literatura ainda conta com ferramentas limitadas para identificar agentes políticos autoritários. Em decorrência da dificuldade da coleta de dados primários de membros da classe política e integrantes de grupos organizados, pesquisadores utililizam-se de grandes heurísticas como unidade de análise. Alguns dos exemplos são: partidos políticos \cite{mudde2009populist, loxton2014authoritarian, mudde2016introduction}; movimentos sociais \cite{caiani2017radical}, comportamento do eleitorado \cite{booth1984political, seligson2003democracies, seligson2005feeding, rydgren2007sociology} ou grandes lideranças \cite{levitsky2018democracies, norris2019cultural}. Como efeito, o autoritarismo é observado apenas nas suas expressões organizadas, permanecendo inobservado enquanto atributo individual de parlamentares e candidatos.
+Todavia, apesar da relevância do tema, a literatura ainda conta com ferramentas limitadas para identificar agentes políticos autoritários. Dificuldades no acesso a membros da classe política e limitações na escala de análises que se debruçam sobre documentos, manifestos e trajetórias biográficas têm sido contornadas com adoção de grandes heurísticas como unidade de análise. Entre os níveis de observação, destacam-se partidos políticos \cite{mudde2009populist, loxton2014authoritarian, mudde2016introduction}; movimentos sociais \cite{caiani2017radical}, comportamento do eleitorado \cite{booth1984political, seligson2003democracies, seligson2005feeding, rydgren2007sociology} e grandes lideranças \cite{levitsky2018democracies, norris2019cultural}. Por efeito, o autoritarismo, enquanto atributo individual de parlamentares, candidatos e ativistas, permanece pouco observado. 
 
-Como forma de propor um critério de classificação para políticos autoritários, extensível para um grande número de agentes políticos e em consonância com o conhecimento reunido no campo da psicologia política, essa dissertação apresenta um modelo de identificação de atitudes autoritárias baseada na análise automatizada de conteúdo aplicada ao caso da Câmara dos Deputados. Para isso, coletou-se 420 mil falas de 3700 parlamentares realizadas entre os anos 2000 e 2019. Endoçando os avanços de trabalhos da Ciência Política que têm utilizado texto como dado (\emph{text as data}) \cite{batista2016mensurando, moreira2016palavra}, expera-se contribuir para a literatura a partir da exploração de fontes de alterativas de dados para construção de um indicador relevante para a literatura. 
+Como solução metodológica para investigações sobre autoritarismo no nível individual, nessa dissertação será apresentado um indicador de adesão à valores autoritários a partir de discursos políticos. Incorporando os avanços no uso de \emph{text as data} na Ciência Política, a medida explora fontes alternativas para expandir o universo de identificação do fenômeno. Na operacionalização do indicador, utiliza-se Processamento de Linguagem Natural para calcular o posicionamento latente de um agente político em relação a Entidades Textuais típicas do discurso autoritário. Nas expressões de agressividade contra minorias, submissão radical às autoridades e reacionarismo, termos são mobilizadas para referenciar adesão ou rejeição.
 
-A despeito das dificuldades na classificação de políticos autoritários, uma extensa bibliografia apresenta definições e indicadores extensamente validados para mensurar propensão ao autoritarismo \cite{titus1957california, meloen1993f}. De maneira geral, a personalidade autoritária envolve a crença de que o mundo é um lugar hostil e periogoso, no qual a segurança coletiva, a estabilidade e a ordem são indispensáveis a qualquer custo \cite{altemeyer1996authoritarian}. Partindo disso, seus representantes tendem a dividir a sociedade em dois grupos homogêneos: àqueles que buscam preservar o mundo como nós conhecemos e aderem as autoridades vigentes e aqueles que as desafiam.
+As estimativas buscam aderência às escalas F e RWA, propostas respectivamente por \citeonline{adorno1950authoritarian} e \citeonline{altemeyer1981right} e consagradas na literatura como os instrumentos extensamente validados para mensurar propensão ao autoritarismo \cite{titus1957california, meloen1993f}. Nos fundamentos que baseiam as medidas, a personalidade autoritária é descrita como a crença de que o mundo é um lugar hostil e periogoso, no qual a segurança coletiva, a estabilidade e a ordem são indispensáveis a qualquer custo \cite{altemeyer1996authoritarian}. Partindo disso, seus representantes tendem a dividir a sociedade em dois grupos homogêneos: àqueles que buscam preservar o mundo como nós conhecemos e aderem as autoridades vigentes e àqueles que as desafiam.
 
-Nas investigações empíricas sobre o tema, a literatura reúne evidências de que a personalidade autoritária está associada à discriminação \cite{titus1957california, meloen1993f}, preconceito religioso \cite{laythe2001predicting}, contra homossexuais \cite{hunsberger1996religious, jonathan2008influence}, preconceito racial \cite{rowatt2004christian}, à manifestações de sexismo \cite{sibley2007antecedents}, xenofobia \cite{thomsen2008we} e preconceito em geral \cite{asbrock2010right}. O que o panorama geral das pesquisas sugere é que, de maneira geral, entidades associadas a ordem, segurança e autoridade são desproporcionalmente valorizadas por autoritários e entidades associadas a populações marginais, desproporcionalmente depreciadas.
+Nas investigações empíricas sobre o tema, a literatura reúne evidências de que a personalidade autoritária está associada à discriminação \cite{titus1957california, meloen1993f}, preconceito religioso \cite{laythe2001predicting}, contra homossexuais \cite{hunsberger1996religious, jonathan2008influence}, preconceito racial \cite{rowatt2004christian}, à manifestações de sexismo \cite{sibley2007antecedents}, xenofobia \cite{thomsen2008we} e preconceito em geral \cite{asbrock2010right}. Entre os segmentos da população que concentram maiores médias nas escalas de autoritarismo estão àqueles mais expostos à violência \cite{seligson2010crime, carreras2013impact, de2018analises}, mais ativos religiosamente \cite{rokeach1956political,johnson2011mediational, fuks2012atitudes}, de classe econômica e renda mais baixa e municípios de menor porte \cite{fbsp2017medo}.      
 
-Na estratégia metodológica, dessa dissertação, tomou-se o autoritarismo em discursos como uma variável composta a partir da composição da i) adesão e rejeição expressas por populações sensíveis e grupos de autoridade ii) o sentimento subjacente aos temas nos quais as menções a essas entidades são realizadas e iii) a ênfase nas menções. Com isso, estimou-se a posição individual dos parlamentares quanto às duas classes de entidades que possuem grande saliência no discurso autoritário: os objetos de exaltação e os objetos de rejeição. Para isso, utilizou-se um dicionário de termos, para identificar discursos e sentenças nas quais cada classe de entidade é mencionada, algoritmos de reconhecimento automatizado de tópicos (LDA) e de entidades nomeadas (NER), para categorizar temas e atributos das entidades e Análise de Sentimentos, para medir a valência dos componentes. Essa abordagem inspira-se nos trabalhos que utilizaram análise automatizada de conteúdo para classificar populistas \cite{rooduijn2011measuring, oliver2016rise, aslanidis2018measuring} e identificar incivilidade \cite{vargo2017socioeconomic} e depressão \cite{neuman2012proactive, kang2016identifying}.
+Para avaliar a consistência do indicador proposto e verificar sua aderência às medidas utilizadas pela literatura, foram replicados testes com algumas das covariáveis relevantes nas pesquisas sobre autoritarismo. Entre as lideranças em que espera-se maior propensão a expressão de autoritarismo estão: i) representantes das Forças de Segurança; ii) líderes de congregações religiosas e iii) patriarcas de segmentos econômicos agrários. Para isso, foram coletadas 420 mil falas de 3505 parlamentares realizadas entre os anos 2000 e 2020 na Câmara dos Deputados. A conjugação de i) pré-condições para emergência de atitudes autoritárias entre representantes e ii) alta disponibilidade de dados colocam o Brasil na posição de caso favorável para investigação de autoritarismo em um grande conjunto de agentes políticos. 
 
-Os resultados apresentaram correspondência com as expectativas da literatura. As bacadas da Bala e da Bíblia apresentaram proporcionamente o maior número de parlamentares autoritários. Como consequência, é possível perceber, para o caso brasileiro, forte correlação entre discurso autoritário e o populismo penal. Por fim, outro dado preocupante, é de que os anos de 2018 e 2019 apresentaram um significativo aumento na expressão de autoritarismo por meio das falas de parlamentares.
+Os resultados dos testes apresentaram correspondência parcial com as expectativas da literatura. Parlamentares oriundos da hierarquia religiosa, assim como aqueles que compõem as bancadas da Bíblia, da Mineração e do Agronegócio apresentam valores de RWA superiores a média dos Deputados. Todavia, ex-membros das Forças de Segurança e representantes da banca da Bala refletiram médias equivalentes aos colegas de Câmara. Os achados confirmam 2 das 3 expectativas da literatura que foram testadas, indicando que o indicador subidentifica expressões autoritárias associadas ao Punitivismo e Agressividade Autoritária, apesar de ser aderente aos componentes de Submissão à Autoridade e Convencionalismo. 
+
+Considerando as possibilidades de aprimoramento, o indicador alternativo de autoritarismo proposto nesta dissertação oferece uma \emph{proxy} satisfatória para operacionalização de estudos no tema. Diante das dificuldades em coletar informações sobre crenças e preferências de elites políticas, a estratégia de extrair variáveis atitudinais a partir de seus discursos permite a construção de bancos de dados extensos e investigações amplas sobre tendências anti-democráticas entre candidatos, parlamentares, líderes e integrantes de movimentos sociais. A versatilidade do indicador alternativo também possibilita sua operacionalização em multi-plataformas, como Redes Sociais.
+
+No capítulo a seguir será apresentada uma caracterização do Autoritarismo no campo da Ciência e Política, considerando seus diversos níveis de manifestação, as especificidades da personalidade autoritária e os elementos associados ao discurso autoritário. Também são apresentadas hipóteses reunidas da literatura sobre autoritarismo com propósito é utilizá-las como validação para indicador proposto. Já no capítulo 3 é apresentada uma revisão das estratégias tradicionais para classificar agentes políticos autoritários e as técnicas, cada vez mais populares, de extração de variáveis atitudinais a partir de dados textuais.
+
+No capítulo 4 é detalhado o processo de estimação do indicador alternativo de autoritarismo, que assegura duas premissas: i) a aderências às medidas consolidadas na literatura e ii) a correção do viés de omissão que espera-se em contexto nos quais estamos extraindo informação a partir de falas realizadas de forma espontânea, sem o estímulo de um questionário. Posteriormente, no capítulo 5, a verificação empírica da validade das hipóteses estabelecidas no capítulo 2 é apresentada tomando os dados de discursos de parlamentares realizados na Câmara dos Deputados. E, por fim, no capítulo 6, são discutidas as conclusões.
+
 % ----------------------------------------------------------
 
 \chapter{O que é Autoritarismo?}\label{referencial_teorico}
@@ -521,32 +528,59 @@ Dentre as causas da hierarquia entre indivíduos, que funda a desigualdade obser
 
 Se por um lado características individuais explicam o surgimento da dominância, por outro, não são o único ingrediente do surgimento e estabilidade de cadeias de hierarquia que envolvem muitos integrantes. A disputa pelo lugar de dominância é mediada pela dinâmica interna dos grupos que compõem uma sociedade \cite{ridgeway1989dominance} e, em seguida, das relações entre os grupos \cite{chase1980social,chase2002individual}. Ou seja, a desigualdade é segmentada por clivagens formadas a partir de uma dinâmica complexa que envolvem aglutinações hierarquizadas de individúos em grupos que podem ser ordenados por status.  
 
-Como argumentam \citeonline{sidanius2001social}, uma vez que grupos sociais são formados em torno de clivagens específicas -- por exemplo idade, gênero, clãs, nacionalidade, religião, cor e classe social -- seus integrantes reproduzem comportamento competitivo no qual buscam estabelecer superioridade. Nessa dinâmica, a formação de grupos dominantes e dominados estabelece a base da desigualdade, que consiste em uma sobreatribuição de valores positivos aos dominantes e, de valores negativos, aos dominados. Dado que discursos refletem relações de dominância presentes na sociedade, expressões linguísticas do autoritarismo tendem a carregar traços valorativos presentes no seu conteúdo ideológico: a exaltação das figuras reconhecidas como autoridade e a depreciação de grupos minoritários de status social mais baixo. 
+Como argumentam \citeonline{sidanius2001social}, uma vez que grupos sociais são formados em torno de clivagens específicas -- por exemplo idade, gênero, clãs, nacionalidade, religião, cor e classe social -- seus integrantes reproduzem comportamento competitivo no qual buscam estabelecer superioridade. Nessa dinâmica, a formação de grupos dominantes e dominados estabelece a base da desigualdade, que consiste em uma super-atribuição de valores positivos aos dominantes e, de valores negativos, aos dominados. Dado que discursos refletem relações de dominância presentes na sociedade, expressões linguísticas do autoritarismo tendem a carregar traços valorativos presentes no seu conteúdo ideológico: a exaltação das figuras reconhecidas como autoridade e a depreciação de grupos minoritários de status social mais baixo. 
 
-Isto posto, o autoritarismo pode ser lido como uma propriedade que emerge de sistemas sociais desiguais e hierarquizados, nos quais a dominância é reafirmada como narrativa política. Conforme argumentou-se na seção anterior, indivíduos autoritários aprensentam maior propensão a expressão de preconceito e discriminação em geral. Ainda sobre o conteúdo de discursos autoritários, a literatura aponta a conexão entre autoritarismo e demonstração de hostilidade \cite{siegel1956relationship} e trabalhos que se dedicaram a investigar grupos políticos extremistas produziram resultados que sugerem que o dogmatismo político está correlacionado ao uso de discurso de ódio contra adversários e minorias \cite{gerstenfeld2003hate, ben2016hate}.  
+Isto posto, o autoritarismo pode ser lido como uma propriedade que emerge de sistemas sociais desiguais e hierarquizados, nos quais a dominância é reafirmada como narrativa política. Conforme argumentou-se na seção anterior, indivíduos autoritários apresentam maior propensão a expressão de preconceito e discriminação em geral. Ainda sobre o conteúdo de discursos autoritários, a literatura aponta a conexão entre autoritarismo e demonstração de hostilidade \cite{siegel1956relationship} e trabalhos que se dedicaram a investigar grupos políticos extremistas produziram resultados que sugerem que o dogmatismo político está correlacionado ao uso de discurso de ódio contra adversários e minorias \cite{gerstenfeld2003hate, ben2016hate}.  
 
-O discurso autoritário apresenta ainda dimensões revelevantes no que dizem respeito a sua forma e estilo. \citeonline{beauzamy2013discontinuities} argumentou que dois traços comuns ao discurso facista no passado e no presente, são: i) o uso de argumentos elaborados com base em pseudo-ciência, teorias da conspiração, considerações mágicas e exegese religiosa e ii) uso de clichês e esteriótipos populares como metáforas em menções pejorativas a populações marginalizadas. Numa investigação similar, \citeonline{khany2014systemic} analisaram 20 discursos de personalidades históricas como Hitler, Stalin e Gadhafi. Como características comuns, apontaram a i) o majoritarismo e a massificação, ii) a defesa da incorruptibilidade do governo e iii) a manipulação das expectativas da opinião pública.
+O discurso autoritário apresenta ainda dimensões relevantes no que dizem respeito a sua forma e estilo. \citeonline{beauzamy2013discontinuities} argumentou que dois traços comuns ao discurso fascista no passado e no presente, são: i) o uso de argumentos elaborados com base em pseudo-ciência, teorias da conspiração, considerações mágicas e exegese religiosa e ii) uso de clichês e esteriótipos populares como metáforas em menções pejorativas a populações marginalizadas. Numa investigação similar, \citeonline{khany2014systemic} analisaram 20 discursos de personalidades históricas como Hitler, Stalin e Gadhafi. Como características comuns, apontaram a i) o majoritarismo e a massificação, ii) a defesa da incorruptibilidade do governo e iii) a manipulação das expectativas da opinião pública.
 
-Em convergência com essa caracterização, \citeonline{smith1990symptomology} apresentou constribuição relevante para uma tipologia dos discursos autoritários analisando debates parlamentares acerca da ``proibição do fomento a homosexualidade'', que ocorreram entre as décadas de 80 e 90, nos EUA. Segundo a autora as falas autoritárias que emergiram sobre o tema apresentavam um traço marcante: a evocação de preconceitos e associações espúrias como método de enquadrar a discussão de forma desfavorável para a população gay. Em um dos exemplos dessa atitude, a menção à soropositividade como \emph{link} entre homossexualidade e problemas de saúde pública:
+Em convergência com essa caracterização, \citeonline{smith1990symptomology} apresentou contribuição relevante para uma tipologia dos discursos autoritários analisando debates parlamentares acerca da ``proibição do fomento a homossexualidade'', que ocorreram entre as décadas de 80 e 90, nos EUA. Segundo a autora as falas autoritárias que emergiram sobre o tema apresentavam um traço marcante: a evocação de preconceitos e associações espúrias como método de enquadrar a discussão de forma desfavorável para a população gay. Em um dos exemplos dessa atitude, a menção à soropositividade como \emph{link} entre homossexualidade e problemas de saúde pública:
 
 \begin{quote}
 	A hegemonic interpretation of the AIDS phenomenon is, for example, actually a representation of radical difference, situated within a long tradition of similar representations of 'other' social elements. This AIDS discourse is linked genealogically to popular anxieties about various diseases, communist infiltration, immigrant populations, crime 'waves', drug 'crazes', etc. \cite{smith2015advances}
 \end{quote}
 
-A conexão entre soropositividade e homossexualidade é um caso típico do fenômeno cognitivo documentado como \emph{illusory correlation}, segundo o qual duas categorias de eventos são associadas sem que sua co-ocorrência estatística seja signficativa. Além de uma inferência incorreta, capaz de estimular conclusões inadequadas, está na raiz do reforço de esteriótipos de raça, gênero e sexualidade que fazem parte do discurso autoritário. Quando indivíduos percebem maior frequencia relativa de comportamentos rejeitados em um grupo, há uma tendência de identificá-los como atributo intrínseco ao grupo em questão, mesmo que a ocorrência absoluta de ``imposturas'' seja baixa \cite{sidanius2001social}.   
+A conexão entre soropositividade e homossexualidade é um caso típico do fenômeno cognitivo documentado como \emph{illusory correlation}, segundo o qual duas categorias de eventos são associadas sem que sua co-ocorrência estatística seja significativa. Além de uma inferência incorreta, capaz de estimular conclusões inadequadas, está na raiz do reforço de esteriótipos de raça, gênero e sexualidade que fazem parte do discurso autoritário. Quando indivíduos percebem maior frequência relativa de comportamentos rejeitados em um grupo, há uma tendência de identificá-los como atributo intrínseco ao grupo em questão, mesmo que a ocorrência absoluta de ``imposturas'' seja baixa \cite{sidanius2001social}.   
 
-Além da frequente expressão de rejeição às populações identicadas como desviantes, discursos autoritários também envolvem constantes apelos a restauração da autoridade. Narrativas organicamente conectadas com o passado, que proclamam a restauração da ordem social e dos bons tempos que precederam o período atual tendem a ser instrumento de políticos autoritários para se colocarem como alternativas de crise \cite{pinto2004indoctrinating, mietzner2014indonesia}. 
+Além da frequente expressão de rejeição às populações identificadas como desviantes, discursos autoritários também envolvem constantes apelos a restauração da autoridade. Narrativas organicamente conectadas com o passado, que proclamam a restauração da ordem social e dos bons tempos que precederam o período atual tendem a ser instrumento de políticos autoritários para se colocarem como alternativas de crise \cite{pinto2004indoctrinating, mietzner2014indonesia}. 
 
-Com isso, políticos autoritários as vezes se apresentam como alternativas radicais para condução de processos revolucionários ou de transição radical. Nesses cenários, discursos populistas que antagonizam as elites no poder com o ``verdadeiro povo'' são a principal estratégia eleitoral lideranças \cite{muller2017populism, levitsky2018democracies}. A ploclamação de uma conexão íntima com a cultura, a tradição e os anseios da massa e o uso de forma verbal imperativa, autocentrada e reativa também são características marcantes de figuras autoritárias que buscam estabelecer uma nova hegemonia \cite{goldschlager1982towards, gounari2018authoritarianism, hunter2019bolsonaro}.
+Com isso, políticos autoritários as vezes se apresentam como alternativas radicais para condução de processos revolucionários ou de transição radical. Nesses cenários, discursos populistas que antagonizam as elites no poder com o ``verdadeiro povo'' são a principal estratégia eleitoral lideranças \cite{muller2017populism, levitsky2018democracies}. A proclamação de uma conexão íntima com a cultura, a tradição e os anseios da massa e o uso de forma verbal imperativa, autocentrada e reativa também são características marcantes de figuras autoritárias que buscam estabelecer uma nova hegemonia \cite{goldschlager1982towards, gounari2018authoritarianism, hunter2019bolsonaro}.
 
-Em síntese, o discurso autoritário é marcado por forte traço de polarização entre autoridades e indivíduos desviantes. Seja por referência direta ou indireta, às autoridades são atribuídas fortuna moral e, aos deviantes, todo o mal experienciado pelos "verdadeiros cidadãos". De modo a cristalizar valores e dogmas, políticos autoritários frequentemente apelam para falas majoritaristas que relembram o passado de maneira nostálgica e ascentuam as ameaças do presente. Como solução, apresentam-se em falas imperativas e hierarquizadas como guias para retomada da ordem e segurança. 
+Tendo isso em mente, é importante considerar que, como agentes políticos que disputam eleições, o uso estratégico da fala é uma variante importante para compreender a forma e o conteúdo dos discursos de lideranças autoritárias em regimes democráticos. É especialmente em sistemas polarizados e com muitos partidos, em que a decisão do eleitorado tende a ser mais complexa, que características pessoais ganham relevância no debate público \cite{adams2011candidates,curini2015conditional}. Nesses contextos, antagonizar com o \emph{establishment} democrático e com as regras constitucionais em prol da imagem de líder que não vê barreiras para realizar seus ideais compõem uma plataforma tática de campanha.   
+
+Em síntese, o discurso autoritário é marcado por forte traço de polarização entre autoridades e indivíduos desviantes. Seja por referência direta ou indireta, às autoridades são atribuídas fortuna moral e, aos desviantes, todo o mal experienciado pelos "verdadeiros cidadãos". De modo a cristalizar valores e dogmas, políticos autoritários frequentemente apelam para falas majoritaristas que relembram o passado de maneira nostálgica e acentuam as ameaças do presente. Como solução, apresentam-se em falas imperativas e hierarquizadas como guias para retomada da ordem e segurança. 
+
+\section{Expectativas da Literatura}
+
+Além de identificar características quanto a forma e conteúdo das narrativas autoritárias, investigações sobre o tema também reúnem um conjunto de fatores associados ao autoritarismo e aos grupos que apresentam maior prevalência de manifestá-lo. \citeonline{adorno1950authoritarian}, em seu trabalho seminal, apontou a rigidez e uso de violência da educação das crianças como um determinante central no desenvolvimento de atitudes autoritárias. Evidências coletadas posteriormente sugerem que a agressividade imposta na socialização primária eleva as taxas basais de estresse dos indivíduos e naturaliza a coerção como instrumento de negociação nas interações sociais \cite{hopf1993authoritarians, van2009authoritarianism}.
+
+Apesar das críticas direcionadas a Adorno devido a sua interpretação do autoritarismo enquanto patologia psicológica, a família certamente permanece como preditor relevante para personalidade autoritária. Pais transmitem seus valores aos filhos, especialmente quando esses valores envolvem posições radicais e restritivas. Além do efeito geracional direto, a composição familiar é responsável por favorecer a formação de atitudes autoritárias por meio de \emph{in-group favoritism} \cite{lewis2014common, altemeyer2006authoritarians}. O familismo, desenvolvido a partir de conexões familiares profundas, pode ser responsável por limitar o convívio com comportamentos diversos e envolver os mais jovens em posicionamentos conservadores.
+
+Outro vetor de força contrário a formação de uma mentalidade aberta e tolerante reside na religião. O fundamentalismo religioso oferece, em grande medida, precondições para adesão à narrativa autoritária: a crença em uma verdade eterna sobre a vida e o destino da humanidade, que depende do embate entre as forças do bem e do mal e da manutenção de práticas e tradições estabelecidas no passado \cite{rokeach1956political,rokeach1960open}. Como evidência desse fenômeno, a literatura encontra associação negativa entre intensidade da adesão à um sistema religioso e atitudes anti-democráticas e intolerantes \cite{pereira2001sistemas,pereira2004sistemas,fuks2012atitudes}. Como efeito, são as congregações religiosas mais radicais que constituem as parcelas mais fiéis do eleitorado de políticos autoritários \cite{mudde2013exclusionary, betz2016against}.
+
+A insegurança também integra o universo de covariáveis do autoritarismo. Os efeitos do RWA sobre a manifestação de preconceito e violência tendem a apresentar maior magnitude em contextos de maior ameaça objetiva ou medo de vitimização. Ataques terroristas impulsionam a manifestação de RWA e, além disso, atuam como moderadores do impacto do autoritarismo sobre aceitação do uso de tortura em guerras \cite{linden2018terror}. Outros trabalhos encontraram resultados similares tomando o apoio à medidas de vigilância e restrição da liberdade como variável dependente \cite{cohrs2005effects}. Estudos experimentais que manipularam a percepção de ameaça no mundo também encontram evidências de que RWA é função da avaliação do risco e da insegurança de um indivíduo \cite{duckitt2003impact,sibley2007effects}.
+
+A conexão entre violência e valores autoritários é corroborada ainda pela literatura que mensura os efeitos da violência sobre comportamento prossocial. Resultados de \emph{surveys} aplicados pré e pós guerras civis apontam que o conflito é uma fonte exógena de cooperação intragrupal e rivalidade intergrupal  \cite{bauer2016can,bauer2018trusting}. Investigações sobre as consequências dos homicídios cometidos pelos carteis de droga no México, identificaram efeitos heterogêneos da violência na manifestação de solidariedade com as vítimas: entre aqueles que tiveram parentes assassinados, a associação é positiva, já entre aqueles que não tiveram parente assassinados, negativa \cite{schedler2014collapse,schedler2016criminal}.
+
+Além de componentes socioculturais, fatores econômicos também estão correlacionados ao RWA. A literatura reúne evidências de que o desenvolvimento exerce efeitos profundos sobre a cultura política das sociedades. Durante o processo de modernização, conflitos redistributivos são amenizados por meio da elevação da renda média e as populações experienciam a formação de capital humano, que permite a construção de regras sociais mais tolerantes, seculares e individualistas \cite{sullivan1999psychological, inglehart2005modernization}. Nessa dinâmica, a amenização da insegurança existencial favorece uma solução cooperativa para os problemas coletivos e, portanto, aumentam o apoio popular à democracia.
+
+A relação entre economia e autoritarismo também se faz perceber a partir dos segmentos ocupacionais do mercado de trabalho. Mesmo em países que passaram por uma trajetória consistente de aumento da produtividade absoluta ao longos das últimas décadas, populações rurais absorveram poucos benefícios desse processo e perderam renda relativa. Como resultado, evidências apontam que o campo, em geral, constitui um cinturão de votos em favor de lideranças autoritárias, em grande medida por concentrarem maiores níveis de insegurança existencial \cite{ballard2017economic, norris2019cultural, mamonova2019populism, berlet2019rural,mamonova2019understanding}. Além disso, no levantamento realizado pelo \citeonline{fbsp2017medo}, foram nos municípios de menor porte e nas regiões mais rurais do Brasil que se concentraram as maiores médias de autoritarismo entre os entrevistados.
+
+Como síntese dos achados, podem ser definidas 4 hipóteses sobre os fatores associados ao autoritarismo:
+
+\begin{itemize}
+	\item \textit{H1 : Indivíduos que possuem vínculos profundos com a família e relações estreitas com outros grupos tendem a apresentar maior propensão a manifestação de autoritarismo.}
+	\item \textit{H2 : Fundamentalistas religiosos possuem precodições cognitivas que favorecem a adesão a valores autoritários.}
+	\item \textit{H3 : Pessoas expostas a maior risco de vitimização e maior percepção de insegurança estão mais propensas a aderir da narrativa autoritária.}
+	\item \textit{H4 : Àqueles que integram setores primários e economicamente sensíveis à choques externos tendem a incorporar atitudes autoritárias.}
+\end{itemize} 
 
 
 \chapter{Como classificar Agentes Autoritários?}\label{metodologia}
 
 \section{As estratégias convencionais}
 
-Conforme foi apresentado na seção \emph{Autoritarismo na política}, no capítulo 2, diversos trabalhos em Ciência Política se dedicaram a identificar causas e efeitos de políticos autoritários em regimes democráticos. Para isso, utilizam-se de um conjunto de estratégias metodológicas para classificar um agente autoritário. Nesse capítulo, abordará-se os principais critérios de classificação da literatura.
+Conforme foi apresentado na seção \emph{Autoritarismo na política}, no capítulo 2, diversos trabalhos em Ciência Política se dedicaram a identificar causas e efeitos de políticos autoritários em regimes democráticos. Para isso, utilizam-se de um conjunto de estratégias metodológicas para classificar um agente autoritário. Nesse capítulo, abordará-se os principais critérios de classificação da literatura: a Avaliação de Especialista, Análise de Movimento Político, Survey com Elites. Por fim será discutido o uso de Análise Automatizada de Conteúdo como técnica de extração de variáveis atitudinais a partir de dados textuais.
 
 \subsection{Avaliação de Especialista}
 
@@ -595,8 +629,6 @@ Como consequência das limitações, foram identificados apenas dois trabalhos n
 
 \section{Análise Automatizada de Conteúdo}
 
-\subsection{O Estado da Arte da Análise Automatizada de Conteúdo}
-
 Diante das limitações das abordagens anteriores, estratégias metodológicas que fazem uso de artefatos computacionais para otimizar processos de classificação têm se apresentado como uma solução para identificação em larga escala de atitudes e comportamentos de agentes políticos. Em particular, a literatura em Ciência Política que faz uso de Análise Automatizada de Conteúdo tem expandido seu escopo para ganhar aplicações em i) extração de informação sobre etnicidade a partir de nome \cite{roberts2016introduction}, ii) identificação de saliência temática em discursos de parlamentares \cite{batista2016mensurando, moreira2016palavra}, iii) construção de variáveis baseadas em componentes textuais \cite{curini2015conditional} e iv) extração de posicionamento ideológico implícito \cite{slapin2008scaling, ceron2016first}.
 
 Os principais trabalhos de referência para classificação de parlamentares baseado em discursos concentram-se no campo de estudos sobre populismo. A partir de técnicas de codificiação baseadas em dicionário de termos, algoritmos de foram capazes de replicar, com relativa precisão e elevada escalabilidade, a classificação realizada por codificadores individuais de discursos populistas \cite{pauwels2011measuring, rooduijn2011measuring, oliver2016rise}. De forma similar, outras investigações utilizaram processamento de linguagem natural para automatização de partes do processo de identificação, como o reconhecimento de entidades associadas a adjetivos populistas \cite{kyle2018populists} e detecção de \emph{triplets} -- tríades compostas por sujeito, verbo e predicado \cite{aslanidis2018measuring}.
@@ -620,15 +652,17 @@ No que diz respeito ao desempenho e validação dos métodos, em artigo de \cite
 
 Retomando o problema de pesquisa o qual esta dissertação busca resolver, de forma geral, avalia-se que o universo de \emph{Text as Data} apresenta uma saída consistente para a classificação de políticos autoritários. O potencial para processamento de grandes bancos de dados, com a possibilidade de modelar características individuais complexas, permite uma abordagem abrangente das atitudes de atores políticos cujo ofício implica no exercício da oratória.
 
-Conforme argumentou-se no Capítulo 2, para lideranças autoritárias, discursos são ferramentas de mobilização do seu eleitorado cativo. Nas democracias contemporâneas, é por meio da fala, carregada de traços marcantes, que estes agentes políticos sedimentam e usufruem da dominância que estabelecem. A literatura converge para apontar que indivíduos dominantes tendem a utilizar mais tempo de fala e maior eloquência em seus discursos. Portanto espera-se que um parlamentar autoritário utilize com maior frequência seu espaço no plenário e, com isso, forneça dados suficientes para sua identificação e minimizar a ocorrência de falsos negativos. 
+Conforme argumentou-se no Capítulo 2, para lideranças autoritárias, discursos são ferramentas de mobilização do seu eleitorado cativo. Nas democracias contemporâneas, é por meio da fala, carregada de traços marcantes, que estes agentes políticos sedimentam e usufruem da dominância que estabelecem. A literatura converge para apontar que indivíduos dominantes tendem a utilizar mais tempo de fala e maior eloquência em seus discursos. Portanto espera-se que um parlamentar autoritário utilize com maior frequência seu espaço no plenário e, com isso, forneça dados suficientes para sua identificação e minimizar a ocorrência de falsos negativos. Autoritários silenciosos são tão raros quanto democratas no comando de ditaduras. 
 
-Autoritários silenciosos são tão raros quanto democratas no comando de ditaduras. 
+\chapter{Propondo uma nova Mensuração}
 
-\subsection{Propondo um novo Critério de Classificação}
+\section{Introdução}
 
-Como forma de identificação alternativa de políticos autoritários, que possibilite a categorização em larga escala, de fomra ágil e generalizável, propõe-se um modelo baseado na análise automatizada de discursos e falas de agentes políticos. Atualmente, a comunicação política tem sido cada vez mais registrada em bancos de dados ou se proliferado em canais que possibilitam a coleta e armazenagem. Esse dado disponibiliza a operacionalização de técnicas que estimem atitudes políticas a partir de texto. Nos parágrafos a seguir, serão detalhados os passos e pressupostos dessa empreitada. 
+O uso de Análise Automatizada de Conteúdo para extração de variáveis atitudinais de dados textuais possui limitações. A principal razão delas está no fato de que as informações tomadas na modelagem advém de uma endógena de manifestação de crenças e preferências: o discurso. Todavia, essa estratégia apresenta-se como uma solução metodológica eficiente para construção de uma medida alternativa de autoritarismo capaz de ser implementada em larga escala, atualizada com frequência e adaptável para diversos canais de comunicação, inclusive Mídias e Redes Sociais. Nos parágrafos a seguir, serão detalhados os passos e pressupostos dessa empreitada.
 
-Como ponto de partida, asume-se que discursos políticos se estruturam em torno de elementos e dimensões fundamentais, que retém uma parcela fundamental sobre seu sentido e significado. Ao longo de uma fala, parlamentares percorrem o Tempo -- que diz respeito tanto a um recurso limitado como a uma sequência linear em que frase se encadeiam -- e Temas -- que constituem agrupamentos amplos de setenças que as conectam em torno de um sentido. Dispostos em Tempo e Tema, estão 2 elementos fundamentais da comunicação: Entidades e Atributos. Enquanto Entidades são objetos linguísticos que podem ser nomeados -- como o sujeito de uma frase -- Atributos funcionam como descritores das Entidades -- como adjetivos e advérbios, uma vez que comportam valor de característica.
+Como ponto de partida, é importante conceituar a dinâmica de manifestação do autoritarismo por meio de discursos. Na Figura 3 é possível visualizar uma diagrama de um discurso político, que é formado por 3 elementos fundamentais: Entidades, objetos textuais aos quais se atribui sentido e significado; Atributos, que são os elementos que adicionam qualidades e significância às Entidade; e Temas, porções do discurso que agregam múltiplas Entidades e Atributos em torno de um conjunto de significados maior. Esses 3 elementos são dispostos pelo orador ao longo do seu tempo de fala e, como consequência, sentenças apresentam-se temporalmente correlacionadas. Ou seja, o que foi dito antes afeta o significado do que é dito depois.
+
+A composição de Entidades, qualificadas por Atributos e agregadas em Temas, especifica a forma pela qual agentes dispõem suas atitudes políticas na forma de um discurso. Como efeito da intencionalidade do orador, Entidades, como `governo', `elite' e `povo', por exemplo, são tomadas como objeto de fala sobre o tema `crise atual', e é por meio dos Atributos associados às Entidades e ao Tema que consegue-se apreender o posicionamento latente do agente político em relação as Entidades mencionadas. Se os Atributos associados a uma Entidade são depreciativos ou se ela foi mencionada no contexto de um Tema que carrega uma carga de sentimentos negativo é intuitivo inferir que trata-se de um objeto de oposição para orador.
 
 \begin{figure}[h]
 	\caption{Diagrama do Discurso Político}
@@ -638,9 +672,7 @@ Como ponto de partida, asume-se que discursos políticos se estruturam em torno 
 	Fonte: elaboração do autor
 \end{figure}
 
-Figura 3 representa um diagrama simplicado do discurso político. A partir dele, pode-se compreender a dinâmica entre os elementos fundamentais e suas dimensões. Temas e Tempo ganham significado a medida em que um orador dispõem em sua fala setenças que conectam Atributos à Entidades. Uma vez que discursos políticos envolvem expressão de valor, espera-se que Atributos possuam uma polaridade -- positiva e negativa -- e que, por isso, funcionam como dispositivos para demarcar um posicionamento favorável ou desfavorável. Quanto mais Atributos negativos são utilizados para caracterizar as Entidades mencionadas sobre um tema, mais negativo será a compreensão geral da sentenças sobre o Tema.
-
-Na Figura 3, as Entidades mencionadas no início do discurso tanto recebem atributos positivos como compartilham de uma atmosférica temática de maior valência. No outro extremo, as Entidades mencionadas ao final do discurso possuem o inverso dessas características -- Atributos e Tema e negativos. Portanto, pode-se inferir que, no escopo de Entidades do orador, seu posicionamento variou da simpatia manifesta no início da fala até a rejeição, ao final. Essa dinâmica discursiva remete ao caráter hierárquico da estrutura textual, na qual termos são unidades básicas da linguagem, sentenças concatenam sentido no nível local, e temas consolidam grandes conjuntos de expressão.    
+Ainda sobre o exemplo da Figura 3, as Entidades mencionadas no início do discurso tanto recebem atributos positivos como compartilham de uma atmosférica temática de Valência\footnote{Valência, nesse sentido, significa a escala de polaridade adjacente a um texto, o quão positivo ou negativo é a intenção expressa em relação a uma Entidade. O termo foi popularizado pelos trabalhos no campo da Análise de Sentimentos, que buscam modelar a polaridade de sentenças e de tópicos.} mais positiva. No outro extremo, as Entidades mencionadas ao final do discurso possuem o inverso dessas características -- Atributos e Tema e negativos. Portanto, pode-se inferir que, no escopo de Entidades do orador, seu posicionamento variou da simpatia manifesta no início da fala até a rejeição, ao final. Essa dinâmica discursiva remete ao caráter hierárquico da estrutura textual, na qual termos são unidades básicas da linguagem, sentenças concatenam sentido no nível local, e temas consolidam grandes conjuntos de expressão.    
 
 Um exemplo prático dessa dinâmica está presente nas contribuições de \citeonline{smith1990symptomology}. Nas falas de parlamentares analisadas pela autora, a expressão de rejeição à minorias apresentou dois modos típicos: i) a atribuição direta de características negativas e ii) o estabelecimento de uma correlação ilusória a partir da menção de Entidades em Temas carregados de polaridade negativa -- como crime, entorpecentes e problemas de incivilidade. Do ponto de vista dos ouvintes, um grupo social que compartilha um mesmo espaço semântico que elementos popularmente reprovados também é passível de estigma. De forma simétrica, a exaltação de Entidades associadas às autoridades se dá pelos mesmos mecanismos.
 
@@ -648,7 +680,13 @@ Além do uso de Atributos, a posição em relação a uma Entidade é fortemente
 
 É intuitivo assumir, ainda, que Entidades, Atributos e Temas são elementos que se combinam de forma complexa em discursos politizados com o propósito de expressar conteúdo ideológico. Ou seja, é possível utilizar informação da fala dos oradores para inferir posicionamentos latentes e, no caso deste trabalho, estimar seus níveis de RWA. Para isso, assume-se que a Valência expressa em relação a certas classes de Entidade pode ser traduzida em adesão à grupos dominantes -- polaridade positiva -- e rejeição à grupos dominados -- polaridade negativa.
 
-No Quadro 1 é possível observar uma tipologia de Entidades baseda na escala original proposta por \citeonline{altemeyer2006authoritarians} e nas versões brasileiras das escalas de RWA e F, adaptadas respectivamente por \citeonline{vilanova2018adaptaccao} e \citeonline{de2018analises}. As divisões do quadro correspondem aos Componentes que Integram a Escala RWA, aos Valores que representam dimensões específicas nas quais cada componentes se manifesta. As Raízes são porções genéricas de palavras, sem prefixo, sufixos e conjugações, e no quadro elas identificam as principais Entidades que representativas de cada Valor. Para definí-las, tomou-se como base o trabalho realizado por \citeonline{moreira2016palavra}, que mapeou os tópicos constitutivos do debate político brasileiro a partir do resultado de \textit{expressed agenda model} e dados textuais de pronunciamento parlamentares.  
+\section{Definindo uma Tipologia de Entidades}
+
+Uma vez que o discurso autoritário é composto por uma estrutura básica de atribuição de significado, segundo a qual autoridades e aos valores tradicionais são sobrevalorizados e grupos identificados como populações desviantes, subvalorizadas, uma tipologia que identifique Entidades associadas a cada uma dos grupos se faz necessária para identificar o nível de adesão à narrativa autoritária. No Quadro 1 é possível observar uma tipologia de Entidades baseada na escala original proposta por \citeonline{altemeyer2006authoritarians} e nas versões brasileiras das escalas de RWA e F, adaptadas respectivamente por \citeonline{vilanova2018adaptaccao} e \citeonline{de2018analises}. 
+
+No Quadro 1, as divisões correspondem aos Componentes que Integram a Escala RWA, aos Valores que representam dimensões específicas nas quais cada componentes se manifesta e as Raízes que identificam elementos textuais associados a cada Valor. As Raízes são porções genéricas de palavras, sem prefixo, sufixos e conjugações, e no quadro elas identificam as principais Entidades que representativas de cada Valor. É partir desse mapeamento que é possível observar em quais falas uma gente político está se manifestando sobre cada um dos Valores Autoritários e, como consequência, mensurar seu posicionamento em relação a eles.
+
+Para elaboração da Tipologia foram realizados dois esforços: o primeiro envolve a identificação dos Valores Autoritários e o segundo, da Raízes textuais representativas de cada Valor. Para isso foram analisados os questionários originais, propostos por \citeonline{altemeyer1981right} e \citeonline{adorno1950authoritarian}, e as adaptações das escalas para o contexto brasileiro, realizada por \citeonline{vilanova2018adaptaccao} e \citeonline{de2018analises}. Ao longo de todas as perguntas dos questionários, além das dos 3 Componentes fundamentais do autoritarismo foram identificados 8 subcomponentes -- ao qual denominou-se de Valores -- que dizem respeito a elementos específicos da manifestação de cada componente. Já para definição das Raízes, tomou-se como base o trabalho realizado por \citeonline{moreira2016palavra}, que mapeou os tópicos constitutivos do debate político brasileiro a partir do resultado de \textit{expressed agenda model} e dados textuais de pronunciamento parlamentares. O mapeamento das Raízes foi finalizado a partir da consulta de sinônimos de conjugações de alguns dos termos. 
 
 \begin{center}
 	Quadro 1 - Tipologia de Entidades
@@ -673,7 +711,7 @@ No Quadro 1 é possível observar uma tipologia de Entidades baseda na escala or
 	Fonte: elaboração do autor com dados de \citeonline{moreira2016palavra} 
 \end{center}
 
-No contexto brasileiro, Ufanismo, Majoritarismo e Punitivismo são elementos centrais da narrativa que saúda o passado e propõem uma saída centralizadora e monotônica, que se utiliza do militarismo, para restauração. Entre os questionários originais e adaptados, estão presentes fortes referências a salvação do país por meio de punição mais rígidas e laços mais entreitos entre Estado e Sociedade Civil. Alguns dos exemplos são:
+No que diz respeito aos Valores que integram a Tipologia de Entidades, no contexto brasileiro, Ufanismo, Majoritarismo e Punitivismo são elementos centrais da narrativa que saúda o passado e propõem uma saída centralizadora e monotônica, que se utiliza do militarismo, para restauração. Entre os questionários originais e adaptados, estão presentes fortes referências a salvação do país por meio de punição mais rígidas e laços mais entreitos entre Estado e Sociedade Civil. Alguns dos exemplos extraídos das perguntas realizadas nos questionários são:
 
 \begin{quote}
 	1. Do jeito que as coisas estão indo nesse país, serão necessárias medidas severas para endireitar os meliantes, os criminosos e os pervertidos.
@@ -692,7 +730,7 @@ No contexto brasileiro, Ufanismo, Majoritarismo e Punitivismo são elementos cen
 	
 \end{quote}  
 
-Além de aspectos políticos, também é possível observar uma dimensão associada a atitudes e comportamentos captada pelos valores de Radicalismo Religioso, Patriarcalismo e Rejeição à Diversidade. Cada um dispõe de um conjunto próprio de julgamentos que segmentam a população entre ``bons'' e ``maus'', oferecendo as bases para discriminação e intolerância contra grupos vulneráveis, minorias e indivíduos que questionam a autoridade e a tradição. É possível visualizar alguns desses elementos normativos a partir das afirmativas:
+Além de aspectos políticos, também é possível observar uma dimensão associada a atitudes e comportamentos captada pelos valores de Radicalismo Religioso, Patriarcalismo e Rejeição à Diversidade. Cada um dispõe de um conjunto próprio de julgamentos que segmentam a população entre ``bons'' e ``maus'', oferecendo as bases para discriminação e intolerância contra grupos vulneráveis, minorias e indivíduos que questionam a autoridade e a tradição. É possível visualizar alguns desses elementos normativos a partir das afirmativas a seguir que integram os componentes para o calculo das escalas adaptadas por \citeonline{vilanova2018adaptaccao} e \citeonline{de2018analises}:
  
 \begin{quote}
 	
@@ -715,7 +753,7 @@ Além de aspectos políticos, também é possível observar uma dimensão associ
 	
 \end{quote}
 
-Por fim, a Hierarquia e Anti-cientificismo celam um bloqueio triplo contra as principais fontes de contestação na sociedade: aqueles que não ocupam a posição de poder e aqueles que produzem novos conhecimentos. Autoritários tendem rejeitar contestações a suas crenças e apregam-se veementemente aos papeis sociais tradicionais, naturalizando a desigualdade. Buscando identificar esse tipo de disposição, os questionários incluem as afirmativas:
+Por fim, a Hierarquia e Anti-cientificismo selam um bloqueio triplo contra as principais fontes de contestação na sociedade: aqueles que não ocupam a posição de poder e aqueles que produzem novos conhecimentos. Autoritários tendem rejeitar contestações a suas crenças e apegam-se veementemente aos papeis sociais tradicionais, naturalizando a desigualdade. Buscando identificar esse tipo de disposição, os questionários incluem as afirmativas:
  
 \begin{quote}
 	
@@ -731,7 +769,9 @@ Por fim, a Hierarquia e Anti-cientificismo celam um bloqueio triplo contra as pr
 	
 \end{quote}
 
-Como forma de mensurar o RWA a partir das falas de agentes políticos, tomou-se a expressão direta -- a nível de sentença -- e indireta -- a nível de contexto -- de adesão a cada um desses valores como indicativo de maior afinidade ao autoritarismo. A essa medida de propensão, deu-se o nome de escala de Valores Autoritários.
+Como resultado da manifestação de adesão ou rejeição aos componentes do autoritarismo obtém-se uma Escala de Valores Autoritários, que varia entre 0 e 8 pontos -- dado que identificou-se 8 subcomponentes do RWA. A escala busca extrair dos discursos as informações obtidas por meio dos questionários, porém como tratam-se de manifestações endógenas de atitudes, é preciso considerar que a expressão de posicionamento ocorre de maneira direta -- a nível de sentença -- ou indireta -- a nível de tema. No primeiro caso, Atributos associados às Entidades identificam a opinião, já no segundo caso, é o contexto, formado pelo conjunto dos Atributos das Entidades mencionadas sob um Tema, que apresenta o a posição em relação ao Valor. 
+
+\section{Definindo os Componentes de Mensuração}
 
 A Equação 3.1 especifica a estimação de expressão direta. Dado um Valor $v$, que compõem uma das dimensões do RWA, a adesão de um agente político se expressa pela razão da diferença entre o número de sentenças positivas -- $Pos_v$ --  e o número de sentenças negativas -- $Neg_v$ -- que mencionam alguma das Raízes que compõem a tipologia de Entidades no Quadro 1 e o número de sentenças de sentimento mais frequente -- $Pos_v$ ou $Neg_v$.
 
@@ -840,7 +880,7 @@ E(x^{2}|L, U) & = \int_{L}^{U} g \circ f(x, L, U) \,x^{2} \,dx
 
 É possível observar a proporcionalidade entre a quantidade de Valores Autoritários e o RWA estimado, porém os resultados obtidos por meio de atualização bayesiana apresentam correções contra subestimação e viés de seleção.
 
-\subsection{Operacionalizando a Estimação dos Parâmetros}
+\section{Operacionalizando a Estimação dos Componentes}
 
 Para estimarmos o valor de RWA de um agente político é necessário definir um método de mensuração da Valência das Sentenças associadas às Entidades. Conforme argumentou-se, a Valência é um componente que se expressa a nível de sentença e de contexto, manifestando a adesão e rejeição nas suas formas direta e indireta. É a partir do indicador de que uma sentença é positiva que pode-se calcular os parâmetros $\beta$ e $\gamma$ das Equações 3.1 e 3.2. E para definição do escopo do contexto, é necessário identificar a qual tópico ou tema a Entidade de interesse está inserida. Com as duas informações, é possível compor imagens como a Figura 3, que detalham a dinâmica discursiva de um discurso político.
 
@@ -870,8 +910,9 @@ Sendo $P(s)$ a polaridade da sentença \emph{s}; $\alpha_s$ a quantidade de term
 
 Como base de avaliação dos experimentos, utilizou-se um banco de dados, de elaboração própria, composto pelas setenças das 511 declarações de voto na sessão que discutiu a admissibilidade do \emph{impeachment} de Dilma Roussef. As sentenças foram codificadas manualmente em 3 categorias de valência: negativas, neutras e positivas. Uma vez que a sessão contou com grande audiência, num momento de intensas manifestações civis no país, as falas dos parlamentares manifestaram-se em um microcosmos de afetos políticos. Com isso, constitui-se um cenário ideal para mensurar a precisão de métodos de classificação de sentimentos.   
 
-Para construção dos modelos, utilizou-se como referência o trabalho de \citeonline{machado2018creating}, os quais propõem estratégias de otimização no uso de dicionário léxicos em problemas de classificação\footnote{\citeonline{machado2018creating} definem estratégias que implicam em ganhos significativos de desempenho na classificação. A primeira delas consiste no uso de advérbios de negação como identificadores de pontos de inversão da valência de um atributo. Nos exemplos ``\textit{Não! Ele é honesto}'' e ``\textit{Ele \textbf{não} é honesto!}'', a referência a honestidade possui pesos opostos que são demarcados pela posição do termo 'não' na frase. Outra contribuição importante envolve os métodos de combinação de dicionários léxicos. Tanto nos experimentos realizados pelos autores como nos realizados neste trabalho, a opção por ordem de uso das predições implicou em resultados significativos diferentes.}. O desempenho de cada experimento pode ser visualizado na Tabela 1. As métricas de Precisão Ponderada e Recall Ponderado indicam que o ReLi possuiu melhor desempenho individual, porém a combinação das classificações geradas por ReLi, LIWC e OpLexicon apresentou os melhores resultados\footnote{A combinação toma a predição do LIWC para a classe negativa, a predição do ReLi para a classe neutra e do OpLexicon, para a positiva.}. O modelo adotado, com isso, apresenta métricas satisfatórias -- para uma classficação de 3 classes -- e assegura uma estimativa válida para a valência de falas proferidas por agentes políticos.   
+Para construção dos modelos, utilizou-se como referência o trabalho de \citeonline{machado2018creating}, os quais propõem estratégias de otimização no uso de dicionário léxicos em problemas de classificação\footnote{\citeonline{machado2018creating} definem estratégias que implicam em ganhos significativos de desempenho na classificação. A primeira delas consiste no uso de advérbios de negação como identificadores de pontos de inversão da valência de um atributo. Nos exemplos ``\textit{Não! Ele é honesto}'' e ``\textit{Ele \textbf{não} é honesto!}'', a referência a honestidade possui pesos opostos que são demarcados pela posição do termo 'não' na frase. Outra contribuição importante envolve os métodos de combinação de dicionários léxicos. Tanto nos experimentos realizados pelos autores como nos realizados neste trabalho, a opção por ordem de uso das predições implicou em resultados significativos diferentes.}. O desempenho de cada experimento pode ser visualizado na Tabela 1. As métricas de Precisão Ponderada e Recall Ponderado\footnote{As métricas de Precisão e Recall significam, respectivamente, a taxa de acertos do classificador -- positivos verdadeiros sobre positivos assinalados -- e a taxa de cobertura da classificações -- positivos assinalados sobre positivos verdadeiros.} indicam que o ReLi possuiu melhor desempenho individual, porém a combinação das classificações geradas por ReLi, LIWC e OpLexicon apresentou os melhores resultados\footnote{A combinação toma a predição do LIWC para a classe negativa, a predição do ReLi para a classe neutra e do OpLexicon, para a positiva.}. O modelo adotado, com isso, apresenta métricas satisfatórias -- para uma classficação de 3 classes -- e assegura uma estimativa válida para a valência de falas proferidas por agentes políticos.   
 
+\newpage
 \begin{center}
 	Tabela 1 - Desempenho de Modelos de Classificação de Sentimentos
 	
@@ -891,42 +932,44 @@ Para construção dos modelos, utilizou-se como referência o trabalho de \citeo
 	\vspace{0.6cm}
 	
 	Fonte: elaboração do autor
+	\begin{flushleft}
+		Nota: O preprocessamento das declarações de voto dos Deputados incluiu, como etapa adicional, o particionamento do texto das falas em frases. Com isso, ao todo foram classificadas e avaliadas 1506 sentenças.
+	\end{flushleft}
 \end{center}     
 
-Mantendo a opção por técnicas de análise de conteúdo escaláveis e extensamente validadas, o LDA foi escolhido como método para definição do escopo dos contextos. Proposto por \citeonline{blei2003latent}, para identificação de tópicos, trata-se de um algorimto não-supervisionado -- que portanto não necessita ser especificado -- que toma documentos como o produto da geração de palavras por $k$ tópicos e possui como \emph{output} listas de termos representativos para cada conjunto. O LDA é bastante popular na literatura e conta com implementações para as ferramentas mais utilizadas pelas comunidade. Entre as premissas do modelo estão:
+Se por um lado o modelo de classificação de sentimentos resolve o problema da estimação de adesão e rejeição aos Valores Autoritários, por outro, é necessário definir uma estratégia metodológica para estimar a Valência do escopo das sentenças. Conforme argumentou-se, uma das estratégias discursivas de manifestação de posicionamentos consiste no uso de enquadramento, no qual uma Entidade é mencionada num contexto povoado de valência sem que a ela sejam expressos sentimentos diretamnete.
+
+Tradicionalmente, as soluções apresentadas na literatura para identificação de contexto são os modelos de tópicos, que consistem em uma família de técnicas estatísticas de clusterização de texto baseado na coorrência de palavras. Entre as técnicas mais populares na literatura está o LDA, que conta com implementações para as ferramentas mais utilizadas pelas comunidade. 
+
+Proposto por \citeonline{blei2003latent}, para identificação de tópicos, trata-se de um algorimto não-supervisionado -- que portanto não necessita ser estritamente especificado -- que toma documentos como o produto da geração de palavras por $k$ tópicos e possui como \emph{output} listas de termos representativos para cada conjunto. Entre as premissas do modelo estão:
 
 \begin{itemize}
 	\item A distribuição da ocorrência de termos constitui uma variável latente para temas e tópicos em um texto.
-	\item A frequência das palavras nas sentenças segue uma distribuição \emph{Poisson}, representada por pela variável aleatória $N$.
+	\item A frequência das palavras nas sentenças segue uma distribuição \emph{Poisson}.
 	\item A probabilidade associada ao pertecimento de um tópico está associado a uma variável aleatória de distribuição \emph{Dirichlet} de dimensão \emph{k}.
 	\item Tópicos identificados no LDA possuem a propriedade estatística de permutabilidade, ou seja, são independentes entre si em cada documento. 
 \end{itemize}
 
-Como consequência do terceiro item, o LDA não se trata de um classificador de palavras, como cada tópico é independente dentro de cada documento, os temos gerados pelo algoritmo para compor cada um dos conjuntos de termos representativos, alguns deles podem estar presente em mais de um tópico. Todavia, uma estratégia simples para adaptar a técnica para fins de classificação é atribuir, a um trecho textual, o tópico com o qual compartilha mais termos. A partir daí, para mensurar a valência média de cada tópico, basta calcular a média da valência das sentenças de todos os trechos textuais associados.
+Com relação a suas aplicações práticas, há uma extensa literatura que se dedica a extração de tópicos de discursos políticos como forma de identificar os principais temas de debate, posicionar partidos e organizações em relação a saliência temática e construir \emph{features} textuais que descrevam a atividade parlamentar \cite{chen2010opinion, fang2012mining, balasubramanyan2012modeling, balasubramanyan2012modeling, cohen2013classifying, song2014analyzing, levy2014driving, van2014lda,zirn2014multidimensional, batista2016mensurando}. No que diz respeito ao número de tópicos estimados, os autores variam na adoção de 8 até 500 componentes . Porém, as investigações que optaram por menor número de parâmetros obtiveram, em média, resultados mais verossíveis, au passo que a identificação de muitos tópicos implicou em perda de similitude com codificações manuais.
 
-\begin{figure}[h]
-	\caption{Diagrama do Modelo Generativo no LDA}
-	\label{fig:lda}
-	\centering
-	\includegraphics[width=1\linewidth]{figures/diagrama_lda}
-	Fonte: \citeonline{rain2015lda}
-\end{figure}
-
-Na Figura 4 é possível visualizar um diagrama do processo generativo de palavras, sua correspondência com os tópicos e proporção nos documentos proposto por \citeonline{rain2015lda}. No exemplo do autor, LDA está utilizado para classificar tópicos em um artigo sobre ``evolução e o uso de análise de dados para determinar o número de genes que um organismo necessita para sobreviver''. Apesar de cada tópico não possuir valência como uma dimensão adjacente, uma analogia como a aplicação que propõem-se é utilizá-los como um indicador de temas. Basedo na proporção de termos, ao primeiro parágrafo, imputa-se o tema vermelho, ao segundo, amarelo e ao terceiro, azul. 
-
-Com relação a quantidade de temas estimados, a literatura que lida com análise de tópicos com textos de discursos políticos varia na adoção de 8 até 500 componentes \cite{chen2010opinion, fang2012mining, balasubramanyan2012modeling, balasubramanyan2012modeling, cohen2013classifying, song2014analyzing, levy2014driving, van2014lda,zirn2014multidimensional}. Porém, as investigações que optaram por menor número de parâmetros obtiveram, em média, resultados mais verossíveis, ou passo que a identificação de muitos tópicos implicou em perda de similitude com codificações manuais. Assim, optou-se pela estimativa de 12 tópicos e do uso dos top 20 termos de cada um deles para codificação dos parágrafos. Conforme especificado na Equação 3.1, a polaridade de cada tópico é mensurada a partir da valência das sentenças dos parâgrafos que o compõem.  
+Todavia, apesar do LDA oferecer uma forma de identificar grandes escopos de significado em um discurso, por outro, apresenta problemas de implementação. Uma vez que trata-se de algoritmo não-supervisionado, é bastante sensível ao \emph{corpus} textual utilizado na classificação. Outro ponto de limitação são os seus elevados custos computais para sua execução em grandes bases de dados. Além disso, pela hipótese de permutabilidade, um mesmo conjunto de termos pode compor mais de um tópico, dificultando sua identificação. Por fim, conforme a argumentação da seção anterior, ilustrada pela Figura 3, a composição do contexto de menção de uma Entidade envolve elementos que circudam sua ocorrência, uma vez que sentenças são temporalmente correlacionadas. 
  
 \begin{figure}[h]
-	\caption{Diagrama da Operacionalização das Estimações}
+	\caption{Diagrama da Estimação dos Componentes da Valência}
 	\label{fig:diagram_op}
 	\centering
-	\includegraphics[width=1\linewidth]{figures/diagrama_operacionalizacao}
+	\includegraphics[width=0.5\linewidth]{figures/estimacao_valencia}
+	
 	Fonte: elaboração do autor
 \end{figure}
  
-Na Figura 6 é possível visualizar o diagrama do processo de estimação dos parâmetros do estimador de RWA proposto. De maneira sintética, utiliza-se LDA  -- tomando todo o escopo de textos da base da de dados -- para mapear as principais palavras que compõem cada um dos tópicos que segmentam os discursos políticos. Assume-se que cada tópico implica em um tema, que temas ocorrêm no nível de parágrafo. Para identificar afeição ou rejeição aos Valores Autoritários, primeiro, observa-se cada conjunto de discursos de um orador que contém alguma das Raízes do Quadro 1. A partir da seleção, a Valência da sentença em que a Raíz da Entidade ocorre é mensurada, o Tema no qual está inserida é detectado, tal como sua Valência, e assim é possível realizar a soma ponderada ilustrada pela Equação 3.3.
+Diante das limitações do LDA, como estratégia alternativa para mensurar o componente de Valência Indireta, foi adotado um procedimento de estimação baseado na correlação textual entre as setenças. Uma vez que expressões textuais estão temporalmente associadas e possuem uma ordenação que constitui seu sentido -- as expressões \textit{viver para trabalhar} e \textit{trabalhar para viver} possuem os mesmo termos, mas sentido distintos, por exemplo -- tomou-se o conjunto das 6 sentenças mais próximas da ocorrência de menção à Entidade -- as 3 sentenças que a precedem e as 3 sentenças que a sucedem -- como escopo de enquadramento. 
 
-\chapter{Prova de Conceito: o caso da Câmara dos Deputados}\label{resultados}
+Na Figura 5 é possível visualizar o digrama de estimação dos componentes de Valência Indireta -- que advém do contexto de enquadramento e que correspode ao parâmetro $\lambda$ da Equação 3.3 -- e de Valência Direta -- que é extraído diretamente da sentença em que a Entidade é mencionada e que corresponde ao parâmetro $\beta$ da Equação 3.3. Assume-se que os limites de 3 sentenças posteriores e anterioes concentram a maior parte da correlação textual existente em discursos e que, se por um lado não são capazes de detectar analogias sutis, por outro, mensuram as porções de intencionalidade mais marcantes e assertivas do discurso.
+ 
+De maneira sintética, os procedimentos de estimação do indicador de RWA proposto envolvem 2 etapas: 1) a estimação dos parâmetros da escala de Valores Autoritários para o indivíduo e 2) o cálculo final do RWA tomando a informação a priori e a resultante da escala de Valores Autoritários. Na primeira etapa são mensuradas as Valência da sentença de ocorrência e das sentenças vizinhas e da cada conjunto de raízes de Entidades Autoritárias -- conforme especifica o Quadro 1. Depois, esses resultados compõem os parâmetros da escala -- quantidade de Valores em que o agente se posicionou e quantidade de Valores com os quais manifestou adesão. Por fim, na segunda etapa, esses parâmetros são utilizados para restringir a distiruição a priori de RWA. E é a esperança condicional da distribuição a posteori que corresponde ao valor de RWA estimado, conforme a Equação 3.7.
+
+\chapter{Prova de Mensuração}\label{resultados}
 
 \section{Introdução}
 
@@ -936,9 +979,13 @@ Ao longo dos últimos anos, representantes políticos que estabelecem identidade
 
 Do ponto de vista das tentativas de identificação do fenômeno, a literatura angaria uma variedade de critérios de classificação que captam, em maior ou menor medida, traços autoritários típicos de alguns grupos de representantes. Candidatos das Forças de Repressão do Estado e Políticos das Forças de Segurança são duas tipologias utilizadas para identificar, entre candidatos e parlamentares, aqueles indivíduos que estão comprometidos com a narrativa de corporações militares e policiais \cite{berlatto2015candidatos,berlatto2016policia}. Já a Bancada da Bala refere-se a uma agremiação informal de parlamentares que fazem \textit{lobby} para indústria armamentista e tendem a compor um conjunto de forças conservadoras nas câmaras estaduais e federal \cite{faganellobancada,faganello2017voto}.
 
-Em um espectro próximo, há trabalhos que utilizam discursos de candidatos e parlamentares como fonte para fazer inferências sobre posicionamentos relativos à direitos reprodutivos \cite{miguel2017direito, santos2017debate}, sexualidade \cite{machado2013discursos, lacerda2016ideologia} e religiosidade \cite{gonccalves2016discurso}. Nessas investigações, conclusões acerca dos valores de tolerência e republicanismo adjacentes as falas compõem um mapa em formação das atitudes democráticas entre os representantes políticos. Contudo, nem todos os Políticos das Forças de Segurança, Candidatos das Forças de Repressão do Estado ou da Bancada da Bala se opõem aos princípios democráticos, por vezes se limitam ao comportamento corporativista. Além disso, uma observação segmentada das falas impede a construção de índices de preconceito generalizado. 
+Além de Políticos das Forças de Segurança, congregações religiosas têm ganhado espaço no parlamento, em grande medida favorecidas por uma expansão do protestantismo no Brasil, e consolidada sua representação com base em pautas morais e uma associação cada vez mais estreita com formas dogmáticas de governo \cite{codato2015nova, do2016religiao}. \citeonline{do2016religiao} argumenta que houve, a partir dos anos 2000, um processo de transformação da cultura evangélica que cristalizou a politização de seus fiéis, instalando componentes ideológicos à direita do espectro político em seus imaginários. Como consequência, o eleitorado evangélico apresenta maior propensão ao voto corporativista \cite{netto2017dinheiro}. 
 
-Nas seções a seguir, serão detalhados os passos da construção de indicadores de RWA para os parlamentares brasileiros, a partir de suas falas, conforme os pressupostos e especificações definidas nas seções anteriores.
+Em paralelo ao ganho de visibilidade de parlamentares evangélicos está o fato de que grupos políticos constituídos em torno do agronegócio, da mineração e da continuidade de dinastias políticas concentram uma porção expressiva de parlamentares na Câmara dos Deputados no Brasil \cite{congresso2016bancadas}. De fato, entre o pertencimento a famílias com passagem na política é um grande preditor de sucesso eleitoral e, entre os parlamentares mais jovens, os vínculos tendem a ser ainda mais intensos \cite{de2016familias}. Assim como os membros das Forças de Segurança e os Políticos Evangélicos, infere-se, com bases nas expectativas da literatura, discutida na seção 2.4, que setores produtivos primários e grupos familistas concentram maiores valores de RWA, em grande medida porque suas bases eleitorais espelham as precondições para gênese do autoritarismo. 
+
+Em um espectro de estudos transversal, há trabalhos que utilizam discursos de candidatos e parlamentares como fonte para fazer inferências sobre posicionamentos relativos à questão agrária e indígena \cite{xavier2015senhores}, direitos reprodutivos \cite{miguel2017direito, santos2017debate}, sexualidade \cite{machado2013discursos, lacerda2016ideologia} e religiosidade \cite{gonccalves2016discurso}. Nessas investigações, conclusões acerca dos valores de tolerância e republicanismo adjacentes as falas compõem um mapa em formação das atitudes democráticas entre os representantes políticos. Contudo, nem todos os Políticos das Forças de Segurança, Candidatos das Forças de Repressão do Estado ou da Bancada da Bala, tal como Evangélicos, Ruralistas e Familistas, se opõem aos princípios democráticos, por vezes se limitam ao comportamento corporativista. Além disso, uma observação segmentada das falas impede a construção de índices de preconceito generalizado. 
+
+Nas seções a seguir, serão detalhados os passos da construção de indicadores de RWA para os parlamentares brasileiros, a partir de suas falas, conforme os pressupostos e especificações definidas nas seções anteriores. Por fim, serão replicados testes para verificar as expectativas da literatura quanto aos parlamentares que tendem a expressas maior adesão à valores autoritários.
 
 \section{Coletando e Organizando Dados}
 
@@ -955,7 +1002,7 @@ No que diz respeito a velocidade de coleta, a documentação da API consta que, 
 		\toprule
 		{}				& {51*}		& {52} 	& {53}	& {54}	& {55}	& {56**}	& {Total}	\\ \midrule
 		{Deputados} 	& 642		& 629	& 646	& 671	& 633	& 545		& 3766		\\ 
-		{Oradores} 		& 614		& 604	& 595	& 631	& 604	& 508		& 3556		\\ \midrule
+		{Oradores} 		& 563		& 604	& 595	& 631	& 604	& 508		& 3556		\\ \midrule
 		{Discursos} 	& 31377		& 77458	& 83629	& 83468	& 88265	& 24974		& 389171	\\ 
 		\bottomrule
 	\end{tabular}
@@ -965,7 +1012,7 @@ No que diz respeito a velocidade de coleta, a documentação da API consta que, 
 	* : dados coletados a partir de Janeiro de 2000; ** : dados coletados até Maio de 2020.
 \end{center}
 
-Na Tabela 2 é possível observar, em cada uma das legislaturas, o número de Deputados ativos -- contanto com eleitos e suplentes que assumiram o mandato em algum momento -- o número de Oradores -- Deputados ativos que realizaram ao menos algum discurso em alguma das seções -- e o volume de Discursos realizados. Descartando as legislaturas 51 e 56, por apresentarem dados restritos, é possível observar um movimento de crescimento da quantidade de discursos que não é acompanhado pelas flutuações no número de oradores. No total, ao longo do perído de coleta, 389.171 discursos foram realizados por 3556 parlamentares\footnote{É importante ressaltar que, seguindo a estratégia metodológica de \citeonline{moreira2016palavra}, são considerados registros multíplos em caso de indivíduos que foram eleitos para legislaturas distintas. Ou seja, um parlamentar é contado uma vez por legislatura para qual elegeu-se.}.
+Na Tabela 2 é possível observar, em cada uma das legislaturas, o número de Deputados ativos -- contanto com eleitos e suplentes que assumiram o mandato em algum momento -- o número de Oradores -- Deputados ativos que realizaram ao menos algum discurso em alguma das seções -- e o volume de Discursos realizados. Descartando as legislaturas 51 e 56, por apresentarem dados restritos, é possível observar um movimento de crescimento da quantidade de discursos que não é acompanhado pelas flutuações no número de oradores. No total, ao longo do período de coleta, 389.171 discursos foram realizados por 3505 parlamentares\footnote{É importante ressaltar que, seguindo a estratégia metodológica de \citeonline{moreira2016palavra}, são considerados registros múltiplos em caso de indivíduos que foram eleitos para legislaturas distintas. Ou seja, um parlamentar é contado uma vez por legislatura para qual elegeu-se.}.
 
 \begin{figure}[h]
 	\caption{Quantis da Frequência de Realização de Discursos por Legislatura}
@@ -976,12 +1023,13 @@ Na Tabela 2 é possível observar, em cada uma das legislaturas, o número de De
 	Fonte: elaboração do autor
 \end{figure}
 
-Ainda no que diz respeito a tendência de ampliação do uso do espaço de fala, a Tabela 2 oferece indícios para inferir que esse processo decorre da concentração de pronunciamentos em uma porção restrita de parlamentares. A despeito das flutuações nos valores da mediana, os quantis mais elevados de frequência têm seus valores ampliados ao longo da série histórica. Essa dinâmica acentua um fato documentado pela literatura, e reforçado pela Figura 8, de que uma minoria de Deputados concentra grande espaço nos pronunciamentos do plenário \cite{moreira2016palavra}. Em todas as legislatura, é possível identificar uma distribuição de hiper-concentrada nos valores mais baixos e uma longa calda onde estão incluídos os palamentares mais comunicativos.    
+Ainda no que diz respeito a tendência de ampliação do uso do espaço de fala, a Tabela 2 oferece indícios para inferir que esse processo decorre da concentração de pronunciamentos em uma porção restrita de parlamentares. A despeito das flutuações nos valores da mediana, os quantis mais elevados de frequência têm seus valores ampliados ao longo da série histórica. Essa dinâmica acentua um fato documentado pela literatura, e reforçado pela Figura 6, de que uma minoria de Deputados concentra grande espaço nos pronunciamentos do plenário \cite{moreira2016palavra}. Em todas as legislatura, é possível identificar uma distribuição de hiper-concentrada nos valores mais baixos e uma longa calda onde estão incluídos os parlamentares mais comunicativos.    
 
 \begin{figure}[!htb]
 	\caption{Distribuição da Realização de Discursos por Legislatura}
 	\centering
 	
+	\hspace{.05\linewidth}
 	\begin{minipage}[b]{0.3\textwidth}
 	\textbf{Legislatura 51}
 	\label{fig:dens_legis_51}
@@ -1038,30 +1086,186 @@ Ainda no que diz respeito a tendência de ampliação do uso do espaço de fala,
 	\end{flushleft} 
 \end{figure}
 
-Além de observar a frequência de pronunciamentos parlamentares, para a estimação do indicador de RWA proposto, é necessário observar a ocorrência de raízes de palavras que mapeiam cada uma das dimensões do autoritarismo, conforme foi especificado no Quadro 1. Na Figura 9 é possível observar que a ocorrência de termos pertencentes a cada dimensão segue o padrão de distribuição concentrada nos valores mais baixos e esparsa nos mais altos. É importante ressaltar que o gráfico não representa os valores de Submissão à Autoridade, Agressividade Autoritária e Convencionalismo em si, mas a ocorrência de termos que tornam possível estimar o posicionamento latente do parlamentar em relação aos Valores Autoritários.
+Além de observar a frequência de pronunciamentos parlamentares, para a estimação do indicador de RWA proposto, é necessário observar a ocorrência de raízes de palavras que mapeiam cada uma das dimensões do autoritarismo, conforme foi especificado no Quadro 1. Na Figura 8 é possível observar que a quantidade de parlamentares que mencionaram em seus discursos termos pertencentes a cada dimensão. É importante ressaltar que o gráfico não representa os valores de Submissão à Autoridade, Agressividade Autoritária e Convencionalismo em si, mas a ocorrência de termos que tornam possível estimar o posicionamento latente do parlamentar em relação aos Valores Autoritários.
 
 \begin{figure}[h]
-	\caption{Distribuição da Ocorrência de Raízes das Dimensões de RWA}
-	\label{fig:dens_ocorrencia_termos}
+	\caption{Quantidade de Oradores por Dimensão de RWA}
+	\label{fig:qtd_deps_rwa}
 	\centering
-	\includegraphics[width=.7\linewidth]{figures/dens_dimensoes_rwa}
+	\includegraphics[width=.6\linewidth]{figures/qtd_oradores_rwa}
 	
 	Fonte: elaboração do autor
 	\begin{flushleft}
-	Nota: O limite da abcissa do gráfico foi fixado com o propósito de facilitar a visualização. Os pontos de máximo para as dimensões do RWA são: 2597, Submissão à Autoridade; 2001, Agressividade Autoritáriae e 4437, Convencionalismo. 
+	Nota: Os valores do número máximo de discursos com menções a raízes que compõem as dimensões do RWA entre parlamentares são, respectivamente: Submissão à Autoridade, 3232; Convencionalismo, 1455; Agressividade Autoritária, 537. 
 	\end{flushleft} 	
 \end{figure}
 
-Ainda sobre a Figura 9, pode-se inferir que ocorrência de termos pertencentes a uma dimensão do autoritarismo é maior quando a cauda da sua distribuição é mais pesada. Nesse sentido, é possível identificar mais discursos em que parlamentares manifestaram adesão ou rejeição a valores Convencionalistas do que de à Submissão à Autoridade e à Agressividade Autoritária. Ao todo, ao longo de todas as legislaturas, 3475 parlamentares mencionaram alguma Entidade referente a Convencionalismo, 3386, referente à Submissão à Autoridade e 3335, referente à Agressividade Autoritária. Esses números indicam que a Tipologia de Entidades definina possui grande cobertura e, consequentemente, permite uma estimativa parcial da Escala de Valores Autoritários para uma parte substancial dos Deputados.
+Ainda sobre a Figura 8, pode-se constatar que, do total de 3505 oradores identificados entre as legislaturas 51 e 56, 2260 -- 64{\%} -- fizeram referência a termos que compõem dimensão de Submissão à Autoridade, 1506 -- 42{\%}, à Convencionalismo e 637 -- 18{\%}, à Agressividade Autoritária. Os números refletem a saliência dos subcomponentes de cada dimensão. Enquanto Ufanismo e Radicalismo Religioso são tópicos populares -- tanto em manifestações favoráveis ou contrárias -- o Punitivismo, Patriarcalismo e Rejeição à Diversidade representam pautas restritas, ligadas a agenda de um número relativamente pequeno de parlamentares. Considerando todas as dimensões, apenas 40 -- 1,1{\%} -- oradores se manifestaram sobre todas os componentes do RWA, reforçando o fato de que a informação atitudinal obtida por meio de dados textuais carrega as características de um fenômeno latente e parcialmente observado. 
 
 Na seção seguinte, serão apresentados os procedimentos para estimativa de RWA entre parlamentares brasileiros a partir dos seus pronunciamentos no plenário da Câmara dos Deputados.
 
-\section{Estimando RWA entre Deputados}
+\section{Estimando Autoritarismo entre Deputados}
+
+Observando a distribuição da Escala de Valores Autoritários, a qual mensura a quantidade de Valores Autoritários com os quais um indivíduo manifestou adesão, é possível constar às expectativas quanto a sua esparsidade. Na Figura 9 constata-se que, apesar de um pouco menos da metade -- 42{\%}-- dos oradores da Câmara dos Deputados terem manifestado adesão por pelo menos um dos valores, apenas em uma fração reduzida dos casos parlamentares pontuaram elevados valores na escala. De fato, nenhum dos agentes analisados alcançou o valor máximo da escala, 8, e apenas um único indivíduo conseguiu atingir a marca de 7 pontos.
+
+\begin{figure}[h]
+	\caption{Distribuição da Escala de Valores Autoritários}
+	\label{fig:scale_auth_val}
+	\centering
+	\includegraphics[width=.6\linewidth]{figures/scale_auth_val}
+	
+	Fonte: elaboração do autor	
+\end{figure}
+
+O lugar de destaque infeliz na escala é ocupado pelo Deputado Federal André Moura, líder do PSC. Em sua trajetória, o parlamentar apresenta uma defesa intransigente da Igreja Evangélica e das corporações policiais, para os quais dedica boa parte de sua atividade como legislador. Diversas proposições e falas na Câmara reforçam seu apoio incondicional à greves de agentes de segurança, aumento salários e de efetivo. Em paralelo, o Deputado se mobilizou ativamente contra mudanças na legislação que assinalavam divergências com instituições tradicionais. Em 2013, liderou o impretamento de mandado de segurança contra o reconhecimento da união estável entre pessoas do mesmo sexo.  	 
+
+No dia 5 de Junho de 2013, na ocasião de uma manifestação ``em defesa da família tradicional, da liberdade de expressão e de culto'' em frente ao Congresso, declarou:
+
+\begin{quotation}
+	Esse evento é organizado pelo segmento evangélico do País. Todas as igrejas do segmento evangélico se reuniram para realizar esse evento e, acima de tudo, para demonstrar a posição das famílias em defesa dos princípios cristãos, em defesa da família brasileira, que é o alicerce principal do nosso País.[...] Com a participação de milhares de pessoas, podemos ouvir a manifestação de apoio [...] aos princípios cristãos, a família e o cidadão.
+\end{quotation}
+
+As manifestações de RWA realizadas pelo parlamentar podem ainda ser observadas a partir da conjugação de valores Convencionalistas e de Agressividade Autoritária. 
+
+Em discurso realizado do dia 2 de Agosto de 2011, apresentou proposta de redução da maioridade penal para 16 anos como forma controle da criminalidade. Como efeito esperado da medida, assinalou que por causa do enrijecimento da punição, jovens teriam seu ingresso na vida do crime contido por causa da ampliação do medo de ser pego. Já em 17 de Dezembro de 2013, apresentou proposta da obrigatoriedade do trabalho para detentos. Como defesa da proposta, o parlamentar argumentou:
+
+\begin{quotation}
+	 Naturalmente, o PL 4.853, de 2012, de nossa autoria, não resolve todos os problemas do sistema prisional brasileiro. Porém, tem como grande apelo proporcionar aos condenados pela Justiça a oportunidade de encarar a pena com esforço digno, que lhes remunera e os resgata do crime, pois esta é a grande virtude do trabalho honesto: elevar a autoestima do homem.
+\end{quotation}
+
+A conjugação de penas mais duras e o trabalho como instrumento de dignificação do humano reforçam, simultaneamente, a narrativa de que a integridade do tecido social depende de uma dupla agência que envolve a submissão às autoridade e ao lugar social de força produtiva e do reforço da punição como método de castração de impulsos desviantes.
+
+Na Figura 10 é possível visualizar a distribuição do RWA estimado para os 3505 Oradores ao longo das legislaturas 51 até 56. Segundo essa escala, o valor médio do RWA para os Deputados brasileiros é 1.87, levemente superior a média da distribuição a priori, porém a diferença não é estatisticamente significativa\footnote{A média da distribuição a priori é 1.62, 0.25 pontos abaixo do RWA dos Deputados brasileiros, indicando, portando, uma diferença de aproximadamente meio desvio padrão.}. Ao longo das legislaturas, a média variou de maneira sutil entre 2, valor máximo atingido na legislatura 53, e 1.78, valor mínimo atingido na legislatura 56. 
+
+A conjugação de baixas variações na média, distribuição bem menos concentrada nos valores menores e o fato de que em toda a série histórica nenhum parlamentar superou os 4 pontos nas escala de RWA sugerem que o autoritarismo manifesto na Câmara dos Deputados ao longo dos últimos 20 anos é consideravelmente mais limitado do que na população em geral. Em comparação a Figura 1, não é possível observar a existência de uma longa cauda que comporta super radicais de extrema-direta, os quais tendem a compor bolhas autoritárias.
 
 
-\section{Avaliando resultados}
+\begin{figure}[h]
+	\caption{Distribuição da Escala Alternativa de RWA}
+	\label{fig:scale_rwa}
+	\centering
+	\includegraphics[width=.6\linewidth]{figures/scale_rwa}
+	
+	Fonte: elaboração do autor	
+\end{figure}
 
-aa
+Apesar o processo relativamente contínuo, um apontamento relevante sobre a dinâmica de expressão de valores autoritários é no que diz respeito a dispersão atitudinal, há uma variação considerável entre algumas das legislaturas. Como é possível constatar na Figura 11, entre as legislaturas 51 e 53 há um achatamento das curvas, indicando um aumento na variabilidade de posicionamentos. A partir de então, a distribuição volta, paulatinamente, a se concentrar. Comparando o desvio-padrão das distribuições, a legislatura 53 é 27{\%} mais dispersa que a 51 e 37{\%} mais dispersa que a 56.
+
+Sobre esse padrão, é possível identificar na literatura um grande número de referências ao crescimento da Bancada Evangélica na primeira décadas do século XXI. De forma menos consistente, algumas evidências sugerem, para as últimas legislaturas, redução da saliência do conservadorismo moral e uma conversão à direita do espectro político. Ainda sim, não é possível afirmar com clareza que as variações na dispersão dos valores de RWA se devem a movimentos endógenos de Bancadas e Frentes Parlamentares.     
+
+\begin{figure}[!htb]
+	\caption{Distribuição da Escala Alternativa de RWA por Legislatura}
+	\centering
+	
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Legislatura 51}
+		\label{fig:dense_rwa_51}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dense_rwa_51}
+		
+	\end{minipage}
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Legislatura 52}
+		\label{fig:dense_rwa_52}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dense_rwa_52}
+		
+	\end{minipage}
+	\\
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Legislautra 53}
+		\label{fig:dense_rwa_53}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dense_rwa_53}
+		
+	\end{minipage}
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Lgislatura 54}
+		\label{fig:dense_rwa_54}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dense_rwa_54}
+		
+	\end{minipage}
+	\\
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Legislautra 55}
+		\label{fig:dense_rwa_55}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dense_rwa_55}
+		
+	\end{minipage}
+	\hspace{.05\linewidth}
+	\begin{minipage}[b]{0.3\textwidth}
+		\textbf{Legislatura 56}
+		\label{fig:dense_rwa_56}
+		\centering
+		\includegraphics[width=1\linewidth]{figures/dense_rwa_56}
+		
+	\end{minipage}	
+	
+	Fonte: elaboração do autor
+	\begin{flushleft}
+		Nota: Os desvios-padrão para cada legislatura correspondem, respectivamente, a: 0.43, 51\textbf{;} 0.50, 52\textbf{;} 0.59, 53\textbf{;} 0.54, 54\textbf{;} 0.40, 55 \textbf{e} 0.37, 56. 
+	\end{flushleft} 
+\end{figure}
+
+\section{Avaliando Autoritarismo por Segmentos de Parlamentares}
+
+Conforme foi discutido, a manifestação de RWA é condicionada por características individuais. Apesar da ausência de variações significativas na expressão de atitudes autoritárias ao longo das legislaturas, é possível identificar segmentos de parlamentares que concentram maior número de indícios de comportamento anti-democrático. Mesmo que constituam um grupo pequeno em meio a população de parlamentares que já passaram pela Câmara, pastores evangélicos e ex-membros das Forças de Segurança -- militares e policiais -- destacam-se nos top 10 de oradores com maiores valores no indicador de autoritarismo. 5 dos 10 lugares -- 2 deles por pastores e 3 por militares -- são ocupados por esses tipos de representantes.
+
+Uma ressalva importante é que as categorias de Políticos da Segurança e Políticos Evangélicos fazem referência ao uso, pelos parlamentares, de identificadores que possibilitam estabelecer a conexão entre suas candidaturas e as entidades que sugerem representar. Em sua investigação sobre o desempenho eleitoral de Candidatos das Forças Repressivas do Estado, Berlatto, Codato e Bolognesi
+\citeonline{berlatto2015candidatos, berlatto2016policia} adotaram como critério de classificação a origem profissional. Contudo, a estratégia utilizada pelos autores deixa de fora alguns grandes casos de deputados que possuem passado profissional na polícia ou no exército, mas que, por estarem afastados há algum tempo, declararam outra ocupação, vide exemplo do Coronel Chrisóstomo, eleito na legislatura 56 pelo estado de Rondônia, com uma plataforma de campanha militarista e anti-imigratória.
+
+A alternativa adotada para contornar o problema, que se estende para o caso de Políticos Evangélicos, foi utilizar acrescentar a presença de termos que remetam a hierarquia policial ou militar, tal como designações religiosas, no nome de urna dos candidatos aos critérios de classificação. Essa solução metodológica replica a implementação realizada por \citeonline{netto2017dinheiro}, nos quais os autores utilizaram a classificação baseada no nome de urna como atalho para candidatos evangélicos e mensurar o efeito do pertencimento à corporação religiosa no sucesso eleitoral.
+
+Explorando as especificidades dessa dinâmica, na Figura 12 é possível observar que, em comparação àqueles que possuem outras ocupações, Políticos Evangélicos apresentam média superior de RWA, indicando que há maior tendência de expressão de autoritarismo entre os integrantes do grupo. Já em relação aos Políticos da Segurança, apresentam média semelhante aos outros Deputados e apenas no quantil de 95{\%} pode-se apontar uma concentração relativa maior. Ou seja, enquanto que Políticos Evangélicos aparecem com valores de RWA sistematicamente maiores, Políticos da Segurança destacam-se apenas entre os super-autoritários.   
+
+\begin{figure}[h]
+	\caption{Distribuição da Escala Alternativa de RWA por Grupo de Parlamentares}
+	\label{fig:rwa_grupos}
+	\centering
+	\includegraphics[width=.7\linewidth]{figures/rwa_grupos}
+	
+	Fonte: elaboração do autor	
+\end{figure}
+
+Tomando como referencial o trabalho de mapeamento da \citeonline{congresso2016bancadas}, a qual identificou os Deputados em exercício do mandato que integravam as 11 bancadas mais poderosas do Congresso no período da legislatura 55, a Figura 13 apresenta os valores padronizados de RWA por bancada. Conforme as expectativas, os parlamentares que integram a pauta dos Direitos Humanos apresentam os menores níveis de autoritarismo, com 0.35 desvios-padrão abaixo da média. O grupo é seguido pela bancada Sindical, com o qual compartilha o posicionamento à esquerda do espectro político.
+
+Um dos destaques no gráfico se deve a posição relativa das bancadas da Bala e Evangélica. A duas são apontadas pela literatura como grupos preponderantes na manifestação de conservadorismo moral e demandas repressivas no campo da segurança pública, mas que, na distribuição, concentraram-se na parte média da escala. Outro ponto relevante é o fato de que os grupos dos parlamentares familistas e associados à atividades do setor primário, assinalados, respectivamente, pela bancada dos Parentes, Ruralistas e Mineradores (os dois últimos representam agremiações de produtores de commodities), sobrepuseram à média em 0.05, 0.08 e 0.15 desvios-padrão, ocupando o espaço mais autoritário na escala.
+  
+\begin{figure}[h]
+	\caption{Distribuição da Escala Alternativa de RWA por Bancadas}
+	\label{fig:rwa_bancadas}
+	\centering
+	\includegraphics[width=.6\linewidth]{figures/rwa_bancadas}
+	
+	Fonte: elaboração do autor	
+\end{figure}
+
+Os resultados contraintuitivos em relação aos Políticos da Segurança, que a priori poderiam ser interpretados como a rejeição da hipótese sobre a relação entre violência e autoritarismo, sugerem, sobretudo, limitações do indicador alternativo de RWA. As duas principais suspeitas quanto as fontes de ruído são: i) má identificação das Raízes textuais associadas às falas sobre o fenômeno explicitada no Quadro 1 e ii) estimação inadequada da Escala de Valores Autoritários, que é sensível a vieses presentes no modelo de identificação da polaridade das sentenças. Ou seja, a melhora na precisão do indicador alternativo de RWA, proposto nessa dissertação, passa por uma análise mais acurada da semântica e das formas de manifestação de adesão em discursos que envolvem valores de Punitivismo. 
+
+Como síntese dos resultados apresentados, pode-se estabelecer que: i) o indicador proposto nesta dissertação apresenta limitações, mas apresentou aderência à maioria das expectativas da literatura que se utiliza das escalas usuais (F e RWA); ii) a média de autoritarismo não variou significativamente ao longa das legislaturas no Brasil, indicando que trata-se de um fenômeno estável no longo prazo; iii) essa estabilidade, contudo, é complexificada pelo fato de que algumas legislaturas apresentam grandes variações na dispersão de RWA entre os Deputados, o que sugere a possibilidade de polarização parlamentar em torno de pautas democráticas; iv) a composição representativa é um elemento de forte segmentação de políticos por grau de adesão à democracia, uma vez que grupos de parlamentares podem apresentar tendências opostas quanto a propensão à manifestação de atitudes autoritárias. 
+
+\chapter{Conclusão}
+
+As investigações sobre causas e efeitos do autoritarismo vêm se tornando cada vez mais populares na literatura e na mídia. Em grande medida, a principal motivação desse fenômeno está na emergência, cada vez mais intensa, de lideranças políticas autoritárias em regimes democráticas. Nesse contexto, a possibilidade de derrocada das instituições que garantem a estabilidade do regime promovidas por aqueles eleitos pelo voto popular lançou luz para a necessidade de observar o autoritarismo em todas as suas camadas, inclusive sobre as atitudes e comportamentos das elites políticas no poder. 
+
+Porém, se por um lado a literatura em psicologia política conta com instrumentos consistentes e amplamente testados para mensurar propensão ao autoritarismo, por outro, nos trabalhos em Ciência Política que envolvem o tema, pesquisadores ainda contam com ferramentas limitadas para classificação de agentes políticos autoritários. Isso se deve principalmente ao fato de que as escalas F e RWA, propostas respectivamente por \citeonline{adorno1950authoritarian} e \citeonline{altemeyer1981right}, envolvem a aplicação de questionários sensíveis e o acesso direto às lideranças políticas de movimentos sociais e parlamento é limitado. Portanto, para medir o nível de adesão a narrativa de que ``o mundo é um lugar hostil e perigoso, no qual a segurança coletiva, a estabilidade e a ordem são indispensáveis a qualquer custo'', pesquisadores recorrem a heurísticas ou inferências com bases em dados alternativos.
+
+Apesar do grande volume de conhecimento produzido sobre o tema, observação limitada do autoritarismo no nível individual têm como consequência o eclipse de agentes políticos autoritários que não ganharam relevância o suficiente para tornarem-se objetos de pesquisa. Dada essa lacuna na literatura, foi proposto, nessa dissertação, um indicador alternativo de autoritarismo baseado na análise automatizada de discursos autoritários que, por meio de algoritmos de Processamento de Linguagem Natural, permite classificação em larga escala e é aderente aos instrumentos tradicionais da psicologia política. 
+
+O indicador é fruto da composição de uma distribuição a priori -- definida a partir de dados de respostas para o questionário proposto por \citeonline{altemeyer1981right} -- e uma distribuição de verossimilhança, definida pela Escala de Valores Autoritários, que mede a adesão ou rejeição a 8 conjunto de valores típicos no discurso autoritário. Para a operacionalização do indicador, foram definidos i) um dicionário de Raízes Textuais, que mapeia o campo semântico de cada um dos valores, e ii) um modelo de Análise de Sentimentos, capaz de mensurar a polaridade das sentenças associadas a cada Raiz Textual.
+
+Por fim, como forma de validar o indicador alternativo de RWA proposto, algumas expectativas da literatura foram retestadas tomando como base os parlamentares da Câmara dos Deputados no Brasil. Para isso, foram extraídos discursos realizados entre Janeiro de 2000 até Maio de 2020 no plenário e mensurados os valores de autoritarismo de 3556 indivíduos. Quanto as hipóteses avaliadas, foram observados se parlamentares i) das Forças de Segurança, ii) representantes de Congregações Religiosas, iii) membros de dinastias familiares na política e iv) associados a produção de \emph{commodities} apresentavam maior expressão de autoritarismo que a média dos Deputados.
+
+Os resultados apresentaram correspondência parcial com as expectativas da literatura e 3 das 4 hipóteses foram confirmadas. Esses indicativos sugerem que o indicador proposto apresenta boa aderência com as medidas obtidas por meio de instrumentos mais precisos, porém há limitações quanto a identificação de adesão ao Punitivismo, dado que Políticos das Forças de Segurança apresentaram valores de RWA próximo da média de outros parlamentares. Dessa forma, pode-se concluir que, apesar de não resolver de forma definitiva os problemas enfrentados por pesquisas sobre autoritarismo na política, o indicador oferece um bom ponto de partida para novas explorações no campo de pesquisa.
+
+
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
